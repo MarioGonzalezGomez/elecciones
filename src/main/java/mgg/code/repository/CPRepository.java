@@ -2,7 +2,7 @@ package mgg.code.repository;
 
 
 import jakarta.persistence.TypedQuery;
-import mgg.code.HibernateController;
+import mgg.code.controller.HibernateController;
 import mgg.code.model.CP;
 import mgg.code.model.Key;
 

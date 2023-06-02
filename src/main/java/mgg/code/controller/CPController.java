@@ -6,6 +6,7 @@ import mgg.code.repository.CPRepository;
 import mgg.code.service.CPService;
 
 
+import java.io.IOException;
 import java.util.List;
 
 public class CPController {
@@ -26,10 +27,14 @@ public class CPController {
     public List<CP> getAllCPs() {
         return service.getAllCPs();
     }
+    public void getAllCPsInCsv() throws IOException {
+        service.getAllCPsInCsv();
+    }
 
     public CP getCPById(Key id) {
         return service.getCPById(id);
     }
+    public void getCPByIdInCsv(Key id) throws IOException {service.getCPByIdInCsv(id);}
 
     public CP postCP(CP cp) {
         return service.postCP(cp);

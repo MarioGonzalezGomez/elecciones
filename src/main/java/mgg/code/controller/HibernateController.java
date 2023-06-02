@@ -1,4 +1,4 @@
-package mgg.code;
+package mgg.code.controller;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

@@ -4,6 +4,7 @@ import mgg.code.model.Circunscripcion;
 import mgg.code.repository.CircunscripcionRepository;
 import mgg.code.service.CircunscripcionService;
 
+import java.io.IOException;
 import java.util.List;
 
 public class CircunscripcionController {
@@ -21,12 +22,20 @@ public class CircunscripcionController {
         return controller;
     }
 
-    public List<Circunscripcion> getAllCircunscripcions() {
+    public List<Circunscripcion> getAllCircunscripciones() {
         return service.getAllCircunscripciones();
+    }
+
+    public void getAllCircunscripcionesInCsv() throws IOException {
+        service.getAllCircunscripcionesInCsv();
     }
 
     public Circunscripcion getCircunscripcionById(String id) {
         return service.getCircunscripcionById(id);
+    }
+
+    public void getCircunscripcionByIdInCsv(String id) throws IOException {
+        service.getCircunscripcionByIdInCsv(id);
     }
 
     public Circunscripcion postCircunscripcion(Circunscripcion Circunscripcion) {

@@ -4,6 +4,7 @@ import mgg.code.model.Partido;
 import mgg.code.repository.PartidoRepository;
 import mgg.code.service.PartidoService;
 
+import java.io.IOException;
 import java.util.List;
 
 public class PartidoController {
@@ -25,9 +26,15 @@ public class PartidoController {
         return service.getAllPartidos();
     }
 
+    public void getAllPartidosInCsv() throws IOException {
+        service.getAllPartidosInCsv();
+    }
+
     public Partido getPartidoById(String id) {
         return service.getPartidoById(id);
     }
+
+    public void getPartidoByIdinCsv(String id) throws IOException {service.getPartidoByIdInCsv(id);}
 
     public Partido postPartido(Partido Partido) {
         return service.postPartido(Partido);
