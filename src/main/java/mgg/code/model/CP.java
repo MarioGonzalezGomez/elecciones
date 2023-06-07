@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "circunscripcion_partido")
+@org.hibernate.annotations.NamedQuery(name = "CP.findAll", query = "SELECT a FROM CP a")
 public class CP {
 
     @EmbeddedId

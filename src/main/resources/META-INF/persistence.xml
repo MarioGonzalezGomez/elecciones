@@ -14,7 +14,7 @@
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/elecciones_autonomicas_2019"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://172.28.51.21:3306/elecciones_generales_2019"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="auto1041"/>

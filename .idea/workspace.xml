@@ -4,42 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Commit Inicial con Crud basico">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/BrainStormDTOController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/LiteralController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/PrimeDTOController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/SedesDTOController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/Literal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/BrainStormDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/CircunscripcionDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/CpDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/CpPrimeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/PrimeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/SedesDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/mapper/BrainStormDTOMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/mapper/CircunscripcionDTOMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/mapper/PrimeDTOMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/mapper/SedesDTOMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/LiteralRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/LiteralService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/ficheros/CsvExportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/ficheros/ExcelExportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/LecturaFicheroColores.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Csv implementado en Partido, Cir y CP.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/comparators/CPOficial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/comparators/CPSondeo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/HibernateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/HibernateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/CPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/CPController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/CircunscripcionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/CircunscripcionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/PartidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/PartidoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CPRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CPRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CircunscripcionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CircunscripcionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/PartidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/PartidoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/PrimeDTOController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/PrimeDTOController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/model/CP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/CP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/service/CPService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/CPService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/service/CircunscripcionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/CircunscripcionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/service/PartidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/PartidoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,16 +48,16 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Mario/Desktop/Proyectos/Elecciones/src/main/resources"
+    "last_opened_file_path": "C:/Users/Mario/Desktop/Proyectos/Elecciones/src/main/java/mgg/code/util/comparators"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mario\Desktop\Proyectos\Elecciones\src\main\java\mgg\code\util\comparators" />
       <recent name="C:\Users\Mario\Desktop\Proyectos\Elecciones\src\main\resources" />
       <recent name="C:\Users\Mario\Desktop\Proyectos\Elecciones\src\main\java\mgg\code\controller" />
       <recent name="C:\Users\Mario\Desktop\Proyectos\Elecciones\src\main\java\mgg\code\service\ficheros" />
       <recent name="C:\Users\Mario\Desktop\Proyectos\Elecciones\src\main\java\mgg\code\model\dto\mapper" />
-      <recent name="C:\Users\Mario\Desktop\Proyectos\Elecciones\src\main\java\mgg\code\model\DTO" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="mgg.code.controller" />
@@ -110,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685623076443</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Csv implementado en Partido, Cir y CP.">
+      <created>1685703326011</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685703326011</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -138,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit Inicial con Crud basico" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit Inicial con Crud basico" />
+    <MESSAGE value="Csv implementado en Partido, Cir y CP." />
+    <option name="LAST_COMMIT_MESSAGE" value="Csv implementado en Partido, Cir y CP." />
   </component>
 </project>
