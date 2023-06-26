@@ -99,15 +99,16 @@ public class BrainStormDTOController {
         writer.close();
     }
 
-    public void getBrainStormDTOSondeoEspecialInCsv(String cod1, String avance) {
+    public void getBrainStormDTOSondeoEspecialInCsv(String cod1, String avance) throws IOException {
         BrainStormDTO dto = getBrainStormDTOSondeo(cod1, avance);
         dto.getCpDTO().forEach(cp -> {
             cp.setEscanos_desde(cp.getEscanos_desde_sondeo());
             cp.setEscanos_hasta(cp.getEscanos_hasta_sondeo());
             cp.setPorcentajeVoto(cp.getPorcentajeVotoSondeo());
         });
-        //TODO:Add writer
-        //csvExportService.writeBrainStormDTOToCsv(dto);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
+        csvExportService.writeBrainStormDTOToCsv(dto, writer);
+        writer.close();
     }
 
     public void getBrainStormDTOInExcel(String cod1, String avance) {
