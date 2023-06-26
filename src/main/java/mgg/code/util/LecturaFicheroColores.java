@@ -12,8 +12,8 @@ public class LecturaFicheroColores {
 
 
     public ArrayList<String[]> leerFicheroColores() {
-        Config.getConfiguracion();
-        String archivoCSV = Config.getRutaColores();
+        Config c =Config.getConfiguracion();
+        String archivoCSV = c.getRutaColores();
         BufferedReader br = null;
         String linea = "";
         String separadorCSV = ";";

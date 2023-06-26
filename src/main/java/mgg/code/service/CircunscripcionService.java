@@ -19,7 +19,7 @@ public class CircunscripcionService extends BaseService<Circunscripcion, String,
         super(repository);
     }
 
-    private final String ruta = Config.getRutaFicheros();
+    private final String ruta = Config.getConfiguracion().getRutaFicheros();
     private final CsvExportService csvExport = CsvExportService.getInstance();
 
     public List<Circunscripcion> getAllCircunscripciones() {

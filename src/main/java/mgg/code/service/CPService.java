@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class CPService extends CPBaseService<CP, Key, CPRepository> {
 
-    private final String ruta = Config.getRutaFicheros();
+    private final String ruta = Config.getConfiguracion().getRutaFicheros();
     private final CsvExportService csvExport = CsvExportService.getInstance();
 
     public CPService(CPRepository repository) {

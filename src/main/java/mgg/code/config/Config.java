@@ -31,22 +31,22 @@ public class Config {
         }
     }
 
-    public static String getIpDbPrincipal() {
+    public String getIpDbPrincipal() {
         return config.getProperty("ipPrincipal");
     }
-    public static String getIpDbReserva() {
+    public String getIpDbReserva() {
         return config.getProperty("ipReserva");
     }
 
-    public static String getBdCartones() {
+    public  String getBdCartones() {
         return config.getProperty("BDCartones");
     }
-    public static String getBdFaldones() {return config.getProperty("BDFaldones");}
-    public static String getipIPF() {return config.getProperty("ipIPF");}
-    public static String getpuertoIPF() {return config.getProperty("puertoIPF");}
+    public  String getBdFaldones() {return config.getProperty("BDFaldones");}
+    public  String getipIPF() {return config.getProperty("ipIPF");}
+    public  String getpuertoIPF() {return config.getProperty("puertoIPF");}
 
-    public static String getRutaColores() {return config.getProperty("rutaColores");}
-    public static String getRutaFicheros() {return config.getProperty("rutaFicheros");}
+    public  String getRutaColores() {return config.getProperty("rutaColores");}
+    public  String getRutaFicheros() {return config.getProperty("rutaFicheros");}
 
 
 }

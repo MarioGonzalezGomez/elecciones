@@ -17,7 +17,7 @@ import java.util.List;
 
 public class PartidoService extends BaseService<Partido, String, PartidoRepository> {
 
-    private final String ruta = Config.getRutaFicheros();
+    private final String ruta = Config.getConfiguracion().getRutaFicheros();
 
     private final CsvExportService csvExport = CsvExportService.getInstance();
 
