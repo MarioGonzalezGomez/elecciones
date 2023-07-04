@@ -1,7 +1,5 @@
 package mgg.code.util.ipf;
 
-import mgg.code.conexion.ConexionIPF;
-
 public class IPFSender {
     private ConexionIPF c;
     private IPFFaldonesMessageBuilder faldonesBuilder;

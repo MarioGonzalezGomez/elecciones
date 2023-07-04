@@ -1,4 +1,4 @@
-package mgg.code.conexion;
+package mgg.code.util.ipf;
 
 import mgg.code.config.Config;
 
@@ -92,8 +92,11 @@ public class ConexionIPF {
 
     public void desconectar() {
         try {
+            if(servidor!=null)
             servidor.close();
+            if(datoEntrada!=null)
             datoEntrada.close();
+            if(datoSalida!=null)
             datoSalida.close();
             System.out.println("Cliente->Desconectado");
         } catch (IOException ex) {
