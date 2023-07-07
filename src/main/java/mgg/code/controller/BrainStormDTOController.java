@@ -59,6 +59,22 @@ public class BrainStormDTOController {
         return dto;
     }
 
+    public BrainStormDTO getBrainStormDTOSenado(String cod1, String avance) {
+        Circunscripcion circunscripcion = cirCon.getCircunscripcionByIdSenado(cod1);
+        Circunscripcion espania = cirCon.getCircunscripcionByIdSenado("9900000");
+        List<CP> cp =
+                cpCon.findByIdCircunscripcionSenado(cod1).stream()
+                        .filter(x -> x.getEscanos_hasta() > 0)
+                        .sorted(new CPOficial().reversed())
+                        .collect(Collectors.toList());
+
+        List<Partido> partidos = new ArrayList<>();
+        cp.forEach(x -> partidos.add(parCon.getPartidoByIdSenado(x.getId().getPartido())));
+        BrainStormDTOMapper mapper = new BrainStormDTOMapper(avance);
+        BrainStormDTO dto = mapper.toDTO(circunscripcion, espania, cp, partidos);
+        return dto;
+    }
+
     public BrainStormDTO getBrainStormDTOSondeo(String cod1, String avance) {
         Circunscripcion circunscripcion = cirCon.getCircunscripcionById(cod1);
         Circunscripcion espania = cirCon.getCircunscripcionById("9900000");
@@ -84,8 +100,8 @@ public class BrainStormDTOController {
         writer.close();
     }
 
-    public void getBrainStormDTOOficialSenadoInCsv(String cod1, String avance) throws IOException {
-        BrainStormDTO dto = getBrainStormDTOOficial(cod1, avance);
+    public void getBrainStormDTOSenadoInCsv(String cod1, String avance) throws IOException {
+        BrainStormDTO dto = getBrainStormDTOSenado(cod1, avance);
         BufferedWriter writer = new BufferedWriter(new FileWriter(ruta + "\\Senado.csv"));
         csvExportService.writeBrainStormDTOToCsv(dto, writer);
         writer.close();
