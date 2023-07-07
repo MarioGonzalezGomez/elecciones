@@ -26,6 +26,10 @@ public class CircunscripcionController {
         return service.getAllCircunscripciones();
     }
 
+    public List<Circunscripcion> getAllCircunscripcionesSenado() {
+        return service.getAllCircunscripcionesSenado();
+    }
+
     public void getAllCircunscripcionesInCsv() throws IOException {
         service.getAllCircunscripcionesInCsv();
     }

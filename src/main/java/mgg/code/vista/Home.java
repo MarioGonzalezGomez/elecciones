@@ -1,7 +1,10 @@
 
 package mgg.code.vista;
 
+import mgg.code.repository.CircunscripcionRepository;
+import mgg.code.service.CircunscripcionService;
 import mgg.code.util.DB;
+import mgg.code.util.Listeners;
 import mgg.code.util.ipf.ConexionIPF;
 import mgg.code.controller.BrainStormDTOController;
 import mgg.code.controller.CPController;
@@ -48,6 +51,7 @@ public class Home extends JFrame {
     public void initCircunscripciones() {
         autonomias = circon.getAllCircunscripciones();
         autonomias = autonomias.stream().filter(x -> x.getCodigo().endsWith("00000")).toList();
+
     }
 
     public void showDataTable(BrainStormDTO bs) {
