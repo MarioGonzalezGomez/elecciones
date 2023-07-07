@@ -1,12 +1,20 @@
 package mgg.code.util.ipf;
 
 public class IPFSender {
+    private static IPFSender ipf;
     private ConexionIPF c;
     private IPFFaldonesMessageBuilder faldonesBuilder;
 
-    public IPFSender() {
+    private IPFSender() {
         c = ConexionIPF.getConexion();
         faldonesBuilder = IPFFaldonesMessageBuilder.getInstance();
+    }
+
+    public static IPFSender getInstance() {
+        if (ipf == null) {
+            ipf = new IPFSender();
+        }
+        return ipf;
     }
 
     //SENADO
