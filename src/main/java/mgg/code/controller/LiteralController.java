@@ -21,13 +21,12 @@ public class LiteralController {
         return controller;
     }
 
-    public List<Literal> getAllLiterals() {
-        return service.getAllLiterals();
-    }
-
+    public List<Literal> getAllLiterales() {return service.getAllLiterals();}
+    public List<Literal> getAllLiteralesSenado() {return service.getAllLiteralsSenado();}
     public Literal getLiteralById(int id) {
         return service.getLiteralById(id);
     }
+    public Literal getLiteralByIdSenado(int id) {return service.getLiteralByIdSenado(id);}
 
     public Literal postLiteral(Literal Literal) {
         return service.postLiteral(Literal);

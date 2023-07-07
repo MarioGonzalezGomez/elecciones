@@ -25,6 +25,7 @@ public class PartidoController {
     public List<Partido> getAllPartidos() {
         return service.getAllPartidos();
     }
+    public List<Partido> getAllPartidosSenado() {return service.getAllPartidosSenado();}
 
     public void getAllPartidosInCsv() throws IOException {
         service.getAllPartidosInCsv();
@@ -33,6 +34,7 @@ public class PartidoController {
     public Partido getPartidoById(String id) {
         return service.getPartidoById(id);
     }
+    public Partido getPartidoByIdSenado(String id) {return service.getPartidoByIdSenado(id);}
 
     public void getPartidoByIdinCsv(String id) throws IOException {service.getPartidoByIdInCsv(id);}
 

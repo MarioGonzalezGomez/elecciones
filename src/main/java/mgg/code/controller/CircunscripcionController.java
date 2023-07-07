@@ -37,6 +37,9 @@ public class CircunscripcionController {
     public Circunscripcion getCircunscripcionById(String id) {
         return service.getCircunscripcionById(id);
     }
+    public Circunscripcion getCircunscripcionByIdSenado(String id) {
+        return service.getCircunscripcionByIdSenado(id);
+    }
 
     public void getCircunscripcionByIdInCsv(String id) throws IOException {
         service.getCircunscripcionByIdInCsv(id);

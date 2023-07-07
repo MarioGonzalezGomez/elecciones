@@ -15,10 +15,11 @@ public class LiteralService extends BaseService<Literal, Integer, LiteralReposit
     public List<Literal> getAllLiterals() {
         return this.findAll();
     }
-
+    public List<Literal> getAllLiteralsSenado() {return repository.findAllSenado();}
     public Literal getLiteralById(int id) {
         return this.getById(id);
     }
+    public Literal getLiteralByIdSenado(int id) {return repository.getByIdSenado(id);}
 
     public Literal postLiteral(Literal literal) {
         return this.save(literal);
