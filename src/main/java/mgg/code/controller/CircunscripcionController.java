@@ -26,12 +26,19 @@ public class CircunscripcionController {
         return service.getAllCircunscripciones();
     }
 
+    public List<Circunscripcion> getAllCircunscripcionesSenado() {
+        return service.getAllCircunscripcionesSenado();
+    }
+
     public void getAllCircunscripcionesInCsv() throws IOException {
         service.getAllCircunscripcionesInCsv();
     }
 
     public Circunscripcion getCircunscripcionById(String id) {
         return service.getCircunscripcionById(id);
+    }
+    public Circunscripcion getCircunscripcionByIdSenado(String id) {
+        return service.getCircunscripcionByIdSenado(id);
     }
 
     public void getCircunscripcionByIdInCsv(String id) throws IOException {

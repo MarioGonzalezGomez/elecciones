@@ -27,6 +27,9 @@ public class CPController {
     public List<CP> getAllCPs() {
         return service.getAllCPs();
     }
+    public List<CP> getAllCPsSenado() {
+        return service.getAllCPsSenado();
+    }
 
     public void getAllCPsInCsv() throws IOException {
         service.getAllCPsInCsv();
@@ -35,6 +38,7 @@ public class CPController {
     public CP getCPById(Key id) {
         return service.getCPById(id);
     }
+    public CP getCPByIdSenado(Key id) {return service.getCPByIdSenado(id);}
 
     public void getCPByIdInCsv(Key id) throws IOException {
         service.getCPByIdInCsv(id);
@@ -54,6 +58,10 @@ public class CPController {
 
     public List<CP> findByIdCircunscripcionOficial(String codigo) {
         return service.getByIdCircunscripcionOficial(codigo);
+    }
+
+    public List<CP> findByIdCircunscripcionSenado(String codigo) {
+        return service.getByIdCircunscripcionSenado(codigo);
     }
 
     public List<CP> findByIdCircunscripcionSondeo(String codigo) {

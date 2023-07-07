@@ -59,23 +59,6 @@ public class BrainStormDTOController {
         return dto;
     }
 
-    public BrainStormDTO getBrainStormDTOSenado(String cod1, String avance) {
-        Circunscripcion circunscripcion = cirCon.getCircunscripcionById(cod1);
-        Circunscripcion espania = cirCon.getCircunscripcionById("9900000");
-        List<CP> cp =
-                cpCon.findByIdCircunscripcionOficial(cod1).stream()
-                        .filter(x -> x.getEscanos_hasta() > 0)
-                        .sorted(new CPOficial().reversed())
-                        .collect(Collectors.toList());
-
-        List<Partido> partidos = new ArrayList<>();
-        cp.forEach(x -> partidos.add(parCon.getPartidoById(x.getId().getPartido())));
-        BrainStormDTOMapper mapper = new BrainStormDTOMapper(avance);
-        BrainStormDTO dto = mapper.toDTO(circunscripcion, espania, cp, partidos);
-        return dto;
-    }
-
-
     public BrainStormDTO getBrainStormDTOSondeo(String cod1, String avance) {
         Circunscripcion circunscripcion = cirCon.getCircunscripcionById(cod1);
         Circunscripcion espania = cirCon.getCircunscripcionById("9900000");
