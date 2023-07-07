@@ -2,14 +2,17 @@ package mgg.code.repository;
 
 
 import jakarta.persistence.TypedQuery;
-import mgg.code.controller.HibernateController;
+import mgg.code.controller.hibernate.HibernateControllerCongreso;
+import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.model.Circunscripcion;
 
 
 import java.util.List;
 
 public class CircunscripcionRepository implements CrudRepository<Circunscripcion, String> {
-    private HibernateController hc = HibernateController.getInstance();
+    private HibernateControllerCongreso hc = HibernateControllerCongreso.getInstance();
+    private HibernateControllerSenado hs = HibernateControllerSenado.getInstance();
+
 
     public List<Circunscripcion> findAll() {
         hc.open();
@@ -19,10 +22,25 @@ public class CircunscripcionRepository implements CrudRepository<Circunscripcion
         return Circunscripciones;
     }
 
+    public List<Circunscripcion> findAllSenado() {
+        hs.open();
+        TypedQuery<Circunscripcion> query = hs.getManager().createNamedQuery("Circunscripcion.findAll", Circunscripcion.class);
+        List<Circunscripcion> Circunscripciones = query.getResultList();
+        hs.close();
+        return Circunscripciones;
+    }
+
     public Circunscripcion getById(String id) {
         hc.open();
         Circunscripcion Circunscripcion = hc.getManager().find(Circunscripcion.class, id);
         hc.close();
+        return Circunscripcion;
+    }
+
+    public Circunscripcion getByIdSenado(String id) {
+        hs.open();
+        Circunscripcion Circunscripcion = hs.getManager().find(Circunscripcion.class, id);
+        hs.close();
         return Circunscripcion;
     }
 

@@ -30,6 +30,7 @@ public class CPService extends CPBaseService<CP, Key, CPRepository> {
     public List<CP> getAllCPs() {
         return this.findAll();
     }
+    public List<CP> getAllCPsSenado() {return repository.findAllSenado();}
 
     public void getAllCPsInCsv() throws IOException {
         File carpetaBase = comprobarCarpetas();
@@ -50,6 +51,12 @@ public class CPService extends CPBaseService<CP, Key, CPRepository> {
                 .sorted(new CPOficial().reversed()).collect(Collectors.toList());
     }
 
+    public List<CP> getByIdCircunscripcionSenado(String codCircunscripcion) {
+        return repository.findAllSenado().stream().filter(x -> x.getEscanos_hasta() > 0)
+                .filter(x -> x.getId().getCircunscripcion().endsWith(codCircunscripcion))
+                .sorted(new CPOficial().reversed()).collect(Collectors.toList());
+    }
+
     public List<CP> getByIdCircunscripcionSondeo(String codCircunscripcion) {
         return this.findAll().stream().filter(x -> x.getEscanos_hasta_sondeo() > 0)
                 .filter(x -> x.getId().getCircunscripcion().endsWith(codCircunscripcion))
@@ -59,6 +66,7 @@ public class CPService extends CPBaseService<CP, Key, CPRepository> {
     public CP getCPById(Key key) {
         return this.getById(key);
     }
+    public CP getCPByIdSenado(Key key) {return repository.getByIdSenado(key);}
 
     public void getCPByIdInCsv(Key id) throws IOException {
         File carpetaBase = comprobarCarpetas();

@@ -4,7 +4,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
 
-    <persistence-unit name="elecciones">
+    <persistence-unit name="congreso">
         <description>Persistencia de los datos de elecciones con Hibernate JPA</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
@@ -14,7 +14,25 @@
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://172.28.51.21:3306/elecciones_generales_2019"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://172.28.51.21:3306,172.28.51.22:3306,127.0.0.1:3306/elecciones_generales_2019"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="auto1041"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="senado">
+        <description>Persistencia de los datos de elecciones del senado con Hibernate JPA</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>model.Circunscripcion</class>
+        <class>model.CP</class>
+        <class>model.Partido</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://172.28.51.21:3306,172.28.51.22:3306,127.0.0.1:3306/elecciones_senado_2019"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="auto1041"/>

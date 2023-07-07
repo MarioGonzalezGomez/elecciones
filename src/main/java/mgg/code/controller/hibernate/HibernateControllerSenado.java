@@ -1,4 +1,4 @@
-package mgg.code.controller;
+package mgg.code.controller.hibernate;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -7,24 +7,24 @@ import jakarta.persistence.Persistence;
 import lombok.Data;
 
 @Data
-public class HibernateController {
-    private static HibernateController hc;
+public class HibernateControllerSenado {
+    private static HibernateControllerSenado hc;
     private EntityManagerFactory emf;
     private EntityManager manager;
     private EntityTransaction transaction;
 
-    private HibernateController() {
+    private HibernateControllerSenado() {
     }
 
-    public static HibernateController getInstance() {
+    public static HibernateControllerSenado getInstance() {
         if (hc == null) {
-            hc = new HibernateController();
+            hc = new HibernateControllerSenado();
         }
         return hc;
     }
 
     public void open() {
-        emf = Persistence.createEntityManagerFactory("elecciones");
+        emf = Persistence.createEntityManagerFactory("senado");
         manager = emf.createEntityManager();
         transaction = manager.getTransaction();
     }

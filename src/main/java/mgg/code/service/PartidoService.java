@@ -29,6 +29,7 @@ public class PartidoService extends BaseService<Partido, String, PartidoReposito
     public List<Partido> getAllPartidos() {
         return this.findAll();
     }
+    public List<Partido> getAllPartidosSenado() {return repository.findAllSenado();}
 
     public void getAllPartidosInCsv() throws IOException {
         File carpetaBase = comprobarCarpetas();
@@ -46,6 +47,7 @@ public class PartidoService extends BaseService<Partido, String, PartidoReposito
     public Partido getPartidoById(String id) {
         return this.getById(id);
     }
+    public Partido getPartidoByIdSenado(String id) {return repository.getByIdSenado(id);}
 
     public void getPartidoByIdInCsv(String id) throws IOException {
         File carpetaBase = comprobarCarpetas();

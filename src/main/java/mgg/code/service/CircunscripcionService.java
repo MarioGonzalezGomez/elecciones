@@ -25,6 +25,7 @@ public class CircunscripcionService extends BaseService<Circunscripcion, String,
     public List<Circunscripcion> getAllCircunscripciones() {
         return this.findAll();
     }
+    public List<Circunscripcion> getAllCircunscripcionesSenado() {return repository.findAllSenado();}
 
     public void getAllCircunscripcionesInCsv() throws IOException {
         File carpetaBase = comprobarCarpetas();
@@ -42,6 +43,7 @@ public class CircunscripcionService extends BaseService<Circunscripcion, String,
     public Circunscripcion getCircunscripcionById(String id) {
         return this.getById(id);
     }
+    public Circunscripcion getCircunscripcionByIdSenado(String id) {return repository.getByIdSenado(id);}
 
     public void getCircunscripcionByIdInCsv(String id) throws IOException {
         File carpetaBase = comprobarCarpetas();

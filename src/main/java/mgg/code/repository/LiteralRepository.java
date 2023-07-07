@@ -1,14 +1,16 @@
 package mgg.code.repository;
 
 import jakarta.persistence.TypedQuery;
-import mgg.code.controller.HibernateController;
+import mgg.code.controller.hibernate.HibernateControllerCongreso;
+import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.model.Literal;
 
 import java.util.List;
 
 public class LiteralRepository implements CrudRepository<Literal, Integer> {
 
-    private HibernateController hc = HibernateController.getInstance();
+    private HibernateControllerCongreso hc = HibernateControllerCongreso.getInstance();
+    private HibernateControllerSenado hs = HibernateControllerSenado.getInstance();
 
     @Override
     public List<Literal> findAll() {
@@ -19,11 +21,26 @@ public class LiteralRepository implements CrudRepository<Literal, Integer> {
         return literales;
     }
 
+    public List<Literal> findAllSenado() {
+        hs.open();
+        TypedQuery<Literal> query = hs.getManager().createNamedQuery("Literal.findAll", Literal.class);
+        List<Literal> literales = query.getResultList();
+        hs.close();
+        return literales;
+    }
+
     @Override
     public Literal getById(Integer id) {
         hc.open();
         Literal literal = hc.getManager().find(Literal.class, id);
         hc.close();
+        return literal;
+    }
+
+    public Literal getByIdSenado(Integer id) {
+        hs.open();
+        Literal literal = hs.getManager().find(Literal.class, id);
+        hs.close();
         return literal;
     }
 
