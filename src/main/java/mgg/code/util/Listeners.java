@@ -3,12 +3,10 @@ package mgg.code.util;
 
 //TODO(Cambios en dos bases de dato congreso y senado)
 
-import lombok.val;
 import mgg.code.controller.CircunscripcionController;
 import mgg.code.model.Circunscripcion;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

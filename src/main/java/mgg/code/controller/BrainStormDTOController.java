@@ -93,8 +93,7 @@ public class BrainStormDTOController {
     }
 
 
-    public void getBrainStormDTOOficialCongresoInCsv(String cod1, String avance){
-        BrainStormDTO dto = getBrainStormDTOOficial(cod1, avance);
+    public void getBrainStormDTOOficialCongresoInCsv(BrainStormDTO dto){
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso.csv"));
@@ -109,8 +108,7 @@ public class BrainStormDTOController {
         }
     }
 
-    public void getBrainStormDTOSenadoInCsv(String cod1, String avance) {
-        BrainStormDTO dto = getBrainStormDTOSenado(cod1, avance);
+    public void getBrainStormDTOSenadoInCsv(BrainStormDTO dto) {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Senado.csv"));
@@ -125,8 +123,7 @@ public class BrainStormDTOController {
         }
     }
 
-    public void getBrainStormDTOSondeoInCsv(String cod1, String avance) {
-        BrainStormDTO dto = getBrainStormDTOSondeo(cod1, avance);
+    public void getBrainStormDTOSondeoInCsv(BrainStormDTO dto) {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
@@ -141,8 +138,7 @@ public class BrainStormDTOController {
         }
     }
 
-    public void getBrainStormDTOSondeoEspecialInCsv(String cod1, String avance){
-        BrainStormDTO dto = getBrainStormDTOSondeo(cod1, avance);
+    public void getBrainStormDTOSondeoEspecialInCsv(BrainStormDTO dto){
         dto.getCpDTO().forEach(cp -> {
             cp.setEscanos_desde(cp.getEscanos_desde_sondeo());
             cp.setEscanos_hasta(cp.getEscanos_hasta_sondeo());

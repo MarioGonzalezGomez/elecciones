@@ -311,17 +311,17 @@ public class Home extends JFrame {
                             if (oficiales) {
                                 //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                                 bs = bscon.getBrainStormDTOOficial(codAutonomia, avance);
-                                bscon.getBrainStormDTOOficialCongresoInCsv(codAutonomia, avance);
+                                bscon.getBrainStormDTOOficialCongresoInCsv(bs);
                             } else {
                                 //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                                 bs = bscon.getBrainStormDTOSondeo(codAutonomia, avance);
-                                bscon.getBrainStormDTOSondeoEspecialInCsv(codAutonomia, avance);
+                                bscon.getBrainStormDTOSondeoEspecialInCsv(bs);
                             }
                         } else {
                             ((DefaultTableModel) tablaDatos.getModel()).setRowCount(0);
                             //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                             bs = bscon.getBrainStormDTOSenado(codAutonomia, avance);
-                            bscon.getBrainStormDTOSenadoInCsv(codAutonomia, avance);
+                            bscon.getBrainStormDTOSenadoInCsv(bs);
                         }
                         showDataTable(bs);
                         lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
@@ -763,17 +763,17 @@ public class Home extends JFrame {
                         if (oficiales) {
                             //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                             bs = bscon.getBrainStormDTOOficial(codAutonomia, avance);
-                            bscon.getBrainStormDTOOficialCongresoInCsv(codAutonomia, avance);
+                            bscon.getBrainStormDTOOficialCongresoInCsv(bs);
                         } else {
                             //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                             bs = bscon.getBrainStormDTOSondeo(codAutonomia, avance);
-                            bscon.getBrainStormDTOSondeoEspecialInCsv(codAutonomia, avance);
+                            bscon.getBrainStormDTOSondeoEspecialInCsv(bs);
                         }
                     } else {
                         ((DefaultTableModel) tablaDatos.getModel()).setRowCount(0);
                         //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                         bs = bscon.getBrainStormDTOSenado(codAutonomia, avance);
-                        bscon.getBrainStormDTOSenadoInCsv(codAutonomia, avance);
+                        bscon.getBrainStormDTOSenadoInCsv(bs);
                     }
                     showDataTable(bs);
                     lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
@@ -818,19 +818,19 @@ public class Home extends JFrame {
                 int selectedRow = tablaProvincias.getSelectedRow();
                 if (selectedRow != -1) {
                     String nombreMunicipio = (String) tablaProvincias.getValueAt(selectedRow, 0);
-                    String codProvincia = provincias.stream().filter(x -> x.getNombreCircunscripcion().equalsIgnoreCase(nombreMunicipio)).toList().get(0).getCodigoProvincia();
+                    String codProvincia = provincias.stream().filter(x -> x.getNombreCircunscripcion().equalsIgnoreCase(nombreMunicipio)).toList().get(0).getCodigo();
                     BrainStormDTO bs = null;
                     if (tipoElecciones == 1 || tipoElecciones == 2) {
                         if (oficiales) {
                             bs = bscon.getBrainStormDTOOficial(codProvincia, avance);
-                            bscon.getBrainStormDTOOficialCongresoInCsv(codProvincia, avance);
+                            bscon.getBrainStormDTOOficialCongresoInCsv(bs);
                         } else {
                             bs = bscon.getBrainStormDTOSondeo(codProvincia, avance);
-                            bscon.getBrainStormDTOSondeoEspecialInCsv(codProvincia, avance);
+                            bscon.getBrainStormDTOSondeoEspecialInCsv(bs);
                         }
                     } else {
                         bs = bscon.getBrainStormDTOSenado(codProvincia, avance);
-                        bscon.getBrainStormDTOSenadoInCsv(codProvincia, avance);
+                        bscon.getBrainStormDTOSenadoInCsv(bs);
                     }
                     showDataTable(bs);
                     lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
