@@ -1,7 +1,12 @@
 
 package mgg.code.util;
 
-//TODO(Cambios en dos bases de dato congreso y senado)
+//TODO(comprobar cambios de escaños h/d, comprobar escrutado, comprobar orden de los partidos)
+//TODO(en senado no hay sondeo, en lo otro si)
+//TODO(TipoElecciones:
+//       1 = congreso oficiales
+//       2 = sondeo
+//       3 = Senado)
 
 import mgg.code.controller.CPController;
 import mgg.code.controller.CircunscripcionController;
@@ -40,6 +45,7 @@ public class Listeners {
     private Listeners() {
         this.circunscripcionController = CircunscripcionController.getInstance();
         this.cpController = CPController.getInstance();
+
     }
 
     private boolean orderChanged(List<CP> newPartidos) {
@@ -53,6 +59,7 @@ public class Listeners {
         }
         return false;
     }
+
 
     public void listenSenado() {
         if (!isSuscribedSenado.get()) {
