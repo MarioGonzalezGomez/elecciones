@@ -18,7 +18,10 @@ public class Listeners {
     private static Listeners instance = null;
     private CircunscripcionController circunscripcionController;
     private List<Circunscripcion> circunscripcionList = new ArrayList<>();
+    private List<Circunscripcion> circunscripcionSenado = new ArrayList<>();
     private static AtomicBoolean isSuscribed = new AtomicBoolean(false);
+
+    private static AtomicBoolean isSuscribedSenado = new AtomicBoolean(false);
 
 
     public static Listeners getInstance() {
@@ -33,18 +36,20 @@ public class Listeners {
     }
 
     public void listenSenado() {
-        if (!isSuscribed.get()) {
-            isSuscribed.set(true);
+        if (!isSuscribedSenado.get()) {
+            System.out.println("Escuchando senado");
+            isSuscribedSenado.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
-                if (circunscripcionList.isEmpty()) {
-                    circunscripcionList = circunscripcionController.getAllCircunscripciones();
+                if (circunscripcionSenado.isEmpty()) {
+                    circunscripcionSenado = circunscripcionController.getAllCircunscripcionesSenado();
                 } else {
                     List<Circunscripcion> circunscripcionesNew = null;
-                    circunscripcionesNew = circunscripcionController.getAllCircunscripciones();
-                    if (!circunscripcionesNew.equals(circunscripcionList)) {
-                        getChanges(circunscripcionList, circunscripcionesNew);
-                        circunscripcionList = circunscripcionesNew;
+                    circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
+                    if (!circunscripcionesNew.equals(circunscripcionSenado)) {
+                        System.out.println("Cambio detectado en senado");
+                        getChanges(circunscripcionSenado, circunscripcionesNew);
+                        circunscripcionSenado = circunscripcionesNew;
                     }
                 }
             }, 0, 5, TimeUnit.SECONDS);

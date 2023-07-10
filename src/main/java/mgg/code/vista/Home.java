@@ -29,6 +29,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Home extends JFrame {
+
+    public static BrainStormDTO bs;
     String selectedDb = "";
     CircunscripcionController circon = CircunscripcionController.getInstance();
     PartidoController parcon = PartidoController.getInstance();
@@ -302,7 +304,6 @@ public class Home extends JFrame {
             if (!e.getValueIsAdjusting()) {
                 if (tablaComunidades.getSelectedRow() != -1) {
                     String codAutonomia;
-                    BrainStormDTO bs;
                     int selectedRow = tablaComunidades.getSelectedRow();
                     if (selectedRow != -1) {
                         codAutonomia = autonomias.stream().filter(aut -> aut.getNombreCircunscripcion().equals(tablaComunidades.getValueAt(selectedRow, 0))).findFirst().get().getCodigo();
@@ -755,7 +756,6 @@ public class Home extends JFrame {
         tablaGraficos.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 //TODO:Si hay algún rellenado de tablas especial, añadir aquí
-                BrainStormDTO bs;
                 String codAutonomia;
                 if (tablaGraficos.getSelectedRow() != -1 && tablaComunidades.getSelectedRow() == -1) {
                     codAutonomia = "9900000";
@@ -819,7 +819,6 @@ public class Home extends JFrame {
                 if (selectedRow != -1) {
                     String nombreMunicipio = (String) tablaProvincias.getValueAt(selectedRow, 0);
                     String codProvincia = provincias.stream().filter(x -> x.getNombreCircunscripcion().equalsIgnoreCase(nombreMunicipio)).toList().get(0).getCodigo();
-                    BrainStormDTO bs = null;
                     if (tipoElecciones == 1 || tipoElecciones == 2) {
                         if (oficiales) {
                             bs = bscon.getBrainStormDTOOficial(codProvincia, avance);
