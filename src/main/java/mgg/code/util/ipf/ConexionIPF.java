@@ -93,11 +93,11 @@ public class ConexionIPF {
     public void desconectar() {
         try {
             if(servidor!=null)
-            servidor.close();
+                servidor.close();
             if(datoEntrada!=null)
-            datoEntrada.close();
+                datoEntrada.close();
             if(datoSalida!=null)
-            datoSalida.close();
+                datoSalida.close();
             System.out.println("Cliente->Desconectado");
         } catch (IOException ex) {
             System.err.println("Cliente->ERROR: Al desconectar al servidor " + ex.getMessage());

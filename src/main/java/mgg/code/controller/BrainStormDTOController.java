@@ -93,37 +93,73 @@ public class BrainStormDTOController {
     }
 
 
-    public void getBrainStormDTOOficialCongresoInCsv(String cod1, String avance) throws IOException {
+    public void getBrainStormDTOOficialCongresoInCsv(String cod1, String avance){
         BrainStormDTO dto = getBrainStormDTOOficial(cod1, avance);
-        BufferedWriter writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso.csv"));
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         csvExportService.writeBrainStormDTOToCsv(dto, writer);
-        writer.close();
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void getBrainStormDTOSenadoInCsv(String cod1, String avance) throws IOException {
+    public void getBrainStormDTOSenadoInCsv(String cod1, String avance) {
         BrainStormDTO dto = getBrainStormDTOSenado(cod1, avance);
-        BufferedWriter writer = new BufferedWriter(new FileWriter(ruta + "\\Senado.csv"));
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(ruta + "\\F_Senado.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         csvExportService.writeBrainStormDTOToCsv(dto, writer);
-        writer.close();
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void getBrainStormDTOSondeoInCsv(String cod1, String avance) throws IOException {
+    public void getBrainStormDTOSondeoInCsv(String cod1, String avance) {
         BrainStormDTO dto = getBrainStormDTOSondeo(cod1, avance);
-        BufferedWriter writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         csvExportService.writeBrainStormDTOToCsv(dto, writer);
-        writer.close();
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void getBrainStormDTOSondeoEspecialInCsv(String cod1, String avance) throws IOException {
+    public void getBrainStormDTOSondeoEspecialInCsv(String cod1, String avance){
         BrainStormDTO dto = getBrainStormDTOSondeo(cod1, avance);
         dto.getCpDTO().forEach(cp -> {
             cp.setEscanos_desde(cp.getEscanos_desde_sondeo());
             cp.setEscanos_hasta(cp.getEscanos_hasta_sondeo());
             cp.setPorcentajeVoto(cp.getPorcentajeVotoSondeo());
         });
-        BufferedWriter writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         csvExportService.writeBrainStormDTOToCsv(dto, writer);
-        writer.close();
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void getBrainStormDTOInExcel(String cod1, String avance) {
