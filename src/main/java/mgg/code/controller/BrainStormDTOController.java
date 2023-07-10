@@ -52,27 +52,26 @@ public class BrainStormDTOController {
                         .sorted(new CPOficial().reversed())
                         .collect(Collectors.toList());
 
-        List<Partido> partidos = new ArrayList<>();
-        cp.forEach(x -> partidos.add(parCon.getPartidoById(x.getId().getPartido())));
+        List<Partido> partidos = parCon.getAllPartidos();
+        List<Partido> filtrada = new ArrayList<>();
+        cp.forEach(x -> filtrada.add(partidos.stream().filter(par -> par.getCodigo().equals(x.getId().getPartido())).toList().get(0)));
         BrainStormDTOMapper mapper = new BrainStormDTOMapper(avance);
-        BrainStormDTO dto = mapper.toDTO(circunscripcion, espania, cp, partidos);
-        return dto;
+        return mapper.toDTO(circunscripcion, espania, cp, filtrada);
     }
 
     public BrainStormDTO getBrainStormDTOSenado(String cod1, String avance) {
         Circunscripcion circunscripcion = cirCon.getCircunscripcionByIdSenado(cod1);
-        Circunscripcion espania = cirCon.getCircunscripcionByIdSenado("9900000");
         List<CP> cp =
                 cpCon.findByIdCircunscripcionSenado(cod1).stream()
                         .filter(x -> x.getEscanos_hasta() > 0)
                         .sorted(new CPOficial().reversed())
                         .collect(Collectors.toList());
 
-        List<Partido> partidos = new ArrayList<>();
-        cp.forEach(x -> partidos.add(parCon.getPartidoByIdSenado(x.getId().getPartido())));
+        List<Partido> partidos = parCon.getAllPartidosSenado();
+        List<Partido> filtrada = new ArrayList<>();
+        cp.forEach(x -> filtrada.add(partidos.stream().filter(par -> par.getCodigo().equals(x.getId().getPartido())).toList().get(0)));
         BrainStormDTOMapper mapper = new BrainStormDTOMapper(avance);
-        BrainStormDTO dto = mapper.toDTO(circunscripcion, espania, cp, partidos);
-        return dto;
+        return mapper.toDTO(circunscripcion, circunscripcion, cp, filtrada);
     }
 
     public BrainStormDTO getBrainStormDTOSondeo(String cod1, String avance) {
@@ -83,17 +82,15 @@ public class BrainStormDTOController {
                 .filter(x -> x.getEscanos_hasta_sondeo() > 0)
                 .sorted(new CPSondeo().reversed())
                 .collect(Collectors.toList());
-
-        List<Partido> partidos = new ArrayList<>();
-        cp.forEach(x -> partidos.add(parCon.getPartidoById(x.getId().getPartido())));
+        List<Partido> partidos = parCon.getAllPartidos();
+        List<Partido> filtrada = new ArrayList<>();
+        cp.forEach(x -> filtrada.add(partidos.stream().filter(par -> par.getCodigo().equals(x.getId().getPartido())).toList().get(0)));
         BrainStormDTOMapper mapper = new BrainStormDTOMapper(avance);
-        BrainStormDTO dto = mapper.toDTO(circunscripcion, espania, cp, partidos);
-
-        return dto;
+        return mapper.toDTO(circunscripcion, espania, cp, filtrada);
     }
 
 
-    public void getBrainStormDTOOficialCongresoInCsv(BrainStormDTO dto){
+    public void getBrainStormDTOOficialCongresoInCsv(BrainStormDTO dto) {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso.csv"));
@@ -138,7 +135,7 @@ public class BrainStormDTOController {
         }
     }
 
-    public void getBrainStormDTOSondeoEspecialInCsv(BrainStormDTO dto){
+    public void getBrainStormDTOSondeoEspecialInCsv(BrainStormDTO dto) {
         dto.getCpDTO().forEach(cp -> {
             cp.setEscanos_desde(cp.getEscanos_desde_sondeo());
             cp.setEscanos_hasta(cp.getEscanos_hasta_sondeo());
