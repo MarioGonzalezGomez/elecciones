@@ -32,7 +32,9 @@ public class CPRepository implements CPCrudRepository<CP, Key> {
 
     public CP getById(Key key) {
         hc.open();
+        System.out.println("Buscando CP: ");
         CP cp = hc.getManager().find(CP.class, key);
+        System.out.println(cp);
         hc.close();
         return cp;
     }

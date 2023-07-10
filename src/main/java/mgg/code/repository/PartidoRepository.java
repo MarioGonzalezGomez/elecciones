@@ -12,7 +12,6 @@ import java.util.List;
 public class PartidoRepository implements CrudRepository<Partido, String> {
     private HibernateControllerCongreso hc = HibernateControllerCongreso.getInstance();
     private HibernateControllerSenado hs = HibernateControllerSenado.getInstance();
-
     public List<Partido> findAll() {
         hc.open();
         TypedQuery<Partido> query = hc.getManager().createNamedQuery("Partido.findAll", Partido.class);
@@ -31,10 +30,13 @@ public class PartidoRepository implements CrudRepository<Partido, String> {
 
     public Partido getById(String id) {
         hc.open();
+        System.out.println("Buscando partido...");
         Partido partido = hc.getManager().find(Partido.class, id);
+        System.out.println(partido);
         hc.close();
         return partido;
     }
+
 
     public Partido getByIdSenado(String id) {
         hs.open();
