@@ -41,8 +41,8 @@ public class Home extends JFrame {
 
     private List<Circunscripcion> autonomias = new ArrayList<>();
     private List<Circunscripcion> provincias = new ArrayList<>();
-
-    private int tipoElecciones = 2;
+//Congeso -> 1: Oficiales 2:Sondeo      Senado -> 3
+    public static int tipoElecciones = 2;
     private boolean oficiales = false;
     //TODO:Add booleans para cada grafico
     private boolean resCongresoOfiIn = false;
