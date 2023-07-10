@@ -2,6 +2,7 @@
 package mgg.code.vista;
 
 import mgg.code.util.DB;
+import mgg.code.util.Listeners;
 import mgg.code.util.comparators.CPVotantes;
 import mgg.code.util.ipf.ConexionIPF;
 import mgg.code.controller.BrainStormDTOController;
@@ -55,6 +56,7 @@ public class Home extends JFrame {
     private JButton botonSeleccionado = null;
     private JButton botonSeleccionado2 = null;
 
+    Listeners listeners;
     public void initCircunscripciones() {
         autonomias = circon.getAllCircunscripciones();
         provincias = autonomias.stream().filter(x -> x.getCodigo().endsWith("000")).toList();
@@ -66,6 +68,10 @@ public class Home extends JFrame {
             }
         });
         provincias = temp;
+
+        listeners = Listeners.getInstance();
+        listeners.listenCongreso();
+        listeners.listenSenado();
     }
 
     public void showDataTable(BrainStormDTO bs) {
