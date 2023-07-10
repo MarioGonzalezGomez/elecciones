@@ -860,9 +860,7 @@ public class Home extends JFrame {
                 switch (tablaGraficos.getSelectedRow()) {
                     //RESULTADOS
                     case 0 -> {
-                        if (resCongresoOfiIn) {
-                            ipf.congresoActualiza();
-                        } else if (resCongresoSonIn) {
+                        if (resCongresoSonIn) {
                             ipf.deSondeoACongreso();
                             resCongresoSonIn = false;
                         } else if (resSenadoIn) {
@@ -889,9 +887,7 @@ public class Home extends JFrame {
                 switch (tablaGraficos.getSelectedRow()) {
                     //RESULTADOS
                     case 0 -> {
-                        if (resCongresoSonIn) {
-                            ipf.congresoSondeoActualiza();
-                        } else if (resCongresoOfiIn) {
+                        if (resCongresoOfiIn) {
                             ipf.congresoSale();
                             resCongresoOfiIn = false;
                             ipf.congresoSondeoEntra();
@@ -920,9 +916,7 @@ public class Home extends JFrame {
                 switch (tablaGraficos.getSelectedRow()) {
                     //RESULTADOS
                     case 0 -> {
-                        if (resSenadoIn) {
-                            ipf.senadoActualiza();
-                        } else if (resCongresoOfiIn) {
+                        if (resCongresoOfiIn) {
                             ipf.deCongresoASenado();
                             resCongresoOfiIn = false;
                         } else if (resCongresoSonIn) {

@@ -24,8 +24,20 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String senadoActualiza() {
-        String mensaje = faldonesBuilder.senadoActualiza();
+    public String senadoActualizaEscrutado() {
+        String mensaje = faldonesBuilder.senadoActualizaEscrutado();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String senadoActualizaDatos() {
+        String mensaje = faldonesBuilder.senadoActualizaDatos();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String senadoActualizaPosiciones() {
+        String mensaje = faldonesBuilder.senadoActualizaPosiciones();
         c.enviarMensaje(mensaje);
         return mensaje;
     }
@@ -43,8 +55,20 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String congresoActualiza() {
-        String mensaje = faldonesBuilder.congresoActualiza();
+    public String congresoActualizaEscrutado() {
+        String mensaje = faldonesBuilder.congresoActualizaEscrutado();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoActualizaDatos() {
+        String mensaje = faldonesBuilder.congresoActualizaDatos();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoActualizaPosiciones() {
+        String mensaje = faldonesBuilder.congresoActualizaPosiciones();
         c.enviarMensaje(mensaje);
         return mensaje;
     }
@@ -62,8 +86,18 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String congresoSondeoActualiza() {
-        String mensaje = faldonesBuilder.congresoSondeoActualiza();
+    public String congresoSondeoActualizaEscrutado() {
+        String mensaje = faldonesBuilder.congresoSondeoActualizaEscrutado();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+    public String congresoSondeoActualizaDatos() {
+        String mensaje = faldonesBuilder.congresoSondeoActualizaDatos();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+    public String congresoSondeoActualizaPosiciones() {
+        String mensaje = faldonesBuilder.congresoSondeoActualizaPosiciones();
         c.enviarMensaje(mensaje);
         return mensaje;
     }
