@@ -10,10 +10,14 @@ import mgg.code.model.Circunscripcion;
 import java.util.List;
 
 public class CircunscripcionRepository implements CrudRepository<Circunscripcion, String> {
-    private HibernateControllerCongreso hc = HibernateControllerCongreso.getInstance();
-    private HibernateControllerSenado hs = HibernateControllerSenado.getInstance();
+    private HibernateControllerCongreso hc;
+    private HibernateControllerSenado hs ;
 
 
+    public CircunscripcionRepository(){
+        hc = HibernateControllerCongreso.getInstance();
+        hs = HibernateControllerSenado.getInstance();
+    }
     public List<Circunscripcion> findAll() {
         hc.open();
         TypedQuery<Circunscripcion> query = hc.getManager().createNamedQuery("Circunscripcion.findAll", Circunscripcion.class);
@@ -31,8 +35,11 @@ public class CircunscripcionRepository implements CrudRepository<Circunscripcion
     }
 
     public Circunscripcion getById(String id) {
+        System.out.println("1");
         hc.open();
+        System.out.println("Buscando Circunscripcion: ");
         Circunscripcion Circunscripcion = hc.getManager().find(Circunscripcion.class, id);
+        System.out.println(Circunscripcion);
         hc.close();
         return Circunscripcion;
     }

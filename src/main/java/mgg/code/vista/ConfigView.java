@@ -217,10 +217,7 @@ public class ConfigView extends JFrame {
     }
 
     private void cargarIni() throws IOException {
-
         Properties propiedades = cargarConfiguracion();
-
-
         String ip1 = propiedades.getProperty("direccion1");
         ip1TL.setText(ip1);
         String puerto = propiedades.getProperty("puerto");
@@ -233,7 +230,6 @@ public class ConfigView extends JFrame {
         spTL.setText(ipServPrincipal);
         String ipServReserva = propiedades.getProperty("ipServerReserva");
         srTL.setText(ipServReserva);
-
     }
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
