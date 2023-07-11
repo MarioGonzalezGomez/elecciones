@@ -46,11 +46,9 @@ public class Listeners {
     private Listeners() {
         this.circunscripcionController = CircunscripcionController.getInstance();
         this.cpController = CPController.getInstance();
-
     }
 
     private boolean orderChanged(List<CP> newPartidos) {
-        boolean result = false;
         if (newPartidos.size() == Home.bs.getCpDTO().size()) {
 
             for (int i = 0; i < newPartidos.size(); i++) {
@@ -134,7 +132,7 @@ public class Listeners {
                 if (circunscripcionSenado.isEmpty()) {
                     circunscripcionSenado = circunscripcionController.getAllCircunscripcionesSenado();
                 } else {
-                    List<Circunscripcion> circunscripcionesNew = null;
+                    List<Circunscripcion> circunscripcionesNew;
                     circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
                     if (!circunscripcionesNew.equals(circunscripcionSenado)) {
                         System.out.println("Cambio detectado en senado");
@@ -167,11 +165,10 @@ public class Listeners {
             isSuscribed.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
-                System.out.println("Actualizando congreso...");
                 if (circunscripcionList.isEmpty()) {
                     circunscripcionList = circunscripcionController.getAllCircunscripciones();
                 } else {
-                    List<Circunscripcion> circunscripcionesNew = null;
+                    List<Circunscripcion> circunscripcionesNew;
                     circunscripcionesNew = circunscripcionController.getAllCircunscripciones();
                     if (!circunscripcionesNew.equals(circunscripcionList)) {
                         System.out.println("Cambio detectado en senado");

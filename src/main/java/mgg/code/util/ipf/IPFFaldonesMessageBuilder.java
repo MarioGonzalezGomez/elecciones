@@ -29,19 +29,25 @@ public class IPFFaldonesMessageBuilder {
     public String senadoActualizaPosiciones() {return eventRunBuild("SENADO/ACTUALIZO_POSICIONES");}
     public String senadoSale() {return eventRunBuild("SENADO/SALE");}
 
-    //CONGRESO
-    public String congresoEntra() {return eventRunBuild("CONGRESO/ENTRA");}
-    public String congresoActualizaEscrutado() {return eventRunBuild("CONGRESO/ACTUALIZO_ESCRUTADO");}
-    public String congresoActualizaDatos() {return eventRunBuild("CONGRESO/ACTUALIZO_DATOS");}
-    public String congresoActualizaPosiciones() {return eventRunBuild("CONGRESO/ACTUALIZO_POSICIONES");}
-    public String congresoSale() {return eventRunBuild("CONGRESO/SALE");}
+    //TICKER
+    public String congresoEntra() {return eventRunBuild("TICKER/ENTRA");}
+    public String congresoActualizaEscrutado() {return eventRunBuild("TICKER/ACTUALIZO_ESCRUTADO");}
+    public String congresoActualizaDatos() {return eventRunBuild("TICKER/ACTUALIZO_DATOS");}
+    public String congresoActualizaPosiciones() {return eventRunBuild("TICKER/ACTUALIZO_POSICIONES");}
+    public String congresoSale() {return eventRunBuild("TICKER/SALE");}
 
-    //CONGRESO_SONDEO
-    public String congresoSondeoEntra() {return eventRunBuild("CONGRESO_SONDEO/ENTRA");}
-    public String congresoSondeoActualizaEscrutado() {return eventRunBuild("CONGRESO_SONDEO/ACTUALIZO_ESCRUTADO");}
-    public String congresoSondeoActualizaDatos() {return eventRunBuild("CONGRESO_SONDEO/ACTUALIZO_DATOS");}
-    public String congresoSondeoActualizaPosiciones() {return eventRunBuild("CONGRESO_SONDEO/ACTUALIZO_POSICIONES");}
-    public String congresoSondeoSale() {return eventRunBuild("CONGRESO_SONDEO/SALE");}
+    //DESPLIEGO_4
+    public String cuatroPrimeros() {return eventRunBuild("TICKER/DESPLIEGO_4");}
+    public String despliego(int posicion) {return eventRunBuild("TICKER/VIDEO_"+ posicion +"/ENTRA");}
+    public String repliego(int posicion) {return eventRunBuild("TICKER/VIDEO_"+ posicion +"/SALE");}
+    public String recuperoTodos() {return eventRunBuild("TICKER/RECUPERO_TODOS");}
+
+    //SONDEO
+    public String congresoSondeoEntra() {return eventRunBuild("SONDEO/ENTRA");}
+    public String congresoSondeoActualizaEscrutado() {return eventRunBuild("SONDEO/ACTUALIZO_ESCRUTADO");}
+    public String congresoSondeoActualizaDatos() {return eventRunBuild("SONDEO/ACTUALIZO_DATOS");}
+    public String congresoSondeoActualizaPosiciones() {return eventRunBuild("SONDEO/ACTUALIZO_POSICIONES");}
+    public String congresoSondeoSale() {return eventRunBuild("SONDEO/SALE");}
 
     //GIROS
     public String deCongresoASenado() {

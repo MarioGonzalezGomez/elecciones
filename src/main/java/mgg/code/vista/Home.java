@@ -191,7 +191,6 @@ public class Home extends JFrame {
                 ConexionIPF.getConexion().desconectar();
             }
         });
-        //TODO: initListeners();
         initCircunscripciones();
         initComponents();
         resaltarBotonAvances(btnAvance1);
@@ -236,14 +235,13 @@ public class Home extends JFrame {
         tablaProvincias = new JTable();
         btnEntra = new JButton();
         btnSale = new JButton();
-        btnPactos = new JButton();
         btnReset = new JButton();
         btnCongresoSondeo = new JButton();
         btnDatosSenado = new JButton();
         btnDatosCongreso = new JButton();
         jScrollPane5 = new JScrollPane();
         jCheckBox1 = new JCheckBox();
-        ButtonGroup buttonGroup = new ButtonGroup();
+        //ButtonGroup buttonGroup = new ButtonGroup();
         jLabel2 = new JLabel();
         lblEscrutado = new JLabel();
         jLabel3 = new JLabel();
@@ -361,9 +359,7 @@ public class Home extends JFrame {
         });
         tablaGraficos.addHierarchyListener(this::tablaGraficosHierarchyChanged);
         jScrollPane3.setViewportView(tablaGraficos);
-        if (tablaGraficos.getColumnModel().
-
-                getColumnCount() > 0) {
+        if (tablaGraficos.getColumnModel().getColumnCount() > 0) {
             tablaGraficos.getColumnModel().getColumn(0).setResizable(false);
         }
 
@@ -385,37 +381,20 @@ public class Home extends JFrame {
             }
         });
         jScrollPane4.setViewportView(tablaProvincias);
-        if (tablaProvincias.getColumnModel().
-
-                getColumnCount() > 0) {
+        if (tablaProvincias.getColumnModel().getColumnCount() > 0) {
             tablaProvincias.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        btnEntra.setBackground(new
-
-                Color(153, 255, 153));
+        btnEntra.setBackground(new Color(153, 255, 153));
         btnEntra.setText("ENTRA");
         btnEntra.addActionListener(this::btnEntraActionPerformed);
 
-        btnSale.setBackground(new
-
-                Color(255, 102, 102));
+        btnSale.setBackground(new Color(255, 102, 102));
         btnSale.setText("SALE");
         btnSale.addActionListener(this::btnSaleActionPerformed);
 
-        btnPactos.setText("PACTOS");
-        btnPactos.addActionListener(evt ->
-
-        {
-            //  btnPactosActionPerformed(evt);
-        });
-
-        btnReset.setBackground(new
-
-                Color(153, 0, 51));
-        btnReset.setForeground(new
-
-                Color(255, 255, 255));
+        btnReset.setBackground(new Color(153, 0, 51));
+        btnReset.setForeground(new Color(255, 255, 255));
         btnReset.setText("RESET");
         btnReset.addActionListener(this::btnResetActionPerformed);
 
@@ -479,284 +458,145 @@ public class Home extends JFrame {
         lblConexion.setText("...");
 
         GroupLayout layout = new GroupLayout(getContentPane());
-
         getContentPane().
-
                 setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                         addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addContainerGap().
-
                                                 addComponent(lblConexion, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).
-
                                                 addGap(18, 18, 18)).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addGap(48, 48, 48).
-
                                                 addComponent(btnConfig, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))).
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                                         addComponent(btnDatosCongreso, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE).
-
                                                         addComponent(btnDatosSenado, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)).
-
                                                 addGap(49, 49, 49).
-
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                                         addComponent(btnCongresoSondeo, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)))).
-
                                 addGap(31, 31, 31).
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).
-
                                                 addComponent(lblEscrutado, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addComponent(lblEscTotales).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).
-
                                                 addComponent(lblEscanosTotales, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                                         addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE).
-
                                                         addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)).
-
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                                         addGroup(layout.createSequentialGroup().
-
                                                                 addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).
-
                                                                 addComponent(lblParticipacion, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)).
-
                                                         addGroup(layout.createSequentialGroup().
-
                                                                 addGap(12, 12, 12).
-
                                                                 addComponent(lblPartHistorica, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addComponent(jCheckBox1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).
-
                                                 addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE))).
-
                                 addGap(33, 33, 33).
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false).
-
                                         addComponent(btnAvance2, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE).
-
                                         addComponent(btnAvance3, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE).
-
                                         addComponent(btnAvance1, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)).
-
                                 addGap(24, 24, 24)).
-
                         addGroup(layout.createSequentialGroup().
-
                                 addGap(34, 34, 34).
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addComponent(btnReset, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE).
-
                                                 addComponent(btnEntra, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE).
-
                                                 addGap(45, 45, 45).
-
                                                 addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE).
-
                                                 addGap(45, 45, 45).
-
                                                 addGap(136, 136, 136).
-
-                                                addComponent(btnPactos, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE).
-
                                                 addGap(33, 33, 33)).
-
                                         addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup().
-
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING).
-
                                                         addGroup(layout.createSequentialGroup().
-
                                                                 addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE).
-
                                                                 addGap(19, 19, 19)).
-
                                                         addGroup(layout.createSequentialGroup().
-
                                                                 addComponent(jScrollPane5, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE).
-
                                                                 addGap(18, 18, 18))).
-
                                                 addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE).
-
                                                 addGap(18, 18, 18).
-
                                                 addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE).
-
                                                 addGap(31, 31, 31).
-
                                                 addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 519, GroupLayout.PREFERRED_SIZE))).
-
                                 addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                         addGroup(layout.createSequentialGroup().
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addGap(32, 32, 32).
-
                                                 addComponent(btnConfig, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).
-
                                                 addComponent(lblConexion, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addGap(25, 25, 25).
-
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-
                                                         addComponent(jCheckBox1).
-
                                                         addComponent(btnActualizar)).
-
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                                         addGroup(layout.createSequentialGroup().
-
                                                                 addGap(18, 18, 18).
-
                                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
-
                                                                         addComponent(lblEscanosTotales).
-
                                                                         addComponent(lblEscTotales)).
-
                                                                 addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).
-
                                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-
                                                                         addComponent(jLabel2).
-
                                                                         addComponent(lblEscrutado))).
-
                                                         addGroup(layout.createSequentialGroup().
-
                                                                 addGap(26, 26, 26).
-
                                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-
                                                                         addComponent(btnDatosCongreso, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE).
-
                                                                         addComponent(btnCongresoSondeo, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)).
-
                                                                 addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).
-
                                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-
                                                                         addComponent(btnDatosSenado, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE).
-
                                                                         addComponent(jLabel3).
-
                                                                         addComponent(lblParticipacion))))).
-
                                         addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().
-
                                                 addContainerGap().
-
                                                 addComponent(btnAvance1).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).
-
                                                 addComponent(btnAvance2).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).
-
                                                 addComponent(btnAvance3))).
-
                                 addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-
                                         addComponent(lblPartHistorica).
-
                                         addComponent(jLabel4)).
-
                                 addGap(18, 18, 18).
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false).
-
                                         addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE).
-
                                         addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE).
-
                                         addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 341, GroupLayout.PREFERRED_SIZE).
-
                                         addGroup(layout.createSequentialGroup().
-
                                                 addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE).
-
                                                 addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).
-
                                                 addComponent(jScrollPane5, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))).
-
                                 addGap(31, 31, 31).
-
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-
                                         addComponent(btnEntra, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE).
-
                                         addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE).
-
-                                        addComponent(btnPactos, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE).
-
                                         addComponent(btnReset)).
-
                                 addGap(19, 19, 19))
         );
         tablaGraficos.getSelectionModel().addListSelectionListener(e -> {
@@ -767,17 +607,14 @@ public class Home extends JFrame {
                     codAutonomia = "9900000";
                     if (tipoElecciones == 1 || tipoElecciones == 2) {
                         if (oficiales) {
-                            //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                             bs = bscon.getBrainStormDTOOficial(codAutonomia, avance);
                             bscon.getBrainStormDTOOficialCongresoInCsv(bs);
                         } else {
-                            //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                             bs = bscon.getBrainStormDTOSondeo(codAutonomia, avance);
                             bscon.getBrainStormDTOSondeoEspecialInCsv(bs);
                         }
                     } else {
                         ((DefaultTableModel) tablaDatos.getModel()).setRowCount(0);
-                        //TODO:Logica de si es esta selectedRow (es decir, faldon X) hace una cosa u otra
                         bs = bscon.getBrainStormDTOSenado(codAutonomia, avance);
                         bscon.getBrainStormDTOSenadoInCsv(bs);
                     }
@@ -787,12 +624,6 @@ public class Home extends JFrame {
                     lblPartHistorica.setText(bs.getCircunscripcion().getParticipacionHistorico() + "");
                     lblEscanosTotales.setText(bs.getCircunscripcion().getEscanios() + "");
                 }
-                //    if (tablaGraficos.getSelectedRow() == 3) {
-                //        entreParticipacionEsp();
-                //    } else if (tablaGraficos.getSelectedRow() != -1) {
-                //        rellenarCCAA(tipoElecciones);
-                //    }
-                //}
             }
         });
 
@@ -814,7 +645,7 @@ public class Home extends JFrame {
             if (!cir.getCodigo().endsWith("00000"))
                 tableModel.addRow(new Object[]{cir.getNombreCircunscripcion()});
         }
-        JScrollPane scrollPane = new JScrollPane(tablaProvincias);
+        //JScrollPane scrollPane = new JScrollPane(tablaProvincias);
         tablaProvincias = new JTable(tableModel);
         tablaComunidades.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(tablaProvincias);
@@ -846,18 +677,6 @@ public class Home extends JFrame {
             }
         });
     }
-
-    /*private boolean dejoEntrarPactos() {
-        boolean valido = false;
-        int rowComunidad = tablaComunidades.getSelectedRow();
-
-        if (rowComunidad != -1) {
-            if (tablaProvincias.getSelectedRow() != -1 || tipoElecciones == 2 || tipoElecciones == 4 || nombreCodigo.get(tablaComunidades.getValueAt(rowComunidad, 0)).equals("1800000") || nombreCodigo.get(tablaComunidades.getValueAt(rowComunidad, 0)).equals("1900000")) {
-                valido = true;
-            }
-        }
-        return valido;
-    }*/
 
     private void btnEntraActionPerformed(ActionEvent evt) {
         switch (tipoElecciones) {
@@ -947,67 +766,6 @@ public class Home extends JFrame {
             }
         }
     }
-
-
-    /*private void btnPactosActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnPactosActionPerformed
-        if (dejoEntrarPactos()) {
-            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-            int screenWidth = gd.getDisplayMode().getWidth();
-            int screenHeight = gd.getDisplayMode().getHeight();
-
-            JFrame pactos = null;
-            int arcoOFaldon = 0;
-            if (tablaGraficos.getSelectedRow() == 2) {
-                arcoOFaldon = 1;
-            }
-            if (TablaFaldones.getSelectedRow() == 0) {
-                arcoOFaldon = 2;
-            }
-            switch (tipoElecciones) {
-                case 1, 3 -> {
-                    String codigo;
-                    if (tablaProvincias.getSelectedRow() != -1) {
-                        codigo = nombreCodigoMunicipal.get(tablaProvincias.getValueAt(tablaProvincias.getSelectedRow(), 0).toString());
-                    } else if (tablaComunidades.getSelectedRow() != -1) {
-                        codigo = nombreCodigo.get(tablaComunidades.getValueAt(tablaComunidades.getSelectedRow(), 0).toString());
-                    } else {
-                        codigo = null;
-                    }
-                    pactos = new PactosOpcion2(arcoOFaldon, codigo, tipoElecciones, oficiales, avance);
-                }
-
-                case 2, 4 -> {
-                    String codigo;
-                    if (tablaProvincias.getSelectedRow() != -1) {
-                        codigo = nombreCodigoAutonomicas.get(tablaProvincias.getValueAt(tablaProvincias.getSelectedRow(), 0).toString());
-                    } else if (tablaComunidades.getSelectedRow() != -1) {
-                        codigo = nombreCodigoAutonomicas.get(tablaComunidades.getValueAt(tablaComunidades.getSelectedRow(), 0).toString());
-                    } else {
-                        codigo = null;
-                    }
-                    pactos = new PactosOpcion2(arcoOFaldon, codigo, tipoElecciones, oficiales, avance);
-                }
-            }
-            pactos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            pactos.setLocation(screenWidth / 4, screenHeight / 2);
-            pactos.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Pactos no válido con la selección actual", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        }
-    }*/
-
-   /* private void btnReplegarActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnReplegarActionPerformed
-        String codCCAA = null;
-        if (tablaComunidades.getSelectedRow() != -1) {
-            codCCAA = nombreCodigoMunicipal.get(tablaComunidades.getValueAt(tablaComunidades.getSelectedRow(), 0)).substring(0, 2);
-        }
-        if (tipoElecciones == 2 || tipoElecciones == 4) {
-            graficosController.repliegaLateralAutonomicas(codCCAA);
-        }
-        if (tipoElecciones == 1 || tipoElecciones == 3) {
-            graficosController.repliegaLateralMunicipales(codCCAA);
-        }
-    }*/
 
     private void btnSaleActionPerformed(ActionEvent evt) {
         switch (tipoElecciones) {
@@ -1251,7 +1009,6 @@ public class Home extends JFrame {
     private JButton btnDatosSenado;
     private JButton btnDatosCongreso;
     private JButton btnEntra;
-    private JButton btnPactos;
     private JButton btnReset;
     private JButton btnSale;
     private JButton btnCongresoSondeo;
