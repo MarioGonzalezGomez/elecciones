@@ -49,7 +49,7 @@ public class Home extends JFrame {
     private boolean resCongresoOfiIn = false;
     private boolean resCongresoSonIn = false;
     private boolean resSenadoIn = false;
-    private String avance = "1";
+    public static String avance = "1";
 
     private static final String CONFIG_FILE_PATH = "C:\\Elecciones2023\\config.properties";
 

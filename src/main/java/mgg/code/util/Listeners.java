@@ -1,18 +1,13 @@
 
 package mgg.code.util;
 
-//TODO(comprobar cambios de escaños h/d, comprobar escrutado, comprobar orden de los partidos)
-//TODO(en senado no hay sondeo, en lo otro si)
-//TODO(TipoElecciones:
-//       1 = congreso oficiales
-//       2 = sondeo
-//       3 = Senado)
-
+import mgg.code.controller.BrainStormDTOController;
 import mgg.code.controller.CPController;
 import mgg.code.controller.CircunscripcionController;
 import mgg.code.model.CP;
 import mgg.code.model.Circunscripcion;
-import mgg.code.model.dto.CpDTO;
+import mgg.code.model.dto.BrainStormDTO;
+import mgg.code.util.ipf.IPFSender;
 import mgg.code.vista.Home;
 
 import java.util.ArrayList;
@@ -35,6 +30,8 @@ public class Listeners {
 
     private static AtomicBoolean isSuscribedSenado = new AtomicBoolean(false);
 
+    private IPFSender ipf;
+    private BrainStormDTOController bscon;
 
     public static Listeners getInstance() {
         if (instance == null) {
@@ -46,11 +43,13 @@ public class Listeners {
     private Listeners() {
         this.circunscripcionController = CircunscripcionController.getInstance();
         this.cpController = CPController.getInstance();
+        ipf = IPFSender.getInstance();
+        bscon = BrainStormDTOController.getInstance();
+
     }
 
     private boolean orderChanged(List<CP> newPartidos) {
         if (newPartidos.size() == Home.bs.getCpDTO().size()) {
-
             for (int i = 0; i < newPartidos.size(); i++) {
                 if (!newPartidos.get(i).getId().getPartido().equals(Home.bs.getCpDTO().get(i).getCodigoPartido()))
                     return true;
@@ -60,9 +59,7 @@ public class Listeners {
     }
 
     private boolean escanosSondeoHastaChanged(List<CP> changedCP) {
-        boolean result = false;
         var cpDto = Home.bs.getCpDTO();
-        changedCP.get(1).getId().getPartido();
         for (CP cp : changedCP
         ) {
             var dtoAux = cpDto.stream().filter(x -> Objects.equals(x.getCodigoPartido(), cp.getId().getPartido())).toList().get(0);
@@ -77,9 +74,7 @@ public class Listeners {
 
 
     private boolean escanosSondeoDesdeChanged(List<CP> changedCP) {
-        boolean result = false;
         var cpDto = Home.bs.getCpDTO();
-        changedCP.get(1).getId().getPartido();
         for (CP cp : changedCP
         ) {
             var filter = cpDto.stream().filter(x -> Objects.equals(x.getCodigoPartido(), cp.getId().getPartido())).toList();
@@ -89,10 +84,6 @@ public class Listeners {
 
                 if (dtoAux != null) {
                     if (dtoAux.getEscanos_desde_sondeo() != cp.getEscanos_desde_sondeo()) {
-                        System.out.println(dtoAux.getEscanos_desde_sondeo());
-                        System.out.println("-----------");
-                        System.out.println(cp.getEscanos_desde_sondeo());
-                        System.out.println("oooooooooooooooo");
                         return true;
                     }
                 }
@@ -102,7 +93,6 @@ public class Listeners {
     }
 
     private boolean escanosOficialChanged(List<CP> changedCP) {
-        boolean result = false;
         var cpDto = Home.bs.getCpDTO();
         for (CP cp : changedCP) {
             var filter = cpDto.stream().filter(x -> Objects.equals(x.getCodigoPartido(), cp.getId().getPartido())).toList();
@@ -111,10 +101,6 @@ public class Listeners {
                 System.out.println(dtoAux);
                 if (dtoAux != null) {
                     if (dtoAux.getEscanos_desde() != cp.getEscanos_desde()) {
-                        System.out.println(dtoAux.getEscanos_desde());
-                        System.out.println("-----------");
-                        System.out.println(cp.getEscanos_desde());
-                        System.out.println("oooooooooooooooo");
                         return true;
                     }
                 }
@@ -134,7 +120,7 @@ public class Listeners {
                 } else {
                     List<Circunscripcion> circunscripcionesNew;
                     circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
-                    if (!circunscripcionesNew.equals(circunscripcionSenado)) {
+                    if (Home.tipoElecciones == 3 && !circunscripcionesNew.equals(circunscripcionSenado)) {
                         System.out.println("Cambio detectado en senado");
                         var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
                         var cps = cpController.getAllCPsSenado();
@@ -144,14 +130,17 @@ public class Listeners {
                         var changesCod = changes.stream().map(Circunscripcion::getCodigo).toList();
                         var cpChanged = cps.stream().filter(
                                 cp -> changesCod.contains(cp.getId().getCircunscripcion())).toList();
-
-                        boolean order = false;
-                        boolean escanos = false;
-                        if (Home.tipoElecciones == 3) {
-                            order = orderChanged(cpChanged);
-                            escanos = escanosOficialChanged(cpChanged);
-
+                        //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
+                        BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000",Home.avance);
+                        bscon.getBrainStormDTOSenadoInCsv(dto);
+                        if (orderChanged(cpChanged)) {
+                            ipf.senadoActualizaPosiciones();
+                        } else if (escanosOficialChanged(cpChanged)) {
+                            ipf.senadoActualizaDatos();
+                        } else {
+                            ipf.senadoActualizaEscrutado();
                         }
+
                     }
                 }
             }, 0, 5, TimeUnit.SECONDS);
@@ -161,7 +150,6 @@ public class Listeners {
     public void listenCongreso() {
         if (!isSuscribed.get()) {
             System.out.println("Escuchando congreso");
-            //TODO( LIST PARTIDOS Y COMPROBAR EL ORDEN )
             isSuscribed.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
@@ -170,11 +158,9 @@ public class Listeners {
                 } else {
                     List<Circunscripcion> circunscripcionesNew;
                     circunscripcionesNew = circunscripcionController.getAllCircunscripciones();
-                    if (!circunscripcionesNew.equals(circunscripcionList)) {
-                        System.out.println("Cambio detectado en senado");
+                    if (Home.tipoElecciones != 3 && !circunscripcionesNew.equals(circunscripcionList)) {
                         var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
                         var cps = cpController.getAllCPs();
-                        //System.out.println(orderChanged(cps));
                         System.out.println("Cambio detectado en congreso");
                         getChanges(circunscripcionList, circunscripcionesNew);
                         circunscripcionList = circunscripcionesNew;
@@ -184,25 +170,27 @@ public class Listeners {
                         var cpChanged = cps.stream().filter(
                                 cp -> changesCod.contains(cp.getId().getCircunscripcion())).toList();
 
-                        boolean order = false;
-                        boolean escanos = false;
-                        boolean escanosOficial = false;
                         if (Home.tipoElecciones == 1) {
-                            order = orderChanged(cpChanged);
-                            escanosOficial = escanosOficialChanged(cpChanged);
-                            if (order) {
-                                System.out.println("EL ORDEN HA CAMBIADO");
-                                order = false;
-                            }
-                            if (escanosOficial) {
-                                System.out.println("ESCANOS OFICIAL CAMBIADO");
-                                escanosOficial = false;
+                            //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
+                            BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000",Home.avance);
+                            bscon.getBrainStormDTOOficialCongresoInCsv(dto);
+                            if (orderChanged(cpChanged)) {
+                                ipf.congresoActualizaPosiciones();
+                            } else if (escanosOficialChanged(cpChanged)) {
+                                ipf.congresoActualizaDatos();
+                            } else {
+                                ipf.congresoActualizaEscrutado();
                             }
                         } else if (Home.tipoElecciones == 2) {
-                            escanos = escanosSondeoDesdeChanged(cpChanged) || escanosSondeoHastaChanged(cpChanged);
-                            if (escanos) {
-                                System.out.println("ESCAÑOS HAN CAMBIADO ");
-                                escanos = false;
+                            //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
+                            BrainStormDTO dto = bscon.getBrainStormDTOSondeo("9900000",Home.avance);
+                            bscon.getBrainStormDTOSondeoEspecialInCsv(dto);
+                            if (orderChanged(cpChanged)) {
+                                ipf.congresoSondeoActualizaPosiciones();
+                            } else if (escanosSondeoDesdeChanged(cpChanged) || escanosSondeoHastaChanged(cpChanged)) {
+                                ipf.congresoSondeoActualizaDatos();
+                            } else {
+                                ipf.congresoSondeoActualizaEscrutado();
                             }
                         }
                     }

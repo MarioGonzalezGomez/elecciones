@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
-        Config.getConfiguracion();
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

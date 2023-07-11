@@ -8,7 +8,6 @@ import mgg.code.config.Config;
 import mgg.code.util.DB;
 
 import javax.swing.*;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -208,27 +207,25 @@ public class ConfigView extends JFrame {
 
     //IniFileReaderWriter iniFile = new IniFileReaderWriter("C:\\ELECCIONES2023\\config.ini");
 
-    public static Properties cargarConfiguracion() throws IOException {
-        Properties propiedades = new Properties();
-        FileInputStream archivoConfiguracion = new FileInputStream("C:\\Elecciones2023\\config.properties");
-        propiedades.load(archivoConfiguracion);
-        archivoConfiguracion.close();
-        return propiedades;
+    public static Config cargarConfiguracion() throws IOException {
+        Config config = Config.getConfiguracion();
+        config.loadConfig();
+        return config;
     }
 
     private void cargarIni() throws IOException {
-        Properties propiedades = cargarConfiguracion();
-        String ip1 = propiedades.getProperty("direccion1");
+        Config config = cargarConfiguracion();
+        String ip1 = config.getipIPF();
         ip1TL.setText(ip1);
-        String puerto = propiedades.getProperty("puerto");
+        String puerto = config.getpuertoIPF();
         puertoTL.setText(puerto);
-        String bdCartones = propiedades.getProperty("BDCartones");
+        String bdCartones = config.getBdCartones();
         bd1TL.setText(bdCartones);
-        String bdFaldones = propiedades.getProperty("BDFaldones");
+        String bdFaldones = config.getBdFaldones();
         bd2TL.setText(bdFaldones);
-        String ipServPrincipal = propiedades.getProperty("ipServer");
+        String ipServPrincipal = config.getIpDbPrincipal();
         spTL.setText(ipServPrincipal);
-        String ipServReserva = propiedades.getProperty("ipServerReserva");
+        String ipServReserva = config.getIpDbReserva();
         srTL.setText(ipServReserva);
     }
 
@@ -236,43 +233,37 @@ public class ConfigView extends JFrame {
         // graficosController.conectPrincipal();
         conexionBD = "BD PRINCIPAL";
         labelTemp.setText(conexionBD);
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectReserva();
         conexionBD = "BD RESERVA";
         labelTemp.setText(conexionBD);
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectLocal();
         conexionBD = "BD LOCAL";
         labelTemp.setText(conexionBD);
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
 
             Properties properties = new Properties();
-            properties.setProperty("direccion1", ip1TL.getText());
-            properties.setProperty("direccion3", "0");
-            properties.setProperty("direccion2", "0");
-            properties.setProperty("direccion4", "0");
-            properties.setProperty("rutaFicheros", "C:\\\\Elecciones2023\\\\DATOS");
-            properties.setProperty("nConexiones", "1");
-            properties.setProperty("puerto", puertoTL.getText());
-            properties.setProperty("ipServerReserva", srTL.getText());
-            properties.setProperty("ipServer", spTL.getText());
+            properties.setProperty("ipIPF", ip1TL.getText());
+            properties.setProperty("rutaFicheros", "C:\\Elecciones2023\\DATOS");
+            properties.setProperty("rutaColores", "C:\\Elecciones2023\\DATOS\\COLORES\\ColoresPartidos.csv");
+            properties.setProperty("puertoIPF", puertoTL.getText());
+            properties.setProperty("BDReserva", srTL.getText());
+            properties.setProperty("BDPrincipal", spTL.getText());
             properties.setProperty("BDCartones", "<CARTONES>");
             properties.setProperty("BDFaldones", "<FALDONES>");
 
             FileOutputStream archivo = new FileOutputStream("C:\\Elecciones2023\\config.properties");
             properties.store(archivo, "Archivo de configuración");
             archivo.close();
-
-            System.out.println(properties.getProperty("BDCartones"));
-
             JOptionPane.showMessageDialog(null, "El archivo se ha guardado correctamente", "Configuracion guardada", JOptionPane.INFORMATION_MESSAGE);
 
 

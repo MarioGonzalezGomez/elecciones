@@ -91,7 +91,7 @@ public class BrainStormDTOController {
 
 
     public void getBrainStormDTOOficialCongresoInCsv(BrainStormDTO dto) {
-        BufferedWriter writer = null;
+        BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso.csv"));
         } catch (IOException e) {
@@ -106,7 +106,7 @@ public class BrainStormDTOController {
     }
 
     public void getBrainStormDTOSenadoInCsv(BrainStormDTO dto) {
-        BufferedWriter writer = null;
+        BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Senado.csv"));
         } catch (IOException e) {
@@ -121,7 +121,7 @@ public class BrainStormDTOController {
     }
 
     public void getBrainStormDTOSondeoInCsv(BrainStormDTO dto) {
-        BufferedWriter writer = null;
+        BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
         } catch (IOException e) {
@@ -141,7 +141,7 @@ public class BrainStormDTOController {
             cp.setEscanos_hasta(cp.getEscanos_hasta_sondeo());
             cp.setPorcentajeVoto(cp.getPorcentajeVotoSondeo());
         });
-        BufferedWriter writer = null;
+        BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(ruta + "\\F_Congreso_Sondeo.csv"));
         } catch (IOException e) {
