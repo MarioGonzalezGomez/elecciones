@@ -191,6 +191,7 @@ public class Home extends JFrame {
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
                 ConexionIPF.getConexion().desconectar();
+                System.exit(0);
             }
         });
         initCircunscripciones();
