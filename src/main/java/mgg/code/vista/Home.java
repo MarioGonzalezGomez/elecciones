@@ -42,9 +42,10 @@ public class Home extends JFrame {
 
     private List<Circunscripcion> autonomias = new ArrayList<>();
     private List<Circunscripcion> provincias = new ArrayList<>();
-//Congeso -> 1: Oficiales 2:Sondeo      Senado -> 3
+    //Congeso -> 1: Oficiales 2:Sondeo      Senado -> 3
     public static int tipoElecciones = 2;
     private boolean oficiales = false;
+
     //TODO:Add booleans para cada grafico
     private boolean resCongresoOfiIn = false;
     private boolean resCongresoSonIn = false;
@@ -57,6 +58,7 @@ public class Home extends JFrame {
     private JButton botonSeleccionado2 = null;
 
     Listeners listeners;
+
     public void initCircunscripciones() {
         autonomias = circon.getAllCircunscripciones();
         provincias = autonomias.stream().filter(x -> x.getCodigo().endsWith("000")).toList();
@@ -236,6 +238,9 @@ public class Home extends JFrame {
         btnEntra = new JButton();
         btnSale = new JButton();
         btnReset = new JButton();
+        btnDesplegarDirecto = new JButton();
+        btnDesplegarVideo = new JButton();
+        btnReplegar = new JButton();
         btnCongresoSondeo = new JButton();
         btnDatosSenado = new JButton();
         btnDatosCongreso = new JButton();
@@ -343,7 +348,8 @@ public class Home extends JFrame {
 
         tablaGraficos.setModel(new DefaultTableModel(
                 new Object[][]{
-                        {"Resultados"},
+                        {"Ticker"},
+                        {"Despliega 4"},
                         {"Sedes"},
                         {"Votantes"}
                 },
@@ -410,6 +416,18 @@ public class Home extends JFrame {
         btnDatosCongreso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDatosCongreso.setText("OFICIALES CONGRESO");
         btnDatosCongreso.addActionListener(this::btnDatosCongresoActionPerformed);
+
+        btnDesplegarDirecto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDesplegarDirecto.setText("DESPLEGAR DIRECTO");
+        btnDesplegarDirecto.addActionListener(this::btnDesplegarDirectoActionPerformed);
+
+        btnDesplegarVideo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDesplegarVideo.setText("DESPLEGAR VIDEO");
+        btnDesplegarVideo.addActionListener(this::btnDesplegarVideoActionPerformed);
+
+        btnReplegar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnReplegar.setText("REPLEGAR");
+        btnReplegar.addActionListener(this::btnReplegarActionPerformed);
 
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCheckBox1.setText("ACTUALIZAR ");
@@ -520,9 +538,12 @@ public class Home extends JFrame {
                                                 addComponent(btnEntra, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE).
                                                 addGap(45, 45, 45).
                                                 addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE).
-                                                addGap(45, 45, 45).
-                                                addGap(136, 136, 136).
-                                                addGap(33, 33, 33)).
+                                                addGap(50, 50, 50).
+                                                addComponent(btnDesplegarDirecto).
+                                                addGap(30, 30, 30).
+                                                addComponent(btnDesplegarVideo).
+                                                addGap(30, 30, 30).
+                                                addComponent(btnReplegar)).
                                         addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup().
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING).
                                                         addGroup(layout.createSequentialGroup().
@@ -596,14 +617,21 @@ public class Home extends JFrame {
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
                                         addComponent(btnEntra, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE).
                                         addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE).
-                                        addComponent(btnReset)).
+                                        addComponent(btnReset).
+                                        addComponent(btnDesplegarDirecto).
+                                        addComponent(btnDesplegarVideo).
+                                        addComponent(btnReplegar)).
                                 addGap(19, 19, 19))
         );
         tablaGraficos.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
-                //TODO:Si hay algún rellenado de tablas especial, añadir aquí
                 String codAutonomia;
-                if (tablaGraficos.getSelectedRow() != -1 && tablaComunidades.getSelectedRow() == -1) {
+                if (tablaGraficos.getSelectedRow() == 1) {
+                    vaciarTablas();
+                    BrainStormDTO temp = bs;
+                    temp.setCpDTO(bs.getCpDTO().subList(0,4));
+                    showDataTable(temp);
+                } else if (tablaGraficos.getSelectedRow() != -1 && tablaComunidades.getSelectedRow() == -1) {
                     codAutonomia = "9900000";
                     if (tipoElecciones == 1 || tipoElecciones == 2) {
                         if (oficiales) {
@@ -626,9 +654,36 @@ public class Home extends JFrame {
                 }
             }
         });
-
         pack();
 
+    }
+
+    private void btnDesplegarVideoActionPerformed(ActionEvent actionEvent) {
+        if (tipoElecciones == 1 || tipoElecciones == 2) {
+            int position = tablaDatos.getSelectedRow();
+            if (position != -1) {
+                ipf.esDirecto(false, tipoElecciones);
+                ipf.despliego(position + 1);
+            }
+        }
+    }
+
+    private void btnReplegarActionPerformed(ActionEvent actionEvent) {
+        if (tipoElecciones == 1 || tipoElecciones == 2) {
+            int position = tablaDatos.getSelectedRow();
+            if (position != -1)
+                ipf.repliego(position + 1);
+        }
+    }
+
+    private void btnDesplegarDirectoActionPerformed(ActionEvent actionEvent) {
+        if (tipoElecciones == 1 || tipoElecciones == 2) {
+            int position = tablaDatos.getSelectedRow();
+            if (position != -1) {
+                ipf.esDirecto(true, tipoElecciones);
+                ipf.despliego(position + 1);
+            }
+        }
     }
 
     private void loadSelectedCongreso(String cod) {
@@ -683,7 +738,7 @@ public class Home extends JFrame {
             //OFICIALES CONGRESO
             case 1 -> {
                 switch (tablaGraficos.getSelectedRow()) {
-                    //RESULTADOS
+                    //TICKER
                     case 0 -> {
                         if (resCongresoSonIn) {
                             ipf.deSondeoACongreso();
@@ -696,12 +751,16 @@ public class Home extends JFrame {
                         }
                         resCongresoOfiIn = true;
                     }
+                    case 1 ->{
+                        if(resCongresoSonIn || resSenadoIn || resCongresoOfiIn){
+                        ipf.cuatroPrimeros();}
+                    }
                     //SEDES
-                    case 1 -> {
+                    case 2 -> {
                         System.out.println("SEDES");
                     }
                     //VOTANTES
-                    case 2 -> {
+                    case 3 -> {
                         System.out.println("VOTANTES");
                     }
                     default -> System.out.print("");
@@ -725,12 +784,16 @@ public class Home extends JFrame {
                         }
                         resCongresoSonIn = true;
                     }
+                    case 1 ->{
+                        if(resCongresoSonIn || resSenadoIn || resCongresoOfiIn){
+                            ipf.cuatroPrimeros();}
+                    }
                     //SEDES
-                    case 1 -> {
+                    case 2 -> {
                         System.out.println("SEDES");
                     }
                     //VOTANTES
-                    case 2 -> {
+                    case 3 -> {
                         System.out.println("VOTANTES");
                     }
                     default -> System.out.print("");
@@ -753,12 +816,16 @@ public class Home extends JFrame {
                         }
                         resSenadoIn = true;
                     }
+                    case 1 ->{
+                        if(resCongresoSonIn || resSenadoIn || resCongresoOfiIn){
+                            ipf.cuatroPrimeros();}
+                    }
                     //SEDES
-                    case 1 -> {
+                    case 2 -> {
                         System.out.println("SEDES");
                     }
                     //VOTANTES
-                    case 2 -> {
+                    case 3 -> {
                         System.out.println("VOTANTES");
                     }
                     default -> System.out.print("");
@@ -772,17 +839,19 @@ public class Home extends JFrame {
             //OFICIALES CONGRESO
             case 1 -> {
                 switch (tablaGraficos.getSelectedRow()) {
-                    //RESULTADOS
+                    //TICKER
                     case 0 -> {
                         ipf.congresoSale();
                         resCongresoOfiIn = false;
                     }
+                    //DESPLIEGA
+                    case 1 -> ipf.recuperoTodos();
                     //SEDES
-                    case 1 -> {
+                    case 2 -> {
                         System.out.println("Sale sedes");
                     }
                     //VOTANTES
-                    case 2 -> {
+                    case 3 -> {
                         System.out.println("Sale votantes");
                     }
                     default -> System.out.print("");
@@ -796,12 +865,14 @@ public class Home extends JFrame {
                         ipf.congresoSondeoSale();
                         resCongresoSonIn = false;
                     }
+                    //DESPLIEGA
+                    case 1 -> ipf.recuperoTodos();
                     //SEDES
-                    case 1 -> {
+                    case 2 -> {
                         System.out.println("Sale sedes");
                     }
                     //VOTANTES
-                    case 2 -> {
+                    case 3 -> {
                         System.out.println("Sale votantes");
                     }
                     default -> System.out.print("");
@@ -815,12 +886,14 @@ public class Home extends JFrame {
                         ipf.senadoSale();
                         resSenadoIn = false;
                     }
+                    //DESPLIEGA
+                    case 1 -> ipf.recuperoTodos();
                     //SEDES
-                    case 1 -> {
+                    case 2 -> {
                         System.out.println("Sale sedes");
                     }
                     //VOTANTES
-                    case 2 -> {
+                    case 3 -> {
                         System.out.println("Sale votantes");
                     }
                     default -> System.out.print("");
@@ -934,17 +1007,15 @@ public class Home extends JFrame {
                 configFile.createNewFile();
 
                 Properties properties = new Properties();
-                properties.setProperty("direccion1", "10.10.54.140");
-                properties.setProperty("direccion3", "0");
-                properties.setProperty("puerto", "5123");
-                properties.setProperty("ipServerReserva", "127.0.0.1");
-                properties.setProperty("direccion2", "0");
-                properties.setProperty("direccion4", "0");
-                properties.setProperty("ipServer", "127.0.0.1");
+                properties.setProperty("ipIPF", "172.17.35.81");
+                properties.setProperty("puertoIPF", "5123");
+                properties.setProperty("BDReserva", "172.28.51.22");
+                properties.setProperty("BDPrincipal", "172.28.51.21");
                 properties.setProperty("BDCartones", "<CARTONES>");
-                properties.setProperty("rutaFicheros", "C:\\\\Elecciones2023\\\\DATOS");
-                properties.setProperty("nConexiones", "1");
                 properties.setProperty("BDFaldones", "<FALDONES>");
+                properties.setProperty("rutaFicheros", "C:\\Elecciones2023\\DATOS");
+                properties.setProperty("rutaColores", "C:\\Elecciones2023\\DATOS\\COLORES\\ColoresPartidos.csv");
+
 
                 FileOutputStream fos = new FileOutputStream(configFile);
                 properties.store(fos, "#Archivo de configuracion");
@@ -1011,6 +1082,9 @@ public class Home extends JFrame {
     private JButton btnEntra;
     private JButton btnReset;
     private JButton btnSale;
+    private JButton btnDesplegarDirecto;
+    private JButton btnDesplegarVideo;
+    private JButton btnReplegar;
     private JButton btnCongresoSondeo;
     private JLabel lblConexion;
     private JCheckBox jCheckBox1;

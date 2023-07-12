@@ -1,6 +1,5 @@
 package mgg.code;
 
-import mgg.code.config.Config;
 import mgg.code.vista.Home;
 
 import javax.swing.*;

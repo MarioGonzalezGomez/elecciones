@@ -63,7 +63,6 @@ public class Listeners {
         for (CP cp : changedCP
         ) {
             var dtoAux = cpDto.stream().filter(x -> Objects.equals(x.getCodigoPartido(), cp.getId().getPartido())).toList().get(0);
-            System.out.println(dtoAux);
 
             if (dtoAux != null) {
                 if (dtoAux.getEscanos_hasta_sondeo() != cp.getEscanos_hasta_sondeo()) return true;
@@ -80,7 +79,6 @@ public class Listeners {
             var filter = cpDto.stream().filter(x -> Objects.equals(x.getCodigoPartido(), cp.getId().getPartido())).toList();
             if (!filter.isEmpty()) {
                 var dtoAux = filter.get(0);
-                System.out.println(dtoAux);
 
                 if (dtoAux != null) {
                     if (dtoAux.getEscanos_desde_sondeo() != cp.getEscanos_desde_sondeo()) {
@@ -98,7 +96,6 @@ public class Listeners {
             var filter = cpDto.stream().filter(x -> Objects.equals(x.getCodigoPartido(), cp.getId().getPartido())).toList();
             if (!filter.isEmpty()) {
                 var dtoAux = filter.get(0);
-                System.out.println(dtoAux);
                 if (dtoAux != null) {
                     if (dtoAux.getEscanos_desde() != cp.getEscanos_desde()) {
                         return true;
@@ -124,7 +121,6 @@ public class Listeners {
                         System.out.println("Cambio detectado en senado");
                         var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
                         var cps = cpController.getAllCPsSenado();
-                        System.out.println(orderChanged(cps));
                         circunscripcionSenado = circunscripcionesNew;
 
                         var changesCod = changes.stream().map(Circunscripcion::getCodigo).toList();

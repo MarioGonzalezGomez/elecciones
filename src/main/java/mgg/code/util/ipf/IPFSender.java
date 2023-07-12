@@ -98,6 +98,12 @@ public class IPFSender {
         return mensaje;
     }
 
+    public String esDirecto(boolean esDirecto, int tipoElecciones) {
+        String mensaje = faldonesBuilder.esDirecto(esDirecto, tipoElecciones);
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     public String recuperoTodos() {
         String mensaje = faldonesBuilder.recuperoTodos();
         c.enviarMensaje(mensaje);
@@ -116,11 +122,13 @@ public class IPFSender {
         c.enviarMensaje(mensaje);
         return mensaje;
     }
+
     public String congresoSondeoActualizaDatos() {
         String mensaje = faldonesBuilder.congresoSondeoActualizaDatos();
         c.enviarMensaje(mensaje);
         return mensaje;
     }
+
     public String congresoSondeoActualizaPosiciones() {
         String mensaje = faldonesBuilder.congresoSondeoActualizaPosiciones();
         c.enviarMensaje(mensaje);

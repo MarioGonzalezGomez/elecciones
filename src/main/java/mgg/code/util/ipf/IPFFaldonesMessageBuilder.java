@@ -42,6 +42,20 @@ public class IPFFaldonesMessageBuilder {
     public String repliego(int posicion) {return eventRunBuild("TICKER/VIDEO_"+ posicion +"/SALE");}
     public String recuperoTodos() {return eventRunBuild("TICKER/RECUPERO_TODOS");}
 
+    public String esDirecto(boolean directo, int tipoElecciones){
+        String valor;
+        String objeto="TICKER";
+        if(directo){
+        valor="1";
+        } else{
+            valor="0";
+        }
+        if(tipoElecciones==2){
+            objeto = objeto+"_SONDEO";
+        }
+        return eventBuild(objeto+"/P1/VideoVivo","MAP_INT_PAR",valor,1);
+    }
+
     //SONDEO
     public String congresoSondeoEntra() {return eventRunBuild("SONDEO/ENTRA");}
     public String congresoSondeoActualizaEscrutado() {return eventRunBuild("SONDEO/ACTUALIZO_ESCRUTADO");}
