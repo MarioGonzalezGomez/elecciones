@@ -15,6 +15,8 @@ public class PartidoRepository implements CrudRepository<Partido, String> {
 
     public List<Partido> findAll() {
         //hc.open();
+        if(!hc.getManager().isOpen())
+            hc = HibernateControllerCongreso.getInstance();
         TypedQuery<Partido> query = hc.getManager().createNamedQuery("Partido.findAll", Partido.class);
         //hc.close();
         return query.getResultList();
@@ -22,6 +24,8 @@ public class PartidoRepository implements CrudRepository<Partido, String> {
 
     public List<Partido> findAllSenado() {
         //hs.open();
+        if(!hs.getManager().isOpen())
+            hs = HibernateControllerSenado.getInstance();
         TypedQuery<Partido> query = hs.getManager().createNamedQuery("Partido.findAll", Partido.class);
         //hs.close();
         return query.getResultList();
@@ -30,6 +34,8 @@ public class PartidoRepository implements CrudRepository<Partido, String> {
     public Partido getById(String id) {
         //hc.open();
         //hc.close();
+        if(!hc.getManager().isOpen())
+            hc = HibernateControllerCongreso.getInstance();
         return hc.getManager().find(Partido.class, id);
     }
 
@@ -37,11 +43,15 @@ public class PartidoRepository implements CrudRepository<Partido, String> {
     public Partido getByIdSenado(String id) {
         //hs.open();
         //hs.close();
+        if(!hs.getManager().isOpen())
+            hs = HibernateControllerSenado.getInstance();
         return hs.getManager().find(Partido.class, id);
     }
 
     public Partido save(Partido partido) {
         //hc.open();
+        if(!hc.getManager().isOpen())
+            hc = HibernateControllerCongreso.getInstance();
         hc.getTransaction().begin();
         hc.getManager().persist(partido);
         hc.getTransaction().commit();
@@ -51,6 +61,8 @@ public class PartidoRepository implements CrudRepository<Partido, String> {
 
     public Partido update(Partido partido) {
         //hc.open();
+        if(!hc.getManager().isOpen())
+            hc = HibernateControllerCongreso.getInstance();
         hc.getTransaction().begin();
         hc.getManager().merge(partido);
         hc.getTransaction().commit();
@@ -60,6 +72,8 @@ public class PartidoRepository implements CrudRepository<Partido, String> {
 
     public Partido delete(String id) {
         //hc.open();
+        if(!hc.getManager().isOpen())
+            hc = HibernateControllerCongreso.getInstance();
         hc.getTransaction().begin();
         Partido partido = hc.getManager().find(Partido.class, id);
         hc.getManager().remove(partido);
