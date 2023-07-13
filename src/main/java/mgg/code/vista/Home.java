@@ -1,6 +1,8 @@
 
 package mgg.code.vista;
 
+import mgg.code.controller.hibernate.HibernateControllerCongreso;
+import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.util.DB;
 import mgg.code.util.Listeners;
 import mgg.code.util.comparators.CPVotantes;
@@ -28,6 +30,8 @@ import java.util.List;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+//TODO(CERRAR HC Y HS AL CERRAR VENTANA)
 
 public class Home extends JFrame {
 
@@ -191,6 +195,8 @@ public class Home extends JFrame {
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
                 ConexionIPF.getConexion().desconectar();
+                HibernateControllerCongreso.getInstance().close();
+                HibernateControllerSenado.getInstance().close();
                 System.exit(0);
             }
         });
@@ -226,8 +232,6 @@ public class Home extends JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-
         jScrollPane1 = new JScrollPane();
         tablaDatos = new JTable();
         jScrollPane2 = new JScrollPane();

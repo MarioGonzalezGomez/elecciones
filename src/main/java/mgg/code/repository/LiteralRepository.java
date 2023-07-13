@@ -14,10 +14,10 @@ public class LiteralRepository implements CrudRepository<Literal, Integer> {
 
     @Override
     public List<Literal> findAll() {
-        hc.open();
+        //hc.open();
         TypedQuery<Literal> query = hc.getManager().createNamedQuery("Literal.findAll", Literal.class);
         List<Literal> literales = query.getResultList();
-        hc.close();
+        //hc.close();
         return literales;
     }
 
@@ -31,9 +31,9 @@ public class LiteralRepository implements CrudRepository<Literal, Integer> {
 
     @Override
     public Literal getById(Integer id) {
-        hc.open();
+        //hc.open();
         Literal literal = hc.getManager().find(Literal.class, id);
-        hc.close();
+        //hc.close();
         return literal;
     }
 
@@ -46,32 +46,32 @@ public class LiteralRepository implements CrudRepository<Literal, Integer> {
 
     @Override
     public Literal save(Literal literal) {
-        hc.open();
+        //hc.open();
         hc.getTransaction().begin();
         hc.getManager().persist(literal);
         hc.getTransaction().commit();
-        hc.close();
+        //hc.close();
         return literal;
     }
 
     @Override
     public Literal update(Literal literal) {
-        hc.open();
+        //hc.open();
         hc.getTransaction().begin();
         hc.getManager().merge(literal);
         hc.getTransaction().commit();
-        hc.close();
+        //hc.close();
         return literal;
     }
 
     @Override
     public Literal delete(Integer id) {
-        hc.open();
+        //hc.open();
         hc.getTransaction().begin();
         Literal literal = hc.getManager().find(Literal.class, id);
         hc.getManager().remove(literal);
         hc.getTransaction().commit();
-        hc.close();
+        //hc.close();
         return literal;
     }
 }

@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -75,8 +76,13 @@ public class BrainStormDTOController {
     }
 
     public BrainStormDTO getBrainStormDTOSondeo(String cod1, String avance) {
-        Circunscripcion circunscripcion = cirCon.getCircunscripcionById(cod1);
+        Circunscripcion circunscripcion;
         Circunscripcion espania = cirCon.getCircunscripcionById("9900000");
+        if (!Objects.equals(cod1, "9900000")) {
+            circunscripcion = cirCon.getCircunscripcionById(cod1);
+        } else {
+            circunscripcion = espania;
+        }
         List<CP> cp
                 = cpCon.findByIdCircunscripcionSondeo(cod1).stream()
                 .filter(x -> x.getEscanos_hasta_sondeo() > 0)
@@ -87,8 +93,8 @@ public class BrainStormDTOController {
         cp.forEach(x -> filtrada.add(partidos.stream().filter(par -> par.getCodigo().equals(x.getId().getPartido())).toList().get(0)));
         BrainStormDTOMapper mapper = new BrainStormDTOMapper(avance);
         return mapper.toDTO(circunscripcion, espania, cp, filtrada);
-    }
 
+    }
 
     public void getBrainStormDTOOficialCongresoInCsv(BrainStormDTO dto) {
         BufferedWriter writer;
