@@ -38,8 +38,8 @@ public class IPFFaldonesMessageBuilder {
 
     //DESPLIEGO_4
     public String cuatroPrimeros() {return eventRunBuild("TICKER/DESPLIEGO_4");}
-    public String despliego(int posicion) {return eventRunBuild("TICKER/VIDEO_"+ posicion +"/ENTRA");}
-    public String repliego(int posicion) {return eventRunBuild("TICKER/VIDEO_"+ posicion +"/SALE");}
+    public String despliego(String codPartido) {return eventRunBuild("TICKER/VIDEO_"+ codPartido +"/ENTRA");}
+    public String repliego(String codPartido) {return eventRunBuild("TICKER/VIDEO_"+ codPartido +"/SALE");}
     public String recuperoTodos() {return eventRunBuild("TICKER/RECUPERO_TODOS");}
 
     public String esDirecto(boolean directo, int tipoElecciones){

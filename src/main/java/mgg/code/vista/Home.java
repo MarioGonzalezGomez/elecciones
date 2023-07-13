@@ -89,11 +89,15 @@ public class Home extends JFrame {
     }
 
     public void showDataTable(BrainStormDTO bs) {
+        if (tablaGraficos.getSelectedRow() == 1) {
+            bs.setCpDTO(bs.getCpDTO().subList(0, 4));
+        }
         List<CpData> datos = CpData.fromBrainStormDto(bs);
         printData(datos);
         cargarLabels(bs);
     }
-    private void cargarLabels(BrainStormDTO bs){
+
+    private void cargarLabels(BrainStormDTO bs) {
         lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
         lblParticipacion.setText(bs.getCircunscripcion().getParticipacion() + "");
         lblPartHistorica.setText(bs.getCircunscripcion().getParticipacionHistorico() + "");
@@ -677,8 +681,9 @@ public class Home extends JFrame {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             int position = tablaDatos.getSelectedRow();
             if (position != -1) {
+                String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
                 ipf.esDirecto(false, tipoElecciones);
-                ipf.despliego(position + 1);
+                ipf.despliego(codPartido);
             }
         }
     }
@@ -686,8 +691,10 @@ public class Home extends JFrame {
     private void btnReplegarActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             int position = tablaDatos.getSelectedRow();
-            if (position != -1)
-                ipf.repliego(position + 1);
+            if (position != -1) {
+                String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
+                ipf.repliego(codPartido);
+            }
         }
     }
 
@@ -695,8 +702,9 @@ public class Home extends JFrame {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             int position = tablaDatos.getSelectedRow();
             if (position != -1) {
+                String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
                 ipf.esDirecto(true, tipoElecciones);
-                ipf.despliego(position + 1);
+                ipf.despliego(codPartido);
             }
         }
     }

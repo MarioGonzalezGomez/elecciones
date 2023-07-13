@@ -86,14 +86,14 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String despliego(int posicion) {
-        String mensaje = faldonesBuilder.despliego(posicion);
+    public String despliego(String codPartido) {
+        String mensaje = faldonesBuilder.despliego(codPartido);
         c.enviarMensaje(mensaje);
         return mensaje;
     }
 
-    public String repliego(int posicion) {
-        String mensaje = faldonesBuilder.repliego(posicion);
+    public String repliego(String codPartido) {
+        String mensaje = faldonesBuilder.repliego(codPartido);
         c.enviarMensaje(mensaje);
         return mensaje;
     }
