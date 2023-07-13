@@ -7,7 +7,6 @@ import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.model.Circunscripcion;
 import mgg.code.util.Timer;
 
-
 import java.util.List;
 
 public class CircunscripcionRepository implements CrudRepository<Circunscripcion, String> {
