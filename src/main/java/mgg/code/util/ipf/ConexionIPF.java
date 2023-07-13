@@ -50,31 +50,19 @@ public class ConexionIPF {
                 System.out.println("Cliente->Conectado al IPF...");
             } catch (IOException ex) {
                 System.err.println("Cliente->ERROR: Al conectar al servidor en " + c.getipIPF() + " > " + ex.getMessage());
-            }
-        });
-
-        Thread conexionLocalThread = new Thread(() -> {
-            try {
-                servidor = new Socket();
-                servidor.connect(new InetSocketAddress("127.0.0.1", Integer.parseInt(c.getpuertoIPF())), TIMEOUT);
-                crearFlujosES();
-                System.out.println("Cliente->Conectado en local");
-            } catch (IOException ex) {
-                System.err.println("Cliente->ERROR: Al conectar al IPF local -> " + ex.getMessage());
+                try {
+                    servidor.connect(new InetSocketAddress("127.0.0.1", Integer.parseInt(c.getpuertoIPF())), TIMEOUT);
+                    crearFlujosES();
+                    System.out.println("Cliente->Conectado en local");
+                } catch (IOException exc) {
+                    System.err.println("Cliente->ERROR: Al conectar al IPF local -> " + ex.getMessage());
+                }
             }
         });
 
         conexionRemotaThread.start();
         try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        conexionLocalThread.start();
-
-        try {
             conexionRemotaThread.join();
-            conexionLocalThread.join();
         } catch (InterruptedException e) {
             System.err.println("Cliente->ERROR: Al esperar por la finalización de los hilos de conexión -> " + e.getMessage());
         }
@@ -92,11 +80,11 @@ public class ConexionIPF {
 
     public void desconectar() {
         try {
-            if(servidor!=null)
+            if (servidor != null)
                 servidor.close();
-            if(datoEntrada!=null)
+            if (datoEntrada != null)
                 datoEntrada.close();
-            if(datoSalida!=null)
+            if (datoSalida != null)
                 datoSalida.close();
             System.out.println("Cliente->Desconectado");
         } catch (IOException ex) {

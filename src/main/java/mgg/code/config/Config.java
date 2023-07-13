@@ -21,7 +21,6 @@ public class Config {
         if (configuracion == null) {
             configuracion = new Config();
         }
-        System.out.println(configuracion);
         return configuracion;
     }
 

@@ -23,87 +23,56 @@ public class CircunscripcionRepository implements CrudRepository<Circunscripcion
     }
 
     public List<Circunscripcion> findAll() {
-        timer.startTimer("[CIRCUNSCRIPCION]");
         //hc.open();
         TypedQuery<Circunscripcion> query = hc.getManager().createNamedQuery("Circunscripcion.findAll", Circunscripcion.class);
-        List<Circunscripcion> Circunscripciones = query.getResultList();
         //hc.close();
-        timer.calculateTime("[CIRCUNSCRIPCION]");
-        return Circunscripciones;
+        return query.getResultList();
     }
 
     public List<Circunscripcion> findAllSenado() {
-        timer.startTimer("[CIRCUNSCRIPCION]");
-
-        hs.open();
+        //hs.open();
         TypedQuery<Circunscripcion> query = hs.getManager().createNamedQuery("Circunscripcion.findAll", Circunscripcion.class);
-        List<Circunscripcion> Circunscripciones = query.getResultList();
-        hs.close();
-        timer.calculateTime("[CIRCUNSCRIPCION]");
-
-        return Circunscripciones;
+        //hs.close();
+        return query.getResultList();
     }
 
     public Circunscripcion getById(String id) {
-        timer.startTimer("[CIRCUNSCRIPCION]");
         //hc.open();
-        System.out.println("Buscando Circunscripcion: ");
-        Circunscripcion Circunscripcion = hc.getManager().find(Circunscripcion.class, id);
-        System.out.println(Circunscripcion);
         //hc.close();
-        timer.calculateTime("[CIRCUNSCRIPCION]");
-
-        return Circunscripcion;
+        return hc.getManager().find(Circunscripcion.class, id);
     }
 
     public Circunscripcion getByIdSenado(String id) {
-        timer.startTimer("[CIRCUNSCRIPCION]");
-
-        hs.open();
-        Circunscripcion Circunscripcion = hs.getManager().find(Circunscripcion.class, id);
-        hs.close();
-        timer.calculateTime("[CIRCUNSCRIPCION]");
-
-        return Circunscripcion;
+        //hs.open();
+        //hs.close();
+        return hs.getManager().find(Circunscripcion.class, id);
     }
 
     public Circunscripcion save(Circunscripcion Circunscripcion) {
-        timer.startTimer("[CIRCUNSCRIPCION]");
-
         //hc.open();
         hc.getTransaction().begin();
         hc.getManager().persist(Circunscripcion);
         hc.getTransaction().commit();
         //hc.close();
-        timer.calculateTime("[CIRCUNSCRIPCION]");
-
         return Circunscripcion;
     }
 
     public Circunscripcion update(Circunscripcion Circunscripcion) {
-        timer.startTimer("[CIRCUNSCRIPCION]");
-
         //hc.open();
         hc.getTransaction().begin();
         hc.getManager().merge(Circunscripcion);
         hc.getTransaction().commit();
         //hc.close();
-        timer.calculateTime("[CIRCUNSCRIPCION]");
-
         return Circunscripcion;
     }
 
     public Circunscripcion delete(String id) {
-        timer.startTimer("[CIRCUNSCRIPCION]");
-
         //hc.open();
         hc.getTransaction().begin();
         Circunscripcion Circunscripcion = hc.getManager().find(Circunscripcion.class, id);
         hc.getManager().remove(Circunscripcion);
         hc.getTransaction().commit();
         //hc.close();
-        timer.calculateTime("[CIRCUNSCRIPCION]");
-
         return Circunscripcion;
     }
 }

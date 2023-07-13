@@ -634,9 +634,12 @@ public class Home extends JFrame {
                 if (tablaGraficos.getSelectedRow() == 1) {
                     vaciarTablas();
                     BrainStormDTO temp = bs;
-                    temp.setCpDTO(bs.getCpDTO().subList(0,4));
+                    temp.setCpDTO(bs.getCpDTO().subList(0, 4));
                     showDataTable(temp);
                 } else if (tablaGraficos.getSelectedRow() != -1 && tablaComunidades.getSelectedRow() == -1) {
+                    if (tablaComunidades.getRowCount() == 0) {
+                        rellenarCCAA();
+                    }
                     codAutonomia = "9900000";
                     if (tipoElecciones == 1 || tipoElecciones == 2) {
                         if (oficiales) {
@@ -756,9 +759,10 @@ public class Home extends JFrame {
                         }
                         resCongresoOfiIn = true;
                     }
-                    case 1 ->{
-                        if(resCongresoSonIn || resSenadoIn || resCongresoOfiIn){
-                        ipf.cuatroPrimeros();}
+                    case 1 -> {
+                        if (resCongresoSonIn || resSenadoIn || resCongresoOfiIn) {
+                            ipf.cuatroPrimeros();
+                        }
                     }
                     //SEDES
                     case 2 -> {
@@ -789,9 +793,10 @@ public class Home extends JFrame {
                         }
                         resCongresoSonIn = true;
                     }
-                    case 1 ->{
-                        if(resCongresoSonIn || resSenadoIn || resCongresoOfiIn){
-                            ipf.cuatroPrimeros();}
+                    case 1 -> {
+                        if (resCongresoSonIn || resSenadoIn || resCongresoOfiIn) {
+                            ipf.cuatroPrimeros();
+                        }
                     }
                     //SEDES
                     case 2 -> {
@@ -821,9 +826,10 @@ public class Home extends JFrame {
                         }
                         resSenadoIn = true;
                     }
-                    case 1 ->{
-                        if(resCongresoSonIn || resSenadoIn || resCongresoOfiIn){
-                            ipf.cuatroPrimeros();}
+                    case 1 -> {
+                        if (resCongresoSonIn || resSenadoIn || resCongresoOfiIn) {
+                            ipf.cuatroPrimeros();
+                        }
                     }
                     //SEDES
                     case 2 -> {

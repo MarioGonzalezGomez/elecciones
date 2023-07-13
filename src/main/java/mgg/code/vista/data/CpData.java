@@ -27,7 +27,6 @@ public class CpData {
     public static List<CpData> fromBrainStormDto(BrainStormDTO bs) {
         List<CpData> res = new ArrayList<>();
         for (CpDTO cpDTO : bs.getCpDTO()) {
-            //System.out.println(cpDTO);
             res.add(new CpData(
                     cpDTO.getCodigoPartido(), cpDTO.getSiglas(), cpDTO.getEscanos_desde(), cpDTO.getEscanos_hasta(),
                     cpDTO.getEscanos_hasta_hist(), cpDTO.getPorcentajeVoto(), cpDTO.getNumVotantes(),
