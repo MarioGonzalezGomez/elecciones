@@ -19,6 +19,7 @@ public class HibernateControllerSenado {
     public static HibernateControllerSenado getInstance() {
         if (hc == null) {
             hc = new HibernateControllerSenado();
+            hc.open();
         }
         return hc;
     }

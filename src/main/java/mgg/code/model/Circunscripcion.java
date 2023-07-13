@@ -36,35 +36,35 @@ public class Circunscripcion {
     private int escanios;
 
     @Column
-    private double avance1;
+        private double avance1;
 
     @Column
-    private double avance2;
+        private double avance2;
 
     @Column
-    private double avance3;
+        private double avance3;
 
     @Column
-    private double participacion;
+        private double participacion;
 
     @Column
-    private int votantes;
+        private int votantes;
 
     @Column(name = "escanos_hist")
-    private int escaniosHistoricos;
+        private int escaniosHistoricos;
 
     @Column(name = "avance1_hist")
-    private double avance1Hist;
+        private double avance1Hist;
 
     @Column(name = "avance2_hist")
-    private double avance2Hist;
+        private double avance2Hist;
 
     @Column(name = "avance3_hist")
-    private double avance3Hist;
+        private double avance3Hist;
 
     @Column(name = "participacion_hist")
-    private double participacionHist;
+        private double participacionHist;
 
     @Column
-    private int mostrar;
+        private int mostrar;
 }

@@ -19,6 +19,7 @@ public class HibernateControllerCongreso {
     public static HibernateControllerCongreso getInstance() {
         if (hc == null) {
             hc = new HibernateControllerCongreso();
+            hc.open();
         }
         return hc;
     }
@@ -33,5 +34,6 @@ public class HibernateControllerCongreso {
         manager.close();
         emf.close();
     }
+
 
 }
