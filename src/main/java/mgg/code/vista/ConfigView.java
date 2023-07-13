@@ -5,6 +5,8 @@
 package mgg.code.vista;
 
 import mgg.code.config.Config;
+import mgg.code.controller.hibernate.HibernateControllerCongreso;
+import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.util.DB;
 
 import javax.swing.*;
@@ -232,18 +234,25 @@ public class ConfigView extends JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectPrincipal();
         conexionBD = "BD PRINCIPAL";
+        System.out.println("AAAAA");
+        HibernateControllerSenado.cambioPrincipal();
+        HibernateControllerCongreso.cambioPrincipal();
         labelTemp.setText(conexionBD);
     }
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectReserva();
         conexionBD = "BD RESERVA";
+        HibernateControllerSenado.cambioReserva();
+        HibernateControllerCongreso.cambioReserva();
         labelTemp.setText(conexionBD);
     }
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectLocal();
         conexionBD = "BD LOCAL";
+        HibernateControllerSenado.cambioLocal();
+        HibernateControllerCongreso.cambioLocal();
         labelTemp.setText(conexionBD);
     }
 
