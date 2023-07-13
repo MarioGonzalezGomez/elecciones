@@ -4,6 +4,8 @@ package mgg.code.util;
 import mgg.code.controller.BrainStormDTOController;
 import mgg.code.controller.CPController;
 import mgg.code.controller.CircunscripcionController;
+import mgg.code.controller.hibernate.HibernateControllerCongreso;
+import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.model.CP;
 import mgg.code.model.Circunscripcion;
 import mgg.code.model.dto.BrainStormDTO;
@@ -112,11 +114,13 @@ public class Listeners {
             isSuscribedSenado.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
+               // resetHibernateSenado();
+
                 if (circunscripcionSenado.isEmpty()) {
                     circunscripcionSenado = circunscripcionController.getAllCircunscripcionesSenado();
                 } else {
-                    List<Circunscripcion> circunscripcionesNew;
-                    circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
+                    HibernateControllerSenado.getInstance().getManager().clear();
+                    List<Circunscripcion> circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
                     if (Home.tipoElecciones == 3 && !circunscripcionesNew.equals(circunscripcionSenado)) {
                         System.out.println("Cambio detectado en senado");
                         var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
@@ -127,7 +131,7 @@ public class Listeners {
                         var cpChanged = cps.stream().filter(
                                 cp -> changesCod.contains(cp.getId().getCircunscripcion())).toList();
                         //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
-                        BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000",Home.avance);
+                        BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000", Home.avance);
                         bscon.getBrainStormDTOSenadoInCsv(dto);
                         if (orderChanged(cpChanged)) {
                             ipf.senadoActualizaPosiciones();
@@ -139,9 +143,26 @@ public class Listeners {
 
                     }
                 }
-            }, 0, 6, TimeUnit.SECONDS);
+            }, 0, 5, TimeUnit.SECONDS);
         }
     }
+
+    private void resetHibernate() {
+        Timer.getInstance().startTimer("[RESET]");
+        HibernateControllerSenado.getInstance().close();
+        HibernateControllerCongreso.getInstance().close();
+        HibernateControllerCongreso.getInstance().open();
+        HibernateControllerSenado.getInstance().open();
+        Timer.getInstance().calculateTime("[RESET]");
+    }
+
+    private void resetHibernateSenado() {
+        Timer.getInstance().startTimer("[RESET SENADO]");
+        HibernateControllerSenado.getInstance().close();
+        HibernateControllerSenado.getInstance().open();
+        Timer.getInstance().calculateTime("[RESET SENADO]");
+    }
+
 
     public void listenCongreso() {
         if (!isSuscribed.get()) {
@@ -149,11 +170,14 @@ public class Listeners {
             isSuscribed.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
+               // resetHibernate();
                 if (circunscripcionList.isEmpty()) {
                     circunscripcionList = circunscripcionController.getAllCircunscripciones();
                 } else {
-                    List<Circunscripcion> circunscripcionesNew;
-                    circunscripcionesNew = circunscripcionController.getAllCircunscripciones();
+                    HibernateControllerCongreso.getInstance().getManager().clear();
+
+                    List<Circunscripcion> circunscripcionesNew = circunscripcionController.getAllCircunscripciones();
+                    ;
                     if (Home.tipoElecciones != 3 && !circunscripcionesNew.equals(circunscripcionList)) {
                         var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
                         var cps = cpController.getAllCPs();
@@ -168,7 +192,7 @@ public class Listeners {
 
                         if (Home.tipoElecciones == 1) {
                             //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
-                            BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000",Home.avance);
+                            BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000", Home.avance);
                             bscon.getBrainStormDTOOficialCongresoInCsv(dto);
                             if (orderChanged(cpChanged)) {
                                 ipf.congresoActualizaPosiciones();
@@ -179,7 +203,7 @@ public class Listeners {
                             }
                         } else if (Home.tipoElecciones == 2) {
                             //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
-                            BrainStormDTO dto = bscon.getBrainStormDTOSondeo("9900000",Home.avance);
+                            BrainStormDTO dto = bscon.getBrainStormDTOSondeo("9900000", Home.avance);
                             bscon.getBrainStormDTOSondeoEspecialInCsv(dto);
                             if (orderChanged(cpChanged)) {
                                 ipf.congresoSondeoActualizaPosiciones();
