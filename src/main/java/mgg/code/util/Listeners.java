@@ -47,7 +47,6 @@ public class Listeners {
         this.cpController = CPController.getInstance();
         ipf = IPFSender.getInstance();
         bscon = BrainStormDTOController.getInstance();
-
     }
 
     private boolean orderChanged(List<CP> newPartidos) {
@@ -132,6 +131,7 @@ public class Listeners {
                                 cp -> changesCod.contains(cp.getId().getCircunscripcion())).toList();
                         //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
                         BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000", Home.avance);
+                        Home.getInstance().showDataTable(dto);
                         bscon.getBrainStormDTOSenadoInCsv(dto);
                         if (orderChanged(cpChanged)) {
                             ipf.senadoActualizaPosiciones();
@@ -193,6 +193,7 @@ public class Listeners {
                         if (Home.tipoElecciones == 1) {
                             //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
                             BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000", Home.avance);
+                            Home.getInstance().showDataTable(dto);
                             bscon.getBrainStormDTOOficialCongresoInCsv(dto);
                             if (orderChanged(cpChanged)) {
                                 ipf.congresoActualizaPosiciones();
@@ -204,6 +205,7 @@ public class Listeners {
                         } else if (Home.tipoElecciones == 2) {
                             //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
                             BrainStormDTO dto = bscon.getBrainStormDTOSondeo("9900000", Home.avance);
+                            Home.getInstance().showDataTable(dto);
                             bscon.getBrainStormDTOSondeoEspecialInCsv(dto);
                             if (orderChanged(cpChanged)) {
                                 ipf.congresoSondeoActualizaPosiciones();

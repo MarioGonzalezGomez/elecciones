@@ -19,7 +19,7 @@ public class Main {
                  UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-        java.awt.EventQueue.invokeLater(() -> new Home().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> Home.getInstance().setVisible(true));
 
     }
 

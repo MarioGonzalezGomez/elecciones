@@ -34,6 +34,14 @@ import java.util.logging.Logger;
 //TODO(CERRAR HC Y HS AL CERRAR VENTANA)
 
 public class Home extends JFrame {
+    private static Home instance;
+
+    public static Home getInstance() {
+        if (instance == null) {
+            instance = new Home();
+        }
+        return instance;
+    }
 
     public static BrainStormDTO bs;
     String selectedDb = "";
@@ -83,6 +91,13 @@ public class Home extends JFrame {
     public void showDataTable(BrainStormDTO bs) {
         List<CpData> datos = CpData.fromBrainStormDto(bs);
         printData(datos);
+        cargarLabels(bs);
+    }
+    private void cargarLabels(BrainStormDTO bs){
+        lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
+        lblParticipacion.setText(bs.getCircunscripcion().getParticipacion() + "");
+        lblPartHistorica.setText(bs.getCircunscripcion().getParticipacionHistorico() + "");
+        lblEscanosTotales.setText(bs.getCircunscripcion().getEscanios() + "");
     }
 
     public void printDataEsp() throws IOException {
@@ -188,7 +203,7 @@ public class Home extends JFrame {
     }
 
 
-    public Home() {
+    private Home() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -339,10 +354,6 @@ public class Home extends JFrame {
                             bscon.getBrainStormDTOSenadoInCsv(bs);
                         }
                         showDataTable(bs);
-                        lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
-                        lblParticipacion.setText(bs.getCircunscripcion().getParticipacion() + "");
-                        lblPartHistorica.setText(bs.getCircunscripcion().getParticipacionHistorico() + "");
-                        lblEscanosTotales.setText(bs.getCircunscripcion().getEscanios() + "");
                     }
                 }
             }
@@ -655,10 +666,6 @@ public class Home extends JFrame {
                         bscon.getBrainStormDTOSenadoInCsv(bs);
                     }
                     showDataTable(bs);
-                    lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
-                    lblParticipacion.setText(bs.getCircunscripcion().getParticipacion() + "");
-                    lblPartHistorica.setText(bs.getCircunscripcion().getParticipacionHistorico() + "");
-                    lblEscanosTotales.setText(bs.getCircunscripcion().getEscanios() + "");
                 }
             }
         });
@@ -732,10 +739,6 @@ public class Home extends JFrame {
                         bscon.getBrainStormDTOSenadoInCsv(bs);
                     }
                     showDataTable(bs);
-                    lblEscrutado.setText(bs.getCircunscripcion().getEscrutado() + "");
-                    lblParticipacion.setText(bs.getCircunscripcion().getParticipacion() + "");
-                    lblPartHistorica.setText(bs.getCircunscripcion().getParticipacionHistorico() + "");
-                    lblEscanosTotales.setText(bs.getCircunscripcion().getEscanios() + "");
                 }
             }
         });
