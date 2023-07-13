@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="detección de cambios">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CPRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CPRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CircunscripcionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CircunscripcionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/PartidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/PartidoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/ConexionIPF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/ConexionIPF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/vista/data/CpData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/vista/data/CpData.java" afterDir="false" />
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Borrado sysos innecesario y correccion en carga de circunscripciones">
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689158825256</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Borrado sysos innecesario y correccion en carga de circunscripciones">
+      <created>1689240115922</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1689240115922</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -282,7 +282,8 @@
     <MESSAGE value="Funcional a falta de Videos" />
     <MESSAGE value="Despliegas y repliegas OK" />
     <MESSAGE value="Pom actualizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pom actualizado" />
+    <MESSAGE value="Borrado sysos innecesario y correccion en carga de circunscripciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Borrado sysos innecesario y correccion en carga de circunscripciones" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elecciones$Main.ic" NAME="Main Coverage Results" MODIFIED="1689239120026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
