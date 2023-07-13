@@ -22,12 +22,12 @@ public class Timer {
 
     public void startTimer(String tipo) {
 
-        //System.out.println("Iniciando timer " + tipo + "->" + nTimer.getAndIncrement() + " ->");
+        System.out.println("Iniciando timer " + tipo + "->" + nTimer.getAndIncrement() + " ->");
         startTime = System.currentTimeMillis();
     }
 
     public void calculateTime(String tipo) {
         endTime = System.currentTimeMillis();
-        //System.out.println("Resultado timer " + tipo + "->" + nTimer.get() + ": " + (endTime - startTime));
+        System.out.println("Resultado timer " + tipo + "->" + nTimer.get() + ": " + (endTime - startTime));
     }
 }
