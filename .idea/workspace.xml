@@ -8,11 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerCongreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerCongreso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerSenado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerSenado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CPRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CPRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CircunscripcionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/CircunscripcionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/LiteralRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/LiteralRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/repository/PartidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/repository/PartidoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/vista/ConfigView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/vista/ConfigView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +24,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

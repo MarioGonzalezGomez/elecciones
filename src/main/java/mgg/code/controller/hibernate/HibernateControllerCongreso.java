@@ -21,7 +21,7 @@ public class HibernateControllerCongreso {
     }
 
     public static void cambioReserva() {
-        String reservaUrl = "jdbc:mysql://172.28.51.22:3306,172.28.51.21:3306,127.0.0.1:3306/elecciones_generales_2019";
+        String reservaUrl = "jdbc:mysql://172.28.51.22:3306,172.28.51.21:3306,127.0.0.1:3306/elecciones_generales_2023";
         String reservaUser = "root";
         String reservaPass = "auto1041";
 
@@ -34,13 +34,13 @@ public class HibernateControllerCongreso {
         hc.manager = hc.emf.createEntityManager();
         hc.transaction = hc.manager.getTransaction();
         System.out.println("Cambiando a reserva...");
-        System.out.println("Base de datos de senado cambiada a reserva");
+        System.out.println("Base de datos cambiada a reserva");
         System.out.println(hc.getEmf().unwrap(SessionFactory.class).getProperties().get("hibernate.connection.url"));
 
     }
 
     public static void cambioPrincipal() {
-        String reservaUrl = "jdbc:mysql://172.28.51.21:3306,172.28.51.22:3306,127.0.0.1:3306/elecciones_generales_2019";
+        String reservaUrl = "jdbc:mysql://172.28.51.21:3306,172.28.51.22:3306,127.0.0.1:3306/elecciones_generales_2023";
         String reservaUser = "root";
         String reservaPass = "auto1041";
 
@@ -53,12 +53,12 @@ public class HibernateControllerCongreso {
         hc.setEmf(Persistence.createEntityManagerFactory("congreso", getProperties(reservaUrl, reservaUser, reservaPass)));
         hc.manager = hc.emf.createEntityManager();
         hc.transaction = hc.manager.getTransaction();
-        System.out.println("Base de datos de senado cambiada a principal");
+        System.out.println("Base de datos cambiada a principal");
 
     }
 
     public static void cambioLocal() {
-        String reservaUrl = "jdbc:mysql://127.0.0.1:3306,172.28.51.21:3306,172.28.51.22:3306/elecciones_generales_2019";
+        String reservaUrl = "jdbc:mysql://127.0.0.1:3306,172.28.51.21:3306,172.28.51.22:3306/elecciones_generales_2023";
         String reservaUser = "root";
         String reservaPass = "auto1041";
 
@@ -72,7 +72,7 @@ public class HibernateControllerCongreso {
         hc.setEmf(Persistence.createEntityManagerFactory("congreso", getProperties(reservaUrl, reservaUser, reservaPass)));
         hc.manager = hc.emf.createEntityManager();
         hc.transaction = hc.manager.getTransaction();
-        System.out.println("Base de datos de senado cambiada a local");
+        System.out.println("Base de datos cambiada a local");
 
     }
 

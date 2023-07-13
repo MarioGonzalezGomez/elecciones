@@ -20,7 +20,7 @@ public class HibernateControllerSenado {
     }
 
     public static void cambioReserva(){
-        String reservaUrl = "jdbc:mysql://172.28.51.22:3306,172.28.51.21:3306,127.0.0.1:3306/elecciones_senado_2019";
+        String reservaUrl = "jdbc:mysql://172.28.51.22:3306,172.28.51.21:3306,127.0.0.1:3306/elecciones_senado_2023";
         String reservaUser = "root";
         String reservaPass = "auto1041";
 
@@ -35,7 +35,7 @@ public class HibernateControllerSenado {
     }
 
     public static void cambioPrincipal(){
-        String reservaUrl = "jdbc:mysql://172.28.51.21:3306,172.28.51.22:3306,127.0.0.1:3306/elecciones_senado_2019";
+        String reservaUrl = "jdbc:mysql://172.28.51.21:3306,172.28.51.22:3306,127.0.0.1:3306/elecciones_senado_2023";
         String reservaUser = "root";
         String reservaPass = "auto1041";
 
@@ -52,7 +52,7 @@ public class HibernateControllerSenado {
     }
 
     public static void cambioLocal(){
-        String reservaUrl = "jdbc:mysql://127.0.0.1:3306,172.28.51.21:3306,172.28.51.22:3306/elecciones_senado_2019";
+        String reservaUrl = "jdbc:mysql://127.0.0.1:3306,172.28.51.21:3306,172.28.51.22:3306/elecciones_senado_2023";
         String reservaUser = "root";
         String reservaPass = "auto1041";
 
