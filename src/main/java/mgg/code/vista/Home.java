@@ -1,16 +1,14 @@
 
 package mgg.code.vista;
 
+import mgg.code.controller.*;
 import mgg.code.controller.hibernate.HibernateControllerCongreso;
 import mgg.code.controller.hibernate.HibernateControllerSenado;
+import mgg.code.model.dto.SedesDTO;
 import mgg.code.util.DB;
 import mgg.code.util.Listeners;
 import mgg.code.util.comparators.CPVotantes;
 import mgg.code.util.ipf.ConexionIPF;
-import mgg.code.controller.BrainStormDTOController;
-import mgg.code.controller.CPController;
-import mgg.code.controller.CircunscripcionController;
-import mgg.code.controller.PartidoController;
 import mgg.code.model.Circunscripcion;
 import mgg.code.model.dto.BrainStormDTO;
 import mgg.code.model.dto.CircunscripcionDTO;
@@ -48,6 +46,7 @@ public class Home extends JFrame {
     CircunscripcionController circon = CircunscripcionController.getInstance();
     PartidoController parcon = PartidoController.getInstance();
     CPController cpcon = CPController.getInstance();
+    SedesDTOController sedescon = SedesDTOController.getInstance();
     BrainStormDTOController bscon = BrainStormDTOController.getInstance();
 
     IPFSender ipf = IPFSender.getInstance();
@@ -365,6 +364,14 @@ public class Home extends JFrame {
                 tablaComunidades.getColumnModel().getColumn(0).setResizable(false);
             }
         });
+        tablaDatos.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                if (tablaGraficos.getSelectedRow() == 2 && tablaDatos.getSelectedRow() != -1) {
+                    SedesDTO sede = sedescon.findById(bs.getCpDTO().get(tablaDatos.getSelectedRow()).getCodigoPartido());
+                    sedescon.getSedesDTOInCsv(sede);
+                }
+            }
+        });
 
         tablaGraficos.setModel(new DefaultTableModel(
                 new Object[][]{
@@ -651,6 +658,11 @@ public class Home extends JFrame {
                     BrainStormDTO temp = bs;
                     temp.setCpDTO(bs.getCpDTO().subList(0, 4));
                     showDataTable(temp);
+                } else if (tablaGraficos.getSelectedRow() == 2) {
+                    vaciarTablas();
+                    codAutonomia = "9900000";
+                    bs = bscon.getBrainStormDTOOficial(codAutonomia, avance);
+                    showDataTable(bs);
                 } else if (tablaGraficos.getSelectedRow() != -1 && tablaComunidades.getSelectedRow() == -1) {
                     if (tablaComunidades.getRowCount() == 0) {
                         rellenarCCAA();

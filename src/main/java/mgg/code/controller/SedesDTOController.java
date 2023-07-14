@@ -1,6 +1,7 @@
 package mgg.code.controller;
 
 
+import mgg.code.config.Config;
 import mgg.code.model.CP;
 import mgg.code.model.Key;
 import mgg.code.model.Partido;
@@ -9,9 +10,11 @@ import mgg.code.model.dto.mapper.SedesDTOMapper;
 import mgg.code.service.ficheros.CsvExportService;
 import mgg.code.service.ficheros.ExcelExportService;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.RandomAccess;
 
 public class SedesDTOController {
     public static SedesDTOController controller;
@@ -19,6 +22,7 @@ public class SedesDTOController {
     private PartidoController parCon;
     private CPController cpCon;
     private CsvExportService csvExportService;
+    private final String ruta = Config.getConfiguracion().getRutaFicheros();
 
     private SedesDTOController() {
         parCon = PartidoController.getInstance();
@@ -44,10 +48,19 @@ public class SedesDTOController {
         return dto;
     }
 
-    public void getSedesDTOInCsv(String partido) {
-        SedesDTO dto = findById(partido);
-        //TODO:Hacer BufferedWriter al fichero que sea y pasarlo como segundo parámetro a csvExportService
-        //csvExportService.writeSedesDTOToCsv(dto);
+    public void getSedesDTOInCsv(SedesDTO sede) {
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(ruta + "\\F_Sedes.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        csvExportService.writeSedesDTOToCsv(sede, writer);
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void getSedesDTOInExcel(String partido) {
