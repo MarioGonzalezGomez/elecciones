@@ -1,5 +1,9 @@
 package mgg.code.util.ipf;
 
+import mgg.code.model.CP;
+
+import java.util.List;
+
 public class IPFSender {
     private static IPFSender ipf;
     private ConexionIPF c;
@@ -55,6 +59,12 @@ public class IPFSender {
         return mensaje;
     }
 
+    public String congresoActualiza() {
+        String mensaje = faldonesBuilder.congresoActualiza();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     public String congresoActualizaEscrutado() {
         String mensaje = faldonesBuilder.congresoActualizaEscrutado();
         c.enviarMensaje(mensaje);
@@ -67,8 +77,20 @@ public class IPFSender {
         return mensaje;
     }
 
+    public String congresoActualizaDatosIndividualizado(List<CP> cps) {
+        String mensaje = faldonesBuilder.congresoActualizaDatosIndividualizado(cps);
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     public String congresoActualizaPosiciones() {
         String mensaje = faldonesBuilder.congresoActualizaPosiciones();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoActualizaNumPartidos() {
+        String mensaje = faldonesBuilder.congresoActualizaNumPartidos();
         c.enviarMensaje(mensaje);
         return mensaje;
     }

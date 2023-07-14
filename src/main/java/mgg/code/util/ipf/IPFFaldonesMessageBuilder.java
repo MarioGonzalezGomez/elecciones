@@ -1,6 +1,9 @@
 package mgg.code.util.ipf;
 
 import mgg.code.config.Config;
+import mgg.code.model.CP;
+
+import java.util.List;
 
 public class IPFFaldonesMessageBuilder {
 
@@ -31,9 +34,16 @@ public class IPFFaldonesMessageBuilder {
 
     //TICKER
     public String congresoEntra() {return eventRunBuild("TICKER/ENTRA");}
-    public String congresoActualizaEscrutado() {return eventRunBuild("TICKER/ACTUALIZO_ESCRUTADO");}
-    public String congresoActualizaDatos() {return eventRunBuild("TICKER/ACTUALIZO_DATOS");}
-    public String congresoActualizaPosiciones() {return eventRunBuild("TICKER/ACTUALIZO_POSICIONES");}
+    public String congresoActualiza() {return eventRunBuild("TICKER/ACTUALIZO");}
+    public String congresoActualizaEscrutado() {return eventBuild("TICKER/CambiaEscrutado","MAP_INT_PAR","1",1);}
+    public String congresoActualizaDatos() {return eventBuild("TICKER/CambiaResultado","MAP_INT_PAR","1",1);}
+    public String congresoActualizaDatosIndividualizado(List<CP> partidos){
+        StringBuilder signal = new StringBuilder();
+        partidos.forEach(par-> signal.append(eventBuild("TICKER/"+par.getId().getPartido()+"/HaCambiado","MAP_INT_PAR","1",1)));
+        return signal.toString();
+    }
+    public String congresoActualizaPosiciones() {return eventBuild("TICKER/CambiaOrden","MAP_INT_PAR","1",1);}
+    public String congresoActualizaNumPartidos() {return eventBuild("TICKER/CambiaNPartidos","MAP_INT_PAR","1",1);}
     public String congresoSale() {return eventRunBuild("TICKER/SALE");}
 
     //DESPLIEGO_4

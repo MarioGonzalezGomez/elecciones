@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="cambio de bases de datos">
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Cambio manual BD">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerCongreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerCongreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerSenado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/hibernate/HibernateControllerSenado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFFaldonesMessageBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFFaldonesMessageBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689248519155</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Cambio manual BD">
+      <created>1689263445492</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1689263445492</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -295,7 +301,8 @@
     <MESSAGE value="Borrado sysos innecesario y correccion en carga de circunscripciones" />
     <MESSAGE value="Refresco automatico tablas" />
     <MESSAGE value="cambio de bases de datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambio de bases de datos" />
+    <MESSAGE value="Cambio manual BD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambio manual BD" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elecciones$Main.ic" NAME="Main Coverage Results" MODIFIED="1689239120026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
