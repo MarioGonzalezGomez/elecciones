@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 public class ConfigView extends JFrame {
 
     public static String conexionBD = "";
+    public static boolean cambioBD = false;
     private JLabel labelTemp;
 
 
@@ -235,25 +236,36 @@ public class ConfigView extends JFrame {
         // graficosController.conectPrincipal();
         conexionBD = "BD PRINCIPAL";
         System.out.println("AAAAA");
+        cambioBD = true;
+
         HibernateControllerSenado.cambioPrincipal();
         HibernateControllerCongreso.cambioPrincipal();
         labelTemp.setText(conexionBD);
+        cambioBD = false;
     }
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectReserva();
         conexionBD = "BD RESERVA";
+        cambioBD = true;
+
         HibernateControllerSenado.cambioReserva();
         HibernateControllerCongreso.cambioReserva();
         labelTemp.setText(conexionBD);
+        cambioBD = false;
+
     }
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectLocal();
         conexionBD = "BD LOCAL";
+        cambioBD = true;
+
         HibernateControllerSenado.cambioLocal();
         HibernateControllerCongreso.cambioLocal();
         labelTemp.setText(conexionBD);
+        cambioBD = false;
+
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
