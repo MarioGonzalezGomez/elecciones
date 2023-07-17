@@ -174,9 +174,7 @@ public class Listeners {
     }
 
     private boolean escanosOficialChanged(List<CP> changedCP) {
-        if (Home.bs == null && Home.bs != null) {
-            Home.bs = Home.bs;
-        } else if (Home.bs == null) {
+        if (Home.bs == null) {
             System.out.println("BS ES NULO");
         }
         var cpDto = oldData.getCpDTO();
@@ -196,65 +194,60 @@ public class Listeners {
     }
 
     public void listenSenado() {
-
-
-        if (!isSuscribedSenado.get()) {
-            System.out.println("Escuchando senado");
-            isSuscribedSenado.set(true);
-            ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
-            exec.scheduleAtFixedRate(() -> {
-                System.out.println("BUscando cambios en senado...");
-                try {
-                    if (!ConfigView.cambioBD) {
-                        if (circunscripcionSenado.isEmpty()) {
-                            circunscripcionSenado = circunscripcionController.getAllCircunscripcionesSenado();
-                        } else {
-                            HibernateControllerSenado.getInstance().getManager().clear();
-                            List<Circunscripcion> circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
-                            if (Home.tipoElecciones == 3 && !circunscripcionesNew.equals(circunscripcionSenado)) {
-                                if (Home.bs != null) {
-                                    System.out.println("Cambio detectado en senado");
-                                    var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
-                                    var cps = cpController.findByIdCircunscripcionSenado("9900000");
-
-                                    circunscripcionSenado = circunscripcionesNew;
-
-                                    var changesCod = changes.stream().map(Circunscripcion::getCodigo).toList();
-                                    //TODO(ACOTAR SOLO ESPAÑA)
-                                    cpController.findByIdCircunscripcionOficial("9900000");
-                                    var cpChanged = cps.stream().filter(
-                                            cp -> changesCod.contains(cp.getId().getCircunscripcion())).toList();
-
-                                    //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
-                                    BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000", Home.avance);
-                                    Home.getInstance().showDataTable(dto);
-                                    bscon.getBrainStormDTOSenadoInCsv(dto);
-                                    if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
-                                        ipf.congresoActualizaNumPartidos();
-                                    }
-
-                                    //TODO(detectar si hay algún partido distinto)
-                                    else if (orderChanged(cpChanged)) {
-                                        ipf.senadoActualizaPosiciones();
-                                    } else if (escanosOficialChanged(cpChanged)) {
-                                        ipf.senadoActualizaDatos();
-                                    } else {
-                                        ipf.senadoActualizaEscrutado();
-                                    }
-
-                                } else {
-                                    System.out.println("BS ES NULO");
-                                }
-                            }
-                        }
-                    } else {
-                        System.out.println("Esperando cambio de base de datos");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }, 0, 7, TimeUnit.SECONDS);
-        }
+        //if (!isSuscribedSenado.get()) {
+        //    System.out.println("Escuchando senado");
+        //    isSuscribedSenado.set(true);
+        //    ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+        //    exec.scheduleAtFixedRate(() -> {
+        //        System.out.println("BUscando cambios en senado...");
+        //        try {
+        //            if (!ConfigView.cambioBD) {
+        //                if (circunscripcionSenado.isEmpty()) {
+        //                    circunscripcionSenado = circunscripcionController.getAllCircunscripcionesSenado();
+        //                } else {
+        //                    HibernateControllerSenado.getInstance().getManager().clear();
+        //                    List<Circunscripcion> circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
+        //                    if (Home.tipoElecciones == 3 && !circunscripcionesNew.equals(circunscripcionSenado)) {
+        //                        if (Home.bs != null) {
+        //                            System.out.println("Cambio detectado en senado");
+        //                            var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
+        //                            var cps = cpController.findByIdCircunscripcionSenado("9900000");
+//
+        //                            circunscripcionSenado = circunscripcionesNew;
+//
+        //                            var changesCod = changes.stream().map(Circunscripcion::getCodigo).toList();
+        //                            //TODO(ACOTAR SOLO ESPAÑA)
+        //                            cpController.findByIdCircunscripcionOficial("9900000");
+        //                            var cpChanged = cps.stream().filter(
+        //                                    cp -> changesCod.contains(cp.getId().getCircunscripcion())).toList();
+//
+        //                            //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
+        //                            BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000", Home.avance);
+        //                            Home.getInstance().showDataTable(dto);
+        //                            bscon.getBrainStormDTOSenadoInCsv(dto);
+        //                            ipf.senadoActualizaEscrutado();
+        //                            if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
+        //                                ipf.congresoActualizaNumPartidos();
+        //                            }
+        //                            //TODO(detectar si hay algún partido distinto)
+        //                            else if (orderChanged(cpChanged)) {
+        //                                ipf.senadoActualizaPosiciones();
+        //                            } else if (escanosOficialChanged(cpChanged)) {
+        //                                ipf.senadoActualizaDatos();
+        //                            }
+        //                        } else {
+        //                            System.out.println("BS ES NULO");
+        //                        }
+        //                    }
+        //                }
+        //            } else {
+        //                System.out.println("Esperando cambio de base de datos");
+        //            }
+        //        } catch (Exception e) {
+        //            e.printStackTrace();
+        //        }
+        //    }, 0, 7, TimeUnit.SECONDS);
+        //}
     }
 
 
@@ -268,10 +261,10 @@ public class Listeners {
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
                 try {
-                System.out.println("BUscando cambios en congreso...");
+                    System.out.println("BUscando cambios en congreso...");
 
-                if (Home.bs != null)
-                    oldData = Home.bs;
+                    if (Home.bs != null)
+                        oldData = Home.bs;
 
                     if (!ConfigView.cambioBD) {
                         if (circunscripcionList.isEmpty()) {
@@ -296,12 +289,11 @@ public class Listeners {
                                         BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000", Home.avance);
                                         Home.getInstance().showDataTable(dto);
                                         bscon.getBrainStormDTOOficialCongresoInCsv(dto);
-
                                         ipf.congresoActualizaEscrutado();
                                         if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
                                             ipf.congresoActualizaNumPartidos();
                                         }
-                                        if (orderChanged(cpChanged)) {
+                                        else if (orderChanged(cpChanged)) {
                                             ipf.congresoActualizaPosiciones();
                                         } else if (escanosOficialChanged(cpChanged)) {
                                             //ipf.congresoActualizaDatos();
