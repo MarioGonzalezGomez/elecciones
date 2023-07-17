@@ -101,6 +101,30 @@ public class IPFSender {
         return mensaje;
     }
 
+    public String congresoVotosEntra() {
+        String mensaje = faldonesBuilder.congresoVotosEntra();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoVotosSale() {
+        String mensaje = faldonesBuilder.congresoVotosSale();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoHistoricosEntra() {
+        String mensaje = faldonesBuilder.congresoHistoricosEntra();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoHistoricosSale() {
+        String mensaje = faldonesBuilder.congresoHistoricosSale();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     //DESPLIEGA_4
     public String cuatroPrimeros() {
         String mensaje = faldonesBuilder.cuatroPrimeros();
@@ -139,29 +163,36 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String congresoSondeoActualizaEscrutado() {
-        String mensaje = faldonesBuilder.congresoSondeoActualizaEscrutado();
-        c.enviarMensaje(mensaje);
-        return mensaje;
-    }
-
-    public String congresoSondeoActualizaDatos() {
-        String mensaje = faldonesBuilder.congresoSondeoActualizaDatos();
-        c.enviarMensaje(mensaje);
-        return mensaje;
-    }
-
-    public String congresoSondeoActualizaPosiciones() {
-        String mensaje = faldonesBuilder.congresoSondeoActualizaPosiciones();
-        c.enviarMensaje(mensaje);
-        return mensaje;
-    }
-
     public String congresoSondeoSale() {
         String mensaje = faldonesBuilder.congresoSondeoSale();
         c.enviarMensaje(mensaje);
         return mensaje;
     }
+
+    public String congresoSondeoVotosEntra() {
+        String mensaje = faldonesBuilder.congresoSondeoVotosEntra();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoSondeoVotosSale() {
+        String mensaje = faldonesBuilder.congresoSondeoVotosSale();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoSondeoHistoricosEntra() {
+        String mensaje = faldonesBuilder.congresoSondeoHistoricosEntra();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoSondeoHistoricosSale() {
+        String mensaje = faldonesBuilder.congresoSondeoHistoricosSale();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
 
     //GIROS
     public String deCongresoASenado() {

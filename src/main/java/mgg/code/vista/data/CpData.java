@@ -35,6 +35,17 @@ public class CpData {
         return res;
     }
 
+    public static List<CpData> fromCPDto(List<CpDTO> cps) {
+        List<CpData> res = new ArrayList<>();
+        for (CpDTO cpDTO : cps) {
+            res.add(new CpData(
+                    cpDTO.getCodigoPartido(), cpDTO.getSiglas(), cpDTO.getEscanos_desde(), cpDTO.getEscanos_hasta(),
+                    cpDTO.getEscanos_hasta_hist(), cpDTO.getPorcentajeVoto(), cpDTO.getNumVotantes(),
+                    cpDTO.getEscanos_desde_sondeo(), cpDTO.getEscanos_hasta_sondeo(), cpDTO.getPorcentajeVotoSondeo()));
+        }
+        return res;
+    }
+
     public static CpData fromCP(CP cp, String siglas) {
 
         return new CpData(

@@ -46,6 +46,11 @@ public class IPFFaldonesMessageBuilder {
     public String congresoActualizaNumPartidos() {return eventBuild("TICKER/CambiaNPartidos","MAP_INT_PAR","1",1);}
     public String congresoSale() {return eventRunBuild("TICKER/SALE");}
 
+    public String congresoVotosEntra() {return eventRunBuild("TICKER/VOTOS/ENTRA");}
+    public String congresoVotosSale() {return eventRunBuild("TICKER/VOTOS/SALE");}
+    public String congresoHistoricosEntra() {return eventRunBuild("TICKER/HISTORICOS/ENTRA");}
+    public String congresoHistoricosSale() {return eventRunBuild("TICKER/HISTORICOS/SALE");}
+
     //DESPLIEGO_4
     public String cuatroPrimeros() {return eventRunBuild("TICKER/DESPLIEGO_4");}
     public String despliego(String codPartido) {return eventRunBuild("TICKER/VIDEO_"+ codPartido +"/ENTRA");}
@@ -70,6 +75,11 @@ public class IPFFaldonesMessageBuilder {
     public String congresoSondeoEntra() {return eventRunBuild("TICKER_SONDEO/ENTRA");}
     public String congresoSondeoSale() {return eventRunBuild("TICKER_SONDEO/SALE");}
 
+    public String congresoSondeoVotosEntra() {return eventRunBuild("TICKER_SONDEO/VOTOS/ENTRA");}
+    public String congresoSondeoVotosSale() {return eventRunBuild("TICKER_SONDEO/VOTOS/SALE");}
+    public String congresoSondeoHistoricosEntra() {return eventRunBuild("TICKER_SONDEO/HISTORICOS/ENTRA");}
+    public String congresoSondeoHistoricosSale() {return eventRunBuild("TICKER_SONDEO/HISTORICOS/SALE");}
+
     //GIROS
     public String deCongresoASenado() {
         return eventRunBuild("CONGRESOaSENADO");
@@ -80,6 +90,8 @@ public class IPFFaldonesMessageBuilder {
     public String deSondeoACongreso() {
         return eventRunBuild("SONDEOaCONGRESO");
     }
+
+
 
     //RESET
     public String resetIPF() {

@@ -289,11 +289,11 @@ public class Listeners {
                                     }
                                     //TODO(detectar si hay algún partido distinto)
                                     else if (orderChanged(cpChanged)) {
-                                        ipf.congresoSondeoActualizaPosiciones();
+                                       // ipf.congresoSondeoActualizaPosiciones();
                                     } else if (escanosSondeoDesdeChanged(cpChanged) || escanosSondeoHastaChanged(cpChanged)) {
-                                        ipf.congresoSondeoActualizaDatos();
+                                       // ipf.congresoSondeoActualizaDatos();
                                     } else {
-                                        ipf.congresoSondeoActualizaEscrutado();
+                                       // ipf.congresoSondeoActualizaEscrutado();
                                     }
                                     ipf.congresoActualiza();
 
