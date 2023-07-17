@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="mover botones">
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Sigue habiendo cambios">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -313,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689601943435</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Sigue habiendo cambios">
+      <created>1689608220847</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1689608220847</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -340,7 +347,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Autonomias OK" />
     <MESSAGE value=".." />
     <MESSAGE value="Operativo pero con retardo" />
     <MESSAGE value="Doble llamada CSV resuelta" />
@@ -365,7 +371,8 @@
     <MESSAGE value="Despliega sondeo" />
     <MESSAGE value="Videos Sondeo OK" />
     <MESSAGE value="mover botones" />
-    <option name="LAST_COMMIT_MESSAGE" value="mover botones" />
+    <MESSAGE value="Sigue habiendo cambios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sigue habiendo cambios" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -374,11 +381,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java</url>
           <line>278</line>
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java</url>
-          <line>292</line>
-          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

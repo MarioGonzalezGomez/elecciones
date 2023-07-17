@@ -65,6 +65,8 @@ public class Home extends JFrame {
     private boolean resCongresoSonIn = false;
     private boolean resSenadoIn = false;
 
+    private boolean votosIn = false;
+    private boolean historicosIn = false;
     private boolean desplegado = false;
     public static String avance = "1";
 
@@ -750,10 +752,13 @@ public class Home extends JFrame {
     private void btnDesplegarVideoActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             if (!desplegado) {
-                if (oficiales) {
-                    ipf.congresoHistoricosEntra();
-                } else {
-                    ipf.congresoSondeoHistoricosEntra();
+                if (!votosIn) {
+                    if (oficiales) {
+                        ipf.congresoHistoricosEntra();
+                    } else {
+                        ipf.congresoSondeoHistoricosEntra();
+                    }
+                    historicosIn = true;
                 }
             } else {
                 int position = tablaDatos.getSelectedRow();
@@ -804,10 +809,13 @@ public class Home extends JFrame {
     private void btnDesplegarDirectoActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             if (!desplegado) {
-                if (oficiales) {
-                    ipf.congresoVotosEntra();
-                } else {
-                    ipf.congresoSondeoVotosEntra();
+                if (!historicosIn) {
+                    if (oficiales) {
+                        ipf.congresoVotosEntra();
+                    } else {
+                        ipf.congresoSondeoVotosEntra();
+                    }
+                    votosIn = true;
                 }
             } else {
                 int position = tablaDatos.getSelectedRow();
@@ -831,6 +839,7 @@ public class Home extends JFrame {
         if (tipoElecciones == 2) {
             ipf.congresoSondeoVotosSale();
         }
+        votosIn = false;
     }
 
     private void btnHistoricosOutActionPerformed(ActionEvent actionEvent) {
@@ -840,6 +849,7 @@ public class Home extends JFrame {
         if (tipoElecciones == 2) {
             ipf.congresoSondeoHistoricosSale();
         }
+        historicosIn = false;
     }
 
     private void loadSelectedCongreso(String cod) {
