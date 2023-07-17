@@ -597,10 +597,12 @@ public class Home extends JFrame {
                                                 .addComponent(btnDesplegarVideo)
                                                 .addGap(30, 30, 30)
                                                 .addComponent(btnReplegar)
-                                                .addGap(18, 18, 18)
+                                                .addGap(18, 18, 18)).
+                                        addGroup(layout.createSequentialGroup()
                                                 .addComponent(btnVotosOut)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btnHistoricosOut)).
+                                                .addComponent(btnHistoricosOut)
+                                                .addGap(145, 145, 145)).
                                         addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup().
                                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING).
                                                         addGroup(layout.createSequentialGroup().
@@ -678,7 +680,8 @@ public class Home extends JFrame {
                                         addComponent(btnReset, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
                                         addComponent(btnDesplegarDirecto, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
                                         addComponent(btnDesplegarVideo, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
-                                        addComponent(btnReplegar, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
+                                        addComponent(btnReplegar, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)).
+                                addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
                                         addComponent(btnVotosOut, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
                                         addComponent(btnHistoricosOut, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)).
                                 addGap(19, 19, 19))
