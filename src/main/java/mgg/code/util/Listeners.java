@@ -81,7 +81,6 @@ public class Listeners {
                 }
             }
         }
-        System.out.println(partidosRes);
         return partidosRes;
     }
 
@@ -204,6 +203,7 @@ public class Listeners {
             isSuscribedSenado.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
+                System.out.println("BUscando cambios en senado...");
                 try {
                     if (!ConfigView.cambioBD) {
                         if (circunscripcionSenado.isEmpty()) {
@@ -229,12 +229,10 @@ public class Listeners {
                                     BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000", Home.avance);
                                     Home.getInstance().showDataTable(dto);
                                     bscon.getBrainStormDTOSenadoInCsv(dto);
-                                    if (numeroPartidosChange(cpChanged)) {
+                                    if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
                                         ipf.congresoActualizaNumPartidos();
                                     }
-                                    if (partidosDistintos(cpChanged)) {
-                                        ipf.congresoActualizaNumPartidos();
-                                    }
+
                                     //TODO(detectar si hay algún partido distinto)
                                     else if (orderChanged(cpChanged)) {
                                         ipf.senadoActualizaPosiciones();
@@ -255,7 +253,7 @@ public class Listeners {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }, 0, 15, TimeUnit.SECONDS);
+            }, 0, 7, TimeUnit.SECONDS);
         }
     }
 
@@ -263,14 +261,18 @@ public class Listeners {
     private BrainStormDTO oldData;
 
     public void listenCongreso() {
+
         if (!isSuscribed.get()) {
             System.out.println("Escuchando congreso");
             isSuscribed.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
+                try {
+                System.out.println("BUscando cambios en congreso...");
+
                 if (Home.bs != null)
                     oldData = Home.bs;
-                try {
+
                     if (!ConfigView.cambioBD) {
                         if (circunscripcionList.isEmpty()) {
                             circunscripcionList = circunscripcionController.getAllCircunscripciones();
@@ -296,12 +298,10 @@ public class Listeners {
                                         bscon.getBrainStormDTOOficialCongresoInCsv(dto);
 
                                         ipf.congresoActualizaEscrutado();
-                                        if (numeroPartidosChange(cpChanged)) {
+                                        if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
                                             ipf.congresoActualizaNumPartidos();
                                         }
-                                        if (partidosDistintos(cpChanged)) {
-                                            ipf.congresoActualizaNumPartidos();
-                                        } else if (orderChanged(cpChanged)) {
+                                        if (orderChanged(cpChanged)) {
                                             ipf.congresoActualizaPosiciones();
                                         } else if (escanosOficialChanged(cpChanged)) {
                                             //ipf.congresoActualizaDatos();
@@ -321,7 +321,7 @@ public class Listeners {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }, 0, 15, TimeUnit.SECONDS);
+            }, 0, 7, TimeUnit.SECONDS);
         }
     }
 
