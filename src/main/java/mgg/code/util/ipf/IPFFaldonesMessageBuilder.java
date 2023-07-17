@@ -23,14 +23,14 @@ public class IPFFaldonesMessageBuilder {
 
     //SENADO
     public String senadoEntra() {
-        return eventRunBuild("SENADO/ENTRA");
+        return eventRunBuild("TICKER_SENADO/ENTRA");
     }
     public String senadoActualizaEscrutado() {
-        return eventRunBuild("SENADO/ACTUALIZO_ESCRUTADO");
+        return eventRunBuild("TICKER_SENADO/CambiaEscrutado");
     }
-    public String senadoActualizaDatos() {return eventRunBuild("SENADO/ACTUALIZO_DATOS");}
-    public String senadoActualizaPosiciones() {return eventRunBuild("SENADO/ACTUALIZO_POSICIONES");}
-    public String senadoSale() {return eventRunBuild("SENADO/SALE");}
+    public String senadoActualizaDatos() {return eventRunBuild("TICKER_SENADO/CambiaResultado");}
+    public String senadoActualizaPosiciones() {return eventRunBuild("TICKER_SENADO/CambiaOrden");}
+    public String senadoSale() {return eventRunBuild("TICKER_SENADO/SALE");}
 
     //TICKER
     public String congresoEntra() {return eventRunBuild("TICKER/ENTRA");}
@@ -67,11 +67,8 @@ public class IPFFaldonesMessageBuilder {
     }
 
     //SONDEO
-    public String congresoSondeoEntra() {return eventRunBuild("SONDEO/ENTRA");}
-    public String congresoSondeoActualizaEscrutado() {return eventRunBuild("SONDEO/ACTUALIZO_ESCRUTADO");}
-    public String congresoSondeoActualizaDatos() {return eventRunBuild("SONDEO/ACTUALIZO_DATOS");}
-    public String congresoSondeoActualizaPosiciones() {return eventRunBuild("SONDEO/ACTUALIZO_POSICIONES");}
-    public String congresoSondeoSale() {return eventRunBuild("SONDEO/SALE");}
+    public String congresoSondeoEntra() {return eventRunBuild("TICKER_SONDEO/ENTRA");}
+    public String congresoSondeoSale() {return eventRunBuild("TICKER_SONDEO/SALE");}
 
     //GIROS
     public String deCongresoASenado() {
