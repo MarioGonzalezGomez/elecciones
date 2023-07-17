@@ -1196,6 +1196,8 @@ public class Home extends JFrame {
         resCongresoOfiIn = false;
         resCongresoSonIn = false;
         desplegado = false;
+        votosIn=false;
+        historicosIn=false;
     }
 
     private void btnConfigActionPerformed(ActionEvent evt) {
