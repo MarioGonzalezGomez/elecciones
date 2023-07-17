@@ -23,6 +23,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 //todo(Lista de cambios de partidos y cambio numero de partidos)
 //TODO(Señal cambia numero partidos si cambia el número de partidos o si cambian los partidos que hay)
@@ -92,7 +93,7 @@ public class Listeners {
             System.out.println("BS ES NULO");
         }
         var codNew = newPartidos.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).map(x -> x.getId().getPartido()).toList();
-        var codOld = Home.bs.getCpDTO().stream().map(CpDTO::getCodigoPartido).toList();
+        var codOld = oldData.getCpDTO().stream().map(CpDTO::getCodigoPartido).toList();
 
         var distint = new HashSet<>(codNew).containsAll(codOld);
         //System.out.println(distint);
@@ -113,9 +114,10 @@ public class Listeners {
         } else if (Home.bs == null) {
             System.out.println("BS ES NULO");
         }
-        if (newPartidos.size() == Home.bs.getCpDTO().size()) {
-            for (int i = 0; i < newPartidos.size(); i++) {
-                if (!newPartidos.get(i).getId().getPartido().equals(Home.bs.getCpDTO().get(i).getCodigoPartido()))
+        var filtered = newPartidos.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).toList();
+        if (filtered.size() == oldData.getCpDTO().size()) {
+            for (int i = 0; i < filtered.size(); i++) {
+                if (!filtered.get(i).getId().getPartido().equals(oldData.getCpDTO().get(i).getCodigoPartido()))
                     return true;
             }
         }
@@ -179,7 +181,8 @@ public class Listeners {
             System.out.println("BS ES NULO");
         }
         var cpDto = oldData.getCpDTO();
-        for (CP cp : changedCP) {
+        var filtered = changedCP.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).toList();
+        for (CP cp : filtered) {
             var filter = cpDto.stream().filter(x -> Objects.equals(x.getCodigoPartido(), cp.getId().getPartido())).toList();
             if (!filter.isEmpty()) {
                 var dtoAux = filter.get(0);
@@ -300,7 +303,7 @@ public class Listeners {
                                             ipf.congresoActualizaNumPartidos();
                                         } else if (orderChanged(cpChanged)) {
                                             ipf.congresoActualizaPosiciones();
-                                        } else if (!escanosOficialChanged(cpChanged)) {
+                                        } else if (escanosOficialChanged(cpChanged)) {
                                             //ipf.congresoActualizaDatos();
                                             var partidosChanged = partidosChanged(cpChanged);
                                             ipf.congresoActualizaDatosIndividualizado(partidosChanged);
