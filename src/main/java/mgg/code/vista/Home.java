@@ -93,14 +93,18 @@ public class Home extends JFrame {
     }
 
     public void showDataTable(BrainStormDTO bs) {
-        List<CpData> datos;
-        if (desplegado) {
-            datos = CpData.fromCPDto(bs.getCpDTO().subList(0, 4));
+        if (tablaGraficos.getSelectedRow() == 2) {
+            printDataVotantes();
         } else {
-            datos = CpData.fromBrainStormDto(bs);
+            List<CpData> datos;
+            if (desplegado) {
+                datos = CpData.fromCPDto(bs.getCpDTO().subList(0, 4));
+            } else {
+                datos = CpData.fromBrainStormDto(bs);
+            }
+            printData(datos);
+            cargarLabels(bs);
         }
-        printData(datos);
-        cargarLabels(bs);
     }
 
     private void cargarLabels(BrainStormDTO bs) {
@@ -164,7 +168,7 @@ public class Home extends JFrame {
 
 
         tablaDatos.setModel(tableModel);
-        BrainStormDTO votantesDTO = bscon.getBrainStormDTOOficial("9900000", avance);
+        BrainStormDTO votantesDTO = bs;
         var list = votantesDTO.getCpDTO().stream().sorted(new CPVotantes().reversed());
         list.forEach(cpDTO -> {
             Object[] rowData = {cpDTO.getCodigoPartido(), cpDTO.getSiglas(), cpDTO.getNumVotantes()};
@@ -694,7 +698,7 @@ public class Home extends JFrame {
                     btnDesplegarVideo.setText("HISTORICOS IN");
                     btnDesplegarDirecto.setText("VOTOS IN");
                 } else if (tablaGraficos.getSelectedRow() != -1) {
-                    desplegado=false;
+                    desplegado = false;
                     btnDesplegarVideo.setVisible(false);
                     btnDesplegarDirecto.setVisible(false);
                     btnVotosOut.setVisible(false);
@@ -704,9 +708,9 @@ public class Home extends JFrame {
                 if (tablaGraficos.getSelectedRow() == 1) {
                     vaciarTablas();
                     codAutonomia = "9900000";
-                    if(tipoElecciones==3){
+                    if (tipoElecciones == 3) {
                         bs = bscon.getBrainStormDTOSenado(codAutonomia, avance);
-                    }else{
+                    } else {
                         bs = bscon.getBrainStormDTOOficial(codAutonomia, avance);
                     }
                     showDataTable(bs);
@@ -728,6 +732,11 @@ public class Home extends JFrame {
                         bs = bscon.getBrainStormDTOSenado(codAutonomia, avance);
                         bscon.getBrainStormDTOSenadoInCsv(bs);
                     }
+                }
+                if (tablaGraficos.getSelectedRow() == 2) {
+                    vaciarTablas();
+                    printDataVotantes();
+                } else {
                     showDataTable(bs);
                 }
             }
