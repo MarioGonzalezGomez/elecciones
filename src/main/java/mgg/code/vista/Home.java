@@ -259,7 +259,6 @@ public class Home extends JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         jScrollPane1 = new JScrollPane();
         tablaDatos = new JTable();
@@ -761,7 +760,7 @@ public class Home extends JFrame {
                     if (oficiales) {
                         ipf.despliego(codPartido);
                     } else {
-                        ipf.despliegoSondeo(codPartido);
+                        ipf.despliegoSondeo(position + 1);
                     }
                 }
             }
@@ -792,7 +791,7 @@ public class Home extends JFrame {
                     if (oficiales) {
                         ipf.repliego(codPartido);
                     } else {
-                        ipf.repliegoSondeo(codPartido);
+                        ipf.repliegoSondeo(position + 1);
                     }
                 }
             }
@@ -815,7 +814,7 @@ public class Home extends JFrame {
                     if (oficiales) {
                         ipf.despliego(codPartido);
                     } else {
-                        ipf.despliegoSondeo(codPartido);
+                        ipf.despliegoSondeo(position + 1);
                     }
                 }
             }
@@ -1238,9 +1237,9 @@ public class Home extends JFrame {
         }
 
 
-    }//GEN-LAST:event_btnConfigActionPerformed
+    }
 
-    private void btnActualizarActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    private void btnActualizarActionPerformed(ActionEvent evt) {
         //graficosController.update();
     }
 

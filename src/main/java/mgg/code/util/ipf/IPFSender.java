@@ -164,14 +164,14 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String despliegoSondeo(String codPartido) {
-        String mensaje = faldonesBuilder.despliegoSondeo(codPartido);
+    public String despliegoSondeo(int posicion) {
+        String mensaje = faldonesBuilder.despliegoSondeo(posicion);
         c.enviarMensaje(mensaje);
         return mensaje;
     }
 
-    public String repliegoSondeo(String codPartido) {
-        String mensaje = faldonesBuilder.repliegoSondeo(codPartido);
+    public String repliegoSondeo(int posicion) {
+        String mensaje = faldonesBuilder.repliegoSondeo(posicion);
         c.enviarMensaje(mensaje);
         return mensaje;
     }

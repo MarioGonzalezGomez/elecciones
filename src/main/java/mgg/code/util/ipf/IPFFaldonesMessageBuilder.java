@@ -73,8 +73,8 @@ public class IPFFaldonesMessageBuilder {
 
     //DESPLIEGO_4_SONDEO
     public String cuatroPrimerosSondeo() {return eventRunBuild("TICKER_SONDEO/DESPLIEGO_4");}
-    public String despliegoSondeo(String codPartido) {return eventRunBuild("TICKER_SONDEO/VIDEO_"+ codPartido +"/ENTRA");}
-    public String repliegoSondeo(String codPartido) {return eventRunBuild("TICKER_SONDEO/VIDEO_"+ codPartido +"/SALE");}
+    public String despliegoSondeo(int posicion) {return eventRunBuild("TICKER_SONDEO/VIDEO_"+ posicion +"/ENTRA");}
+    public String repliegoSondeo(int posicion) {return eventRunBuild("TICKER_SONDEO/VIDEO_"+ posicion +"/SALE");}
     public String recuperoTodosSondeo() {return eventRunBuild("TICKER_SONDEO/RECUPERO_TODOS");}
 
     //SONDEO
