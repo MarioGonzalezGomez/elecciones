@@ -585,9 +585,9 @@ public class Home extends JFrame {
                                         addGroup(layout.createSequentialGroup().
                                                 addComponent(btnReset, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                                                .addComponent(btnEntra)
+                                                .addComponent(btnEntra, 75, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGap(45, 45, 45)
-                                                .addComponent(btnSale)
+                                                .addComponent(btnSale, 75, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGap(50, 50, 50)
                                                 .addComponent(btnDesplegarDirecto)
                                                 .addGap(30, 30, 30)
@@ -612,6 +612,7 @@ public class Home extends JFrame {
                                                 addGap(31, 31, 31).
                                                 addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 519, GroupLayout.PREFERRED_SIZE))).
                                 addContainerGap())
+
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING).
@@ -669,8 +670,8 @@ public class Home extends JFrame {
                                                 addComponent(jScrollPane5, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))).
                                 addGap(31, 31, 31).
                                 addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                                        addComponent(btnEntra, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE).
-                                        addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE).
+                                        addComponent(btnEntra, 50, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).
+                                        addComponent(btnSale, 50, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).
                                         addComponent(btnReset, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
                                         addComponent(btnDesplegarDirecto, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
                                         addComponent(btnDesplegarVideo, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE).
@@ -693,6 +694,7 @@ public class Home extends JFrame {
                     btnDesplegarVideo.setText("HISTORICOS IN");
                     btnDesplegarDirecto.setText("VOTOS IN");
                 } else if (tablaGraficos.getSelectedRow() != -1) {
+                    desplegado=false;
                     btnDesplegarVideo.setVisible(false);
                     btnDesplegarDirecto.setVisible(false);
                     btnVotosOut.setVisible(false);
@@ -712,18 +714,6 @@ public class Home extends JFrame {
                     if (tablaComunidades.getRowCount() == 0) {
                         rellenarCCAA();
                     }
-                    /*
-                    SELECT * FROM elecciones_generales_2023.circunscripcion_partido;
-UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '0', `escanos_hasta` = '0' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00013');
-UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '1', `escanos_hasta` = '1' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00013');
-UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '1', `escanos_hasta` = '1' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00064');
-UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '0', `escanos_hasta` = '0' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00064');
-
-
-UPDATE `elecciones_generales_2023`.`circunscripciones` SET `escrutado` = '20' WHERE (`CIRCUNSCRIPCION` = '9900000');
-UPDATE `elecciones_generales_2023`.`circunscripciones` SET `escrutado` = '50' WHERE (`CIRCUNSCRIPCION` = '9900000');
-
-                     */
                     codAutonomia = "9900000";
                     if (tipoElecciones == 1 || tipoElecciones == 2) {
                         if (oficiales) {
@@ -878,8 +868,8 @@ UPDATE `elecciones_generales_2023`.`circunscripciones` SET `escrutado` = '50' WH
             btnDesplegarDirecto.setText("VOTOS IN");
             btnVotosOut.setVisible(true);
             btnHistoricosOut.setVisible(true);
-            showDataTable(bs);
             rellenarCCAA();
+            showDataTable(bs);
         } else {
             switch (tipoElecciones) {
                 //OFICIALES CONGRESO

@@ -306,25 +306,6 @@ public class Listeners {
                                             ipf.congresoActualizaDatosIndividualizado(partidosChanged);
                                         }
                                         ipf.congresoActualiza();
-                                    } else if (Home.tipoElecciones == 2) {
-                                        //TODO(Con sondeo no hay actualizaciones)
-                                        //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
-                                        BrainStormDTO dto = bscon.getBrainStormDTOSondeo("9900000", Home.avance);
-                                        Home.getInstance().showDataTable(dto);
-                                        bscon.getBrainStormDTOSondeoEspecialInCsv(dto);
-                                        if (numeroPartidosChange(cpChanged)) {
-                                            ipf.congresoActualizaNumPartidos();
-                                        }
-                                        //TODO(detectar si hay algún partido distinto)
-                                        else if (orderChanged(cpChanged)) {
-                                            ipf.congresoSondeoActualizaPosiciones();
-                                        } else if (escanosSondeoDesdeChanged(cpChanged) || escanosSondeoHastaChanged(cpChanged)) {
-                                            ipf.congresoSondeoActualizaDatos();
-                                        } else {
-                                            ipf.congresoSondeoActualizaEscrutado();
-                                        }
-                                        ipf.congresoActualiza();
-
                                     }
                                 } else {
                                     System.out.println("BS ES NULO");
