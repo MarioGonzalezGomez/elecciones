@@ -42,6 +42,7 @@ public class Home extends JFrame {
     }
 
     public static BrainStormDTO bs;
+    public static BrainStormDTO bsTemp = null;
     String selectedDb = "";
     CircunscripcionController circon = CircunscripcionController.getInstance();
     PartidoController parcon = PartidoController.getInstance();
@@ -667,6 +668,18 @@ public class Home extends JFrame {
                     if (tablaComunidades.getRowCount() == 0) {
                         rellenarCCAA();
                     }
+                    /*
+                    SELECT * FROM elecciones_generales_2023.circunscripcion_partido;
+UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '0', `escanos_hasta` = '0' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00013');
+UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '1', `escanos_hasta` = '1' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00013');
+UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '1', `escanos_hasta` = '1' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00064');
+UPDATE `elecciones_generales_2023`.`circunscripcion_partido` SET `escanos_desde` = '0', `escanos_hasta` = '0' WHERE (`COD_CIRCUNSCRIPCION` = '9900000') and (`COD_PARTIDO` = '00064');
+
+
+UPDATE `elecciones_generales_2023`.`circunscripciones` SET `escrutado` = '20' WHERE (`CIRCUNSCRIPCION` = '9900000');
+UPDATE `elecciones_generales_2023`.`circunscripciones` SET `escrutado` = '50' WHERE (`CIRCUNSCRIPCION` = '9900000');
+
+                     */
                     codAutonomia = "9900000";
                     if (tipoElecciones == 1 || tipoElecciones == 2) {
                         if (oficiales) {
