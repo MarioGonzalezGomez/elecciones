@@ -156,6 +156,31 @@ public class IPFSender {
         return mensaje;
     }
 
+    //DESPLIEGO_4_SONDEO
+
+    public String cuatroPrimerosSondeo() {
+        String mensaje = faldonesBuilder.cuatroPrimerosSondeo();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String despliegoSondeo(String codPartido) {
+        String mensaje = faldonesBuilder.despliegoSondeo(codPartido);
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String repliegoSondeo(String codPartido) {
+        String mensaje = faldonesBuilder.repliegoSondeo(codPartido);
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+    public String recuperoTodosSondeo() {
+        String mensaje = faldonesBuilder.recuperoTodosSondeo();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     //CONGRESO_SONDEO
     public String congresoSondeoEntra() {
         String mensaje = faldonesBuilder.congresoSondeoEntra();

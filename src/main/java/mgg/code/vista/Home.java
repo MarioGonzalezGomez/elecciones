@@ -758,7 +758,11 @@ public class Home extends JFrame {
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
                     ipf.esDirecto(false, tipoElecciones);
-                    ipf.despliego(codPartido);
+                    if (oficiales) {
+                        ipf.despliego(codPartido);
+                    } else {
+                        ipf.despliegoSondeo(codPartido);
+                    }
                 }
             }
         }
@@ -767,7 +771,11 @@ public class Home extends JFrame {
     private void btnReplegarActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             if (!desplegado) {
-                ipf.cuatroPrimeros();
+                if (tipoElecciones == 1) {
+                    ipf.cuatroPrimeros();
+                } else {
+                    ipf.cuatroPrimerosSondeo();
+                }
                 desplegado = true;
                 btnReplegar.setText("REPLIEGA");
                 btnDesplegarVideo.setText("DESPLIEGA VIDEO");
@@ -781,7 +789,11 @@ public class Home extends JFrame {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
-                    ipf.repliego(codPartido);
+                    if (oficiales) {
+                        ipf.repliego(codPartido);
+                    } else {
+                        ipf.repliegoSondeo(codPartido);
+                    }
                 }
             }
         }
@@ -800,7 +812,11 @@ public class Home extends JFrame {
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
                     ipf.esDirecto(true, tipoElecciones);
-                    ipf.despliego(codPartido);
+                    if (oficiales) {
+                        ipf.despliego(codPartido);
+                    } else {
+                        ipf.despliegoSondeo(codPartido);
+                    }
                 }
             }
         }
@@ -869,7 +885,11 @@ public class Home extends JFrame {
 
     private void btnEntraActionPerformed(ActionEvent evt) {
         if (desplegado) {
-            ipf.recuperoTodos();
+            if (oficiales) {
+                ipf.recuperoTodos();
+            } else {
+                ipf.recuperoTodosSondeo();
+            }
             desplegado = false;
             btnEntra.setText("ENTRA");
             btnReplegar.setText("DESPLIEGA 4");
@@ -1002,7 +1022,13 @@ public class Home extends JFrame {
                         }
                     }
                     //DESPLIEGA
-                    case 1 -> ipf.recuperoTodos();
+                    case 1 -> {
+                        if (oficiales) {
+                            ipf.recuperoTodos();
+                        } else {
+                            ipf.recuperoTodosSondeo();
+                        }
+                    }
                     //SEDES
                     case 2 -> {
                         System.out.println("Sale sedes");
@@ -1030,7 +1056,13 @@ public class Home extends JFrame {
                         }
                     }
                     //DESPLIEGA
-                    case 1 -> ipf.recuperoTodos();
+                    case 1 -> {
+                        if (oficiales) {
+                            ipf.recuperoTodos();
+                        } else {
+                            ipf.recuperoTodosSondeo();
+                        }
+                    }
                     //SEDES
                     case 2 -> {
                         System.out.println("Sale sedes");
@@ -1058,7 +1090,13 @@ public class Home extends JFrame {
                         }
                     }
                     //DESPLIEGA
-                    case 1 -> ipf.recuperoTodos();
+                    case 1 -> {
+                        if (oficiales) {
+                            ipf.recuperoTodos();
+                        } else {
+                            ipf.recuperoTodosSondeo();
+                        }
+                    }
                     //SEDES
                     case 2 -> {
                         System.out.println("Sale sedes");
