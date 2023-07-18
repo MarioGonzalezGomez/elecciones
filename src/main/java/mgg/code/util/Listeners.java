@@ -260,6 +260,8 @@ public class Listeners {
             exec.scheduleAtFixedRate(() -> {
                 try {
                     System.out.println("BUscando cambios en congreso...");
+                    if (oldData != null)
+                        System.out.println("Tamaño viejo = " + oldData.getNumPartidos());
 
                     if (Home.bs != null)
                         oldData = Home.bs;
@@ -294,12 +296,16 @@ public class Listeners {
                                         } else if (orderChanged(cpChanged)) {
                                             ipf.congresoActualizaPosiciones();
                                         } else if (escanosOficialChanged(cpChanged)) {
-                                            //ipf.congresoActualizaDatos();
                                             var partidosChanged = partidosChanged(cpChanged);
                                             ipf.congresoActualizaDatosIndividualizado(partidosChanged);
+                                            ipf.congresoActualizaDatos();
+
                                         }
                                         ipf.congresoActualiza();
                                     }
+                                    System.out.println("Tamaño nuevo = " + oldData.getNumPartidos());
+
+                                    //oldData = Home.bs;
                                 } else {
                                     System.out.println("BS ES NULO");
                                 }
