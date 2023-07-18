@@ -260,9 +260,6 @@ public class Listeners {
             exec.scheduleAtFixedRate(() -> {
                 try {
                     System.out.println("BUscando cambios en congreso...");
-                    if (oldData != null)
-                        System.out.println("Tamaño viejo = " + oldData.getNumPartidos());
-
                     if (Home.bs != null)
                         oldData = Home.bs;
 
@@ -303,7 +300,6 @@ public class Listeners {
                                         }
                                         ipf.congresoActualiza();
                                     }
-                                    System.out.println("Tamaño nuevo = " + oldData.getNumPartidos());
 
                                     //oldData = Home.bs;
                                 } else {
