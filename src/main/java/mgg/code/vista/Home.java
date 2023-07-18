@@ -750,20 +750,14 @@ public class Home extends JFrame {
     private void btnDesplegarVideoActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             if (!desplegado) {
-                if (votosIn) {
+                if (!votosIn) {
                     if (oficiales) {
-                        ipf.congresoVotosSale();
+                        ipf.congresoHistoricosEntra();
                     } else {
-                        ipf.congresoSondeoVotosSale();
+                        ipf.congresoSondeoHistoricosEntra();
                     }
-                    votosIn = false;
+                    historicosIn = true;
                 }
-                if (oficiales) {
-                    ipf.congresoHistoricosEntra();
-                } else {
-                    ipf.congresoSondeoHistoricosEntra();
-                }
-                historicosIn = true;
             } else {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
@@ -782,24 +776,18 @@ public class Home extends JFrame {
     private void btnDesplegarDirectoActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1 || tipoElecciones == 2) {
             if (!desplegado) {
-                if (historicosIn) {
+                if (!historicosIn) {
                     if (oficiales) {
-                        ipf.congresoHistoricosSale();
+                        ipf.congresoVotosEntra();
                     } else {
-                        ipf.congresoSondeoHistoricosSale();
+                        ipf.congresoSondeoVotosEntra();
                     }
-                    historicosIn = false;
-                }
-                if (oficiales) {
-                    ipf.congresoVotosEntra();
-                } else {
-                    ipf.congresoSondeoVotosEntra();
-                }
-                votosIn = true;
+                    votosIn = true;
 
-            } else {
-                if (tipoElecciones == 1) {
-                    ipf.congresoMillonesEntra();
+                } else {
+                    if (tipoElecciones == 1) {
+                        ipf.congresoMillonesEntra();
+                    }
                 }
             }
         }

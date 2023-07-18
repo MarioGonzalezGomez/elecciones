@@ -296,7 +296,6 @@ public class Listeners {
                                             var partidosChanged = partidosChanged(cpChanged);
                                             ipf.congresoActualizaDatosIndividualizado(partidosChanged);
                                             ipf.congresoActualizaDatos();
-
                                         }
                                         ipf.congresoActualiza();
                                     }
