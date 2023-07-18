@@ -287,7 +287,7 @@ public class Listeners {
                                         BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000", Home.avance);
                                         Home.getInstance().showDataTable(dto);
                                         bscon.getBrainStormDTOOficialCongresoInCsv(dto);
-                                        //primecon.findAllInExcel();
+                                        //primecon.findAllInExcel(primecon.findAll());
                                         ipf.congresoActualizaEscrutado();
                                         if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
                                             ipf.congresoActualizaNumPartidos();

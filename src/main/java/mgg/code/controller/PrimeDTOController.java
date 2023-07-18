@@ -50,8 +50,7 @@ public class PrimeDTOController {
         return listado;
     }
 
-    public void findAllInExcel() throws IOException {
-        List<PrimeDTO> primes = findAll();
+    public void findAllInExcel(List<PrimeDTO> primes) throws IOException {
         ExcelExportService excelExportService = new ExcelExportService();
         FileOutputStream outputStream = new FileOutputStream(ruta+ "\\PrimeData.xlsx");
         excelExportService.writeToExcel((RandomAccess) primes, 6,outputStream);

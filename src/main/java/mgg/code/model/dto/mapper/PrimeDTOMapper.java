@@ -3,6 +3,8 @@ package mgg.code.model.dto.mapper;
 import mgg.code.model.CP;
 import mgg.code.model.Circunscripcion;
 import mgg.code.model.Partido;
+import mgg.code.model.dto.BrainStormDTO;
+import mgg.code.model.dto.CpDTO;
 import mgg.code.model.dto.CpPrimeDTO;
 import mgg.code.model.dto.PrimeDTO;
 import mgg.code.util.LecturaFicheroColores;
@@ -38,6 +40,32 @@ public class PrimeDTOMapper {
                 .escrutado(c.getEscrutado())
                 .cps(primes)
                 .build();
+    }
+
+    public PrimeDTO fromBS(BrainStormDTO bs) {
+
+        return PrimeDTO.builder()
+                .nombreCircunscripcion(bs.getCircunscripcion().getNombreCircunscripcion())
+                .codigoCircunscripcion(bs.getCircunscripcion().getCodigo())
+                .escrutado(bs.getCircunscripcion().getEscrutado())
+                .escaniosTotales(bs.getCircunscripcion().getEscanios())
+                .cps(fromCPDTO(bs.getCpDTO()))
+                .build();
+    }
+
+    private List<CpPrimeDTO> fromCPDTO(List<CpDTO> cps) {
+        ArrayList<CpPrimeDTO> listado = new ArrayList<>();
+        cps.forEach(cp -> {
+            CpPrimeDTO temp = CpPrimeDTO.builder()
+                    .votantes(String.format("%,d", cp.getNumVotantes()))
+                    .codigoPartido(cp.getCodigoPartido())
+                    .color("#FFFFFF")
+                    .escaniosHistorico(cp.getEscanos_hasta_hist())
+                    .escanios(cp.getEscanos_hasta())
+                    .build();
+            listado.add(temp);
+        });
+        return listado;
     }
 
     private Map<String, String> crearMapaPartidos() {
