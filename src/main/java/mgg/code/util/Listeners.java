@@ -105,9 +105,7 @@ public class Listeners {
     }
 
     private boolean orderChanged(List<CP> newPartidos) {
-        if (Home.bs == null && Home.bs != null) {
-            Home.bs = Home.bs;
-        } else if (Home.bs == null) {
+        if (Home.bs == null) {
             System.out.println("BS ES NULO");
         }
         var filtered = newPartidos.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).toList();
@@ -148,9 +146,7 @@ public class Listeners {
 
 
     private boolean escanosSondeoDesdeChanged(List<CP> changedCP) {
-        if (Home.bs == null && Home.bs != null) {
-            Home.bs = Home.bs;
-        } else if (Home.bs == null) {
+        if (Home.bs == null) {
             System.out.println("BS ES NULO");
         }
         var cpDto = oldData.getCpDTO();
