@@ -39,9 +39,8 @@ public class PrimeDTOController {
     public List<PrimeDTO> findAll() {
         PrimeDTOMapper mapper = new PrimeDTOMapper();
         List<PrimeDTO> listado = new ArrayList<>();
-        List<Circunscripcion> circunscripciones = cirCon.getAllCircunscripciones().stream().filter(cir -> cir.getCodigo().endsWith("00000")).filter(cir -> !cir.getCodigo().startsWith("99")).toList();
+        List<Circunscripcion> circunscripciones = cirCon.getAllCircunscripciones().stream().filter(cir -> cir.getCodigo().endsWith("00000")).toList();
         List<Partido> partidos = parCon.getAllPartidos();
-        //TODO: Implementar los find especiales: mayorias, por partido, por circuns...
         circunscripciones.forEach(cir -> {
             List<CP> cps = cpCon.findByIdCircunscripcionOficial(cir.getCodigo());
             PrimeDTO dto = mapper.toDTO(cir, cps, partidos);
