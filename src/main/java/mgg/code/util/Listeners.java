@@ -260,7 +260,6 @@ public class Listeners {
             exec.scheduleAtFixedRate(() -> {
                 try {
                     System.out.println("BUscando cambios en congreso...");
-
                     if (Home.bs != null)
                         oldData = Home.bs;
 
@@ -294,12 +293,15 @@ public class Listeners {
                                         } else if (orderChanged(cpChanged)) {
                                             ipf.congresoActualizaPosiciones();
                                         } else if (escanosOficialChanged(cpChanged)) {
-                                            //ipf.congresoActualizaDatos();
                                             var partidosChanged = partidosChanged(cpChanged);
                                             ipf.congresoActualizaDatosIndividualizado(partidosChanged);
+                                            ipf.congresoActualizaDatos();
+
                                         }
                                         ipf.congresoActualiza();
                                     }
+
+                                    //oldData = Home.bs;
                                 } else {
                                     System.out.println("BS ES NULO");
                                 }
