@@ -181,6 +181,18 @@ public class IPFSender {
         return mensaje;
     }
 
+    public String congresoMillonesEntra() {
+        String mensaje = faldonesBuilder.congresoMillonesEntra();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String congresoMillonesSale() {
+        String mensaje = faldonesBuilder.congresoMillonesSale();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     //CONGRESO_SONDEO
     public String congresoSondeoEntra() {
         String mensaje = faldonesBuilder.congresoSondeoEntra();

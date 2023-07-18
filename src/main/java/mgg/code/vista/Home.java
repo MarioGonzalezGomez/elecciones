@@ -4,9 +4,7 @@ package mgg.code.vista;
 import mgg.code.controller.*;
 import mgg.code.controller.hibernate.HibernateControllerCongreso;
 import mgg.code.controller.hibernate.HibernateControllerSenado;
-import mgg.code.model.dto.CpDTO;
 import mgg.code.model.dto.SedesDTO;
-import mgg.code.model.dto.mapper.BrainStormDTOMapper;
 import mgg.code.util.DB;
 import mgg.code.util.Listeners;
 import mgg.code.util.comparators.CPVotantes;
@@ -31,7 +29,6 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//TODO(CERRAR HC Y HS AL CERRAR VENTANA)
 
 public class Home extends JFrame {
     private static Home instance;
@@ -47,8 +44,6 @@ public class Home extends JFrame {
     public static BrainStormDTO bsTemp = null;
     String selectedDb = "";
     CircunscripcionController circon = CircunscripcionController.getInstance();
-    PartidoController parcon = PartidoController.getInstance();
-    CPController cpcon = CPController.getInstance();
     SedesDTOController sedescon = SedesDTOController.getInstance();
     BrainStormDTOController bscon = BrainStormDTOController.getInstance();
 
@@ -60,14 +55,14 @@ public class Home extends JFrame {
     public static int tipoElecciones = 2;
     private boolean oficiales = false;
 
-    //TODO:Add booleans para cada grafico
+    //Boolens para cada gráfico con interacciones
     private boolean resCongresoOfiIn = false;
     private boolean resCongresoSonIn = false;
     private boolean resSenadoIn = false;
-
     private boolean votosIn = false;
     private boolean historicosIn = false;
     private boolean desplegado = false;
+
     public static String avance = "1";
 
     private static final String CONFIG_FILE_PATH = "C:\\Elecciones2023\\config.properties";
@@ -447,7 +442,6 @@ public class Home extends JFrame {
 
         btnCongresoSondeo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCongresoSondeo.setText("SONDEO CONGRESO");
-
         btnCongresoSondeo.addActionListener(this::btnCongresoSondeoActionPerformed);
 
         btnDatosSenado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -458,22 +452,27 @@ public class Home extends JFrame {
         btnDatosCongreso.setText("OFICIALES CONGRESO");
         btnDatosCongreso.addActionListener(this::btnDatosCongresoActionPerformed);
 
+        btnDesplegarDirecto.setBackground(new Color(224, 42, 132));
         btnDesplegarDirecto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDesplegarDirecto.setText("VOTOS IN");
         btnDesplegarDirecto.addActionListener(this::btnDesplegarDirectoActionPerformed);
 
+        btnDesplegarVideo.setBackground(new Color(251, 166, 56));
         btnDesplegarVideo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDesplegarVideo.setText("HISTORICOS IN");
         btnDesplegarVideo.addActionListener(this::btnDesplegarVideoActionPerformed);
 
+        btnReplegar.setBackground(new Color(8, 98, 178));
         btnReplegar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReplegar.setText("DESPLIEGA 4");
         btnReplegar.addActionListener(this::btnReplegarActionPerformed);
 
+        btnVotosOut.setBackground(new Color(224, 42, 132));
         btnVotosOut.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVotosOut.setText("VOTOS OUT");
         btnVotosOut.addActionListener(this::btnVotosOutActionPerformed);
 
+        btnHistoricosOut.setBackground(new Color(251, 166, 56));
         btnHistoricosOut.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnHistoricosOut.setText("HISTORICOS OUT");
         btnHistoricosOut.addActionListener(this::btnHistoricosOutActionPerformed);
@@ -764,42 +763,11 @@ public class Home extends JFrame {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
-                    ipf.esDirecto(false, tipoElecciones);
+                    ipf.esDirecto(true, tipoElecciones);
                     if (oficiales) {
                         ipf.despliego(codPartido);
                     } else {
                         ipf.despliegoSondeo(position + 1);
-                    }
-                }
-            }
-        }
-    }
-
-    private void btnReplegarActionPerformed(ActionEvent actionEvent) {
-        if (tipoElecciones == 1 || tipoElecciones == 2) {
-            if (!desplegado) {
-                if (tipoElecciones == 1) {
-                    ipf.cuatroPrimeros();
-                } else {
-                    ipf.cuatroPrimerosSondeo();
-                }
-                desplegado = true;
-                btnReplegar.setText("REPLIEGA");
-                btnDesplegarVideo.setText("DESPLIEGA VIDEO");
-                btnDesplegarDirecto.setText("DESPLIEGA DIRECTO");
-                btnEntra.setText("VOLVER A TODOS");
-                btnVotosOut.setVisible(false);
-                btnHistoricosOut.setVisible(false);
-                vaciarTablas();
-                showDataTable(bs);
-            } else {
-                int position = tablaDatos.getSelectedRow();
-                if (position != -1) {
-                    String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
-                    if (oficiales) {
-                        ipf.repliego(codPartido);
-                    } else {
-                        ipf.repliegoSondeo(position + 1);
                     }
                 }
             }
@@ -818,14 +786,38 @@ public class Home extends JFrame {
                     votosIn = true;
                 }
             } else {
+                if (tipoElecciones == 1) {
+                    ipf.congresoMillonesEntra();
+                }
+            }
+        }
+    }
+
+    private void btnReplegarActionPerformed(ActionEvent actionEvent) {
+        if (tipoElecciones == 1 || tipoElecciones == 2) {
+            if (!desplegado) {
+                if (tipoElecciones == 1) {
+                    ipf.cuatroPrimeros();
+                } else {
+                    ipf.cuatroPrimerosSondeo();
+                }
+                desplegado = true;
+                btnReplegar.setText("REPLIEGA");
+                btnDesplegarVideo.setText("DIRECTO IN");
+                btnDesplegarDirecto.setText("MILLONES IN");
+                btnEntra.setText("VOLVER A TODOS");
+                btnVotosOut.setText("MILLONES OUT");
+                btnHistoricosOut.setText("VIDEO IN");
+                vaciarTablas();
+                showDataTable(bs);
+            } else {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
-                    ipf.esDirecto(true, tipoElecciones);
                     if (oficiales) {
-                        ipf.despliego(codPartido);
+                        ipf.repliego(codPartido);
                     } else {
-                        ipf.despliegoSondeo(position + 1);
+                        ipf.repliegoSondeo(position + 1);
                     }
                 }
             }
@@ -834,9 +826,13 @@ public class Home extends JFrame {
 
     private void btnVotosOutActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1) {
-            ipf.congresoVotosSale();
+            if (desplegado) {
+                ipf.congresoMillonesSale();
+            } else {
+                ipf.congresoVotosSale();
+            }
         }
-        if (tipoElecciones == 2) {
+        if (tipoElecciones == 2 && !desplegado) {
             ipf.congresoSondeoVotosSale();
         }
         votosIn = false;
@@ -844,10 +840,28 @@ public class Home extends JFrame {
 
     private void btnHistoricosOutActionPerformed(ActionEvent actionEvent) {
         if (tipoElecciones == 1) {
-            ipf.congresoHistoricosSale();
+            if (desplegado) {
+                int position = tablaDatos.getSelectedRow();
+                if (position != -1) {
+                    String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
+                    ipf.esDirecto(false, tipoElecciones);
+                    ipf.despliego(codPartido);
+                }
+            } else {
+                ipf.congresoHistoricosSale();
+            }
         }
         if (tipoElecciones == 2) {
-            ipf.congresoSondeoHistoricosSale();
+            if (desplegado) {
+                int position = tablaDatos.getSelectedRow();
+                if (position != -1) {
+                    ipf.esDirecto(false, tipoElecciones);
+                    ipf.despliegoSondeo(position + 1);
+                }
+            } else {
+                ipf.congresoSondeoHistoricosSale();
+            }
+
         }
         historicosIn = false;
     }
@@ -907,8 +921,8 @@ public class Home extends JFrame {
             btnReplegar.setText("DESPLIEGA 4");
             btnDesplegarVideo.setText("HISTORICOS IN");
             btnDesplegarDirecto.setText("VOTOS IN");
-            btnVotosOut.setVisible(true);
-            btnHistoricosOut.setVisible(true);
+            btnVotosOut.setText("VOTOS OUT");
+            btnHistoricosOut.setText("HISTORICOS OUT");
             rellenarCCAA();
             showDataTable(bs);
         } else {
@@ -1196,8 +1210,8 @@ public class Home extends JFrame {
         resCongresoOfiIn = false;
         resCongresoSonIn = false;
         desplegado = false;
-        votosIn=false;
-        historicosIn=false;
+        votosIn = false;
+        historicosIn = false;
     }
 
     private void btnConfigActionPerformed(ActionEvent evt) {

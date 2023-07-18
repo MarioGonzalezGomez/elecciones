@@ -39,7 +39,7 @@ public class IPFFaldonesMessageBuilder {
     public String congresoActualizaDatos() {return eventBuild("TICKER/CambiaResultado","MAP_INT_PAR","1",1);}
     public String congresoActualizaDatosIndividualizado(List<CP> partidos){
         StringBuilder signal = new StringBuilder();
-        partidos.forEach(par-> signal.append(eventBuild("TICKER/"+par.getId().getPartido()+"/HaCambiado","MAP_INT_PAR","1",1)));
+        partidos.forEach(par-> signal.append(eventBuild("TICKER/" + par.getId().getPartido() + "/HaCambiado","MAP_INT_PAR","1",1)));
         return signal.toString();
     }
     public String congresoActualizaPosiciones() {return eventBuild("TICKER/CambiaOrden","MAP_INT_PAR","1",1);}
@@ -56,6 +56,8 @@ public class IPFFaldonesMessageBuilder {
     public String despliego(String codPartido) {return eventRunBuild("TICKER/VIDEO_"+ codPartido +"/ENTRA");}
     public String repliego(String codPartido) {return eventRunBuild("TICKER/VIDEO_"+ codPartido +"/SALE");}
     public String recuperoTodos() {return eventRunBuild("TICKER/RECUPERO_TODOS");}
+    public String congresoMillonesEntra() {return eventRunBuild("TICKER/MILLONES/ENTRA");}
+    public String congresoMillonesSale() {return eventRunBuild("TICKER/MILLONES/SALE");}
 
     public String esDirecto(boolean directo, int tipoElecciones){
         String valor;

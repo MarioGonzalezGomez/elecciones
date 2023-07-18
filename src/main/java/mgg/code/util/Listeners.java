@@ -11,6 +11,7 @@ import mgg.code.model.Circunscripcion;
 import mgg.code.model.Partido;
 import mgg.code.model.dto.BrainStormDTO;
 import mgg.code.model.dto.CpDTO;
+import mgg.code.util.ipf.ConexionIPF;
 import mgg.code.util.ipf.IPFSender;
 import mgg.code.vista.ConfigView;
 import mgg.code.vista.Home;
@@ -23,7 +24,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collectors;
 
 //todo(Lista de cambios de partidos y cambio numero de partidos)
 //TODO(Señal cambia numero partidos si cambia el número de partidos o si cambian los partidos que hay)
@@ -55,9 +55,7 @@ public class Listeners {
     }
 
     public List<CP> partidosChanged(List<CP> newPartidos) {
-        if (Home.bs == null && Home.bs != null) {
-            Home.bs = Home.bs;
-        } else if (Home.bs == null) {
+        if (Home.bs == null) {
             System.out.println("BS ES NULO");
         }
 
@@ -86,9 +84,7 @@ public class Listeners {
 
 
     public boolean partidosDistintos(List<CP> newPartidos) {
-        if (Home.bs == null && Home.bs != null) {
-            Home.bs = Home.bs;
-        } else if (Home.bs == null) {
+        if (Home.bs == null) {
             System.out.println("BS ES NULO");
         }
         var codNew = newPartidos.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).map(x -> x.getId().getPartido()).toList();
@@ -103,6 +99,7 @@ public class Listeners {
     private Listeners() {
         this.circunscripcionController = CircunscripcionController.getInstance();
         this.cpController = CPController.getInstance();
+        ConexionIPF.getConexion();
         ipf = IPFSender.getInstance();
         bscon = BrainStormDTOController.getInstance();
     }

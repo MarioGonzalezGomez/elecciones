@@ -92,8 +92,8 @@ public class CsvExportService {
             CircunscripcionDTO cir = cDTO.getCircunscripcion();
             csvPrinter.printRecord(cir.getCodigo(), cir.getCodigoComunidad(), cir.getCodigoProvincia(), cir.getCodigoMunicipio(),
                     cir.getNombreCircunscripcion(), cir.getEscrutado(), cir.getEscanios(),
-                    cir.getParticipacion(), cir.getParticipacionHistorico(), cir.getParticipacionMedia(), cir.getAvanceActual(), cir.getVotantes(),
-                    cir.getEscaniosHistoricos(), cir.getAnioUltimosDatos(), cir.getMayoria(), cir.getVotantesHistoricos(), cir.getParticipacionHist(),
+                    cir.getParticipacion(), cir.getParticipacionHistorico(), cir.getParticipacionMedia(), cir.getAvanceActual(), String.format("%,d", cir.getVotantes()),
+                    cir.getEscaniosHistoricos(), cir.getAnioUltimosDatos(), cir.getMayoria(), String.format("%,d", cir.getVotantesHistoricos()), cir.getParticipacionHist(),
                     cDTO.getNumPartidos(), "1"
             );
 
@@ -121,7 +121,7 @@ public class CsvExportService {
                 if (diferencia != 0) {
                     csvPrinter.printRecord(dto.getCodigoPartido(), dto.getCodigoPadre(), dto.getEscanos_desde(), dto.getEscanos_hasta(),
                             dto.getEscanos_hasta_hist(), dto.getPorcentajeVoto(),
-                            dto.getPorcentajeVotoHistorico(), dto.getNumVotantes(), dto.getSiglas(), dto.getLiteralPartido(),
+                            dto.getPorcentajeVotoHistorico(), String.format("%,d",dto.getNumVotantes()), dto.getSiglas(), dto.getLiteralPartido(),
                             df.format(dto.getPosicionInicial()), df.format(dto.getAperturaArco()), df.format(dto.getPosicionInicialDesdeSondeo()),
                             df.format(dto.getAperturaArcoDesdeSondeo()), df.format(dto.getPosicionInicialHastaSondeo()), df.format(dto.getAperturaArcoHastaSondeo()),
                             dto.getEscanos_desde_sondeo(), dto.getEscanos_hasta_sondeo(), dto.getPorcentajeVotoSondeo(), String.valueOf(diferencia), tendencia
@@ -129,7 +129,7 @@ public class CsvExportService {
                 } else {
                     csvPrinter.printRecord(dto.getCodigoPartido(), dto.getCodigoPadre(), dto.getEscanos_desde(), dto.getEscanos_hasta(),
                             dto.getEscanos_hasta_hist(), dto.getPorcentajeVoto(),
-                            dto.getPorcentajeVotoHistorico(), dto.getNumVotantes(), dto.getSiglas(), dto.getLiteralPartido(),
+                            dto.getPorcentajeVotoHistorico(), String.format("%,d",dto.getNumVotantes()), dto.getSiglas(), dto.getLiteralPartido(),
                             df.format(dto.getPosicionInicial()), df.format(dto.getAperturaArco()), df.format(dto.getPosicionInicialDesdeSondeo()),
                             df.format(dto.getAperturaArcoDesdeSondeo()), df.format(dto.getPosicionInicialHastaSondeo()), df.format(dto.getAperturaArcoHastaSondeo()),
                             dto.getEscanos_desde_sondeo(), dto.getEscanos_hasta_sondeo(), dto.getPorcentajeVotoSondeo(), "", tendencia);
