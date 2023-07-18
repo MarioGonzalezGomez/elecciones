@@ -1,6 +1,7 @@
 package mgg.code.controller;
 
 
+import mgg.code.config.Config;
 import mgg.code.model.CP;
 import mgg.code.model.Circunscripcion;
 import mgg.code.model.Partido;
@@ -9,6 +10,7 @@ import mgg.code.model.dto.mapper.PrimeDTOMapper;
 import mgg.code.service.ficheros.ExcelExportService;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.RandomAccess;
@@ -18,6 +20,8 @@ public class PrimeDTOController {
     private PartidoController parCon;
     private CircunscripcionController cirCon;
     private CPController cpCon;
+
+    private final String ruta = Config.getConfiguracion().getRutaFicheros();
 
     private PrimeDTOController() {
         parCon = PartidoController.getInstance();
@@ -47,10 +51,10 @@ public class PrimeDTOController {
         return listado;
     }
 
-    public void findAllInExcel() {
+    public void findAllInExcel() throws IOException {
         List<PrimeDTO> primes = findAll();
         ExcelExportService excelExportService = new ExcelExportService();
-        // excelExportService.writeToExcel((RandomAccess) primes, 6);
-        //TODO:Escribir el workbook en el fichero correspondiente
+        FileOutputStream outputStream = new FileOutputStream(ruta+ "\\PrimeData.xlsx");
+        excelExportService.writeToExcel((RandomAccess) primes, 6,outputStream);
     }
 }

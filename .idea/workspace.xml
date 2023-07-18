@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Condiciones de Schrodinger">
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="transicion votos - historico">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/controller/PrimeDTOController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/controller/PrimeDTOController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/CpPrimeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/CpPrimeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/mapper/PrimeDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/model/dto/mapper/PrimeDTOMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/service/ficheros/CsvExportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/ficheros/CsvExportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/service/ficheros/ExcelExportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/service/ficheros/ExcelExportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -348,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689669700314</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="transicion votos - historico">
+      <created>1689673437405</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1689673437405</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -375,7 +388,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Retardo menor y Senado ok" />
     <MESSAGE value="Bs statico para comparar listeners" />
     <MESSAGE value="3 tipos de actualizo" />
     <MESSAGE value="tipo elecciones static" />
@@ -400,18 +412,8 @@
     <MESSAGE value="votos e hist a la vez" />
     <MESSAGE value="Millones de votos" />
     <MESSAGE value="Condiciones de Schrodinger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Condiciones de Schrodinger" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java</url>
-          <line>271</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="transicion votos - historico" />
+    <option name="LAST_COMMIT_MESSAGE" value="transicion votos - historico" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elecciones$Main.ic" NAME="Main Coverage Results" MODIFIED="1689239120026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

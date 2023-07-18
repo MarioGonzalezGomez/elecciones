@@ -4,6 +4,7 @@ package mgg.code.util;
 import mgg.code.controller.BrainStormDTOController;
 import mgg.code.controller.CPController;
 import mgg.code.controller.CircunscripcionController;
+import mgg.code.controller.PrimeDTOController;
 import mgg.code.controller.hibernate.HibernateControllerCongreso;
 import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.model.CP;
@@ -46,12 +47,22 @@ public class Listeners {
 
     private IPFSender ipf;
     private BrainStormDTOController bscon;
+    private PrimeDTOController primecon;
 
     public static Listeners getInstance() {
         if (instance == null) {
             instance = new Listeners();
         }
         return instance;
+    }
+
+    private Listeners() {
+        this.circunscripcionController = CircunscripcionController.getInstance();
+        this.cpController = CPController.getInstance();
+        ConexionIPF.getConexion();
+        ipf = IPFSender.getInstance();
+        bscon = BrainStormDTOController.getInstance();
+        primecon = PrimeDTOController.getInstance();
     }
 
     public List<CP> partidosChanged(List<CP> newPartidos) {
@@ -96,13 +107,7 @@ public class Listeners {
 
     }
 
-    private Listeners() {
-        this.circunscripcionController = CircunscripcionController.getInstance();
-        this.cpController = CPController.getInstance();
-        ConexionIPF.getConexion();
-        ipf = IPFSender.getInstance();
-        bscon = BrainStormDTOController.getInstance();
-    }
+
 
     private boolean orderChanged(List<CP> newPartidos) {
         if (Home.bs == null) {
@@ -282,6 +287,7 @@ public class Listeners {
                                         BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000", Home.avance);
                                         Home.getInstance().showDataTable(dto);
                                         bscon.getBrainStormDTOOficialCongresoInCsv(dto);
+                                        //primecon.findAllInExcel();
                                         ipf.congresoActualizaEscrutado();
                                         if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
                                             ipf.congresoActualizaNumPartidos();

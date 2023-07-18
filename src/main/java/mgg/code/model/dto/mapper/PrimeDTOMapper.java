@@ -26,6 +26,7 @@ public class PrimeDTOMapper {
                     .escanios(x.getEscanos_hasta())
                     .escaniosHistorico(x.getEscanos_hasta_hist())
                     .color(color)
+                    .votantes(String.format("%,d", x.getNumVotantes()))
                     .build();
             primes.add(cpTemP);
         });

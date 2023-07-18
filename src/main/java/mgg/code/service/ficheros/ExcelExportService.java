@@ -17,6 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Comparator;
 import java.util.List;
 import java.util.RandomAccess;
@@ -41,12 +42,12 @@ public class ExcelExportService {
     //Tomaré el 1 como partido, 2 como circunscripcion y 3 como CP (Puede que
     //en el futuro utilice 4 o + para DTO específicos
 
-    public void writeToExcel(RandomAccess listado, int tipoDato) throws IOException {
+    public void writeToExcel(RandomAccess listado, int tipoDato, OutputStream out) throws IOException {
         nombrarPagina(tipoDato);
         writeHeader(nombrePagina, tipoDato, 1);
         write(listado, tipoDato);
-        //  workbook.write(outputStream);
-        // workbook.close();
+        workbook.write(out);
+        workbook.close();
     }
 
     private void nombrarPagina(int tipoDato) {
@@ -361,6 +362,7 @@ public class ExcelExportService {
                 createCell(row, columnCount.getAndIncrement(), "ESCANIOS " + (i + 1), style);
                 createCell(row, columnCount.getAndIncrement(), "ESCANIOS HISTORICOS " + (i + 1), style);
                 createCell(row, columnCount.getAndIncrement(), "COLORES " + (i + 1), style);
+                createCell(row, columnCount.getAndIncrement(), "VOTANTES " + (i + 1), style);
             }
         }
 
@@ -377,6 +379,7 @@ public class ExcelExportService {
             createCell(newrow, column.getAndIncrement(), cp.getEscanios(), style);
             createCell(newrow, column.getAndIncrement(), cp.getEscaniosHistorico(), style);
             createCell(newrow, column.getAndIncrement(), cp.getColor(), style);
+            createCell(newrow, column.getAndIncrement(), cp.getVotantes(), style);
         });
     }
 

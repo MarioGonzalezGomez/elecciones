@@ -41,7 +41,6 @@ public class Home extends JFrame {
     }
 
     public static BrainStormDTO bs;
-    public static BrainStormDTO bsTemp = null;
     String selectedDb = "";
     CircunscripcionController circon = CircunscripcionController.getInstance();
     SedesDTOController sedescon = SedesDTOController.getInstance();

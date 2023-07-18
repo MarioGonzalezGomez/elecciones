@@ -10,4 +10,5 @@ public class CpPrimeDTO {
     private int escanios;
     private int escaniosHistorico;
     private String color;
+    private String votantes;
 }
