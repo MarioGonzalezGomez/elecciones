@@ -227,6 +227,7 @@ public class Listeners {
                                         ipf.congresoActualizaEscrutado();
                                         if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
                                             ipf.congresoActualizaNumPartidos();
+                                            ipf.congresoYaNoEstaDatosIndividualizado(CPNoEsta(cpChanged));
                                         } else if (orderChanged(cpChanged)) {
                                             ipf.congresoActualizaPosiciones();
                                         } else if (escanosOficialChanged(cpChanged)) {

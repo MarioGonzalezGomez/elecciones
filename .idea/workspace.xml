@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Nuevos metodos prime">
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Quitar cambio entre votos e historico">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFFaldonesMessageBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFFaldonesMessageBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689688935428</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Quitar cambio entre votos e historico">
+      <created>1689698508859</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1689698508859</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -404,7 +412,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Nuevas signal IPF" />
     <MESSAGE value="Funcional a falta de Videos" />
     <MESSAGE value="Despliegas y repliegas OK" />
     <MESSAGE value="Pom actualizado" />
@@ -429,7 +436,8 @@
     <MESSAGE value="PrimeDto ok" />
     <MESSAGE value="PrimeDto en excel" />
     <MESSAGE value="Nuevos metodos prime" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nuevos metodos prime" />
+    <MESSAGE value="Quitar cambio entre votos e historico" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quitar cambio entre votos e historico" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elecciones$Main.ic" NAME="Main Coverage Results" MODIFIED="1689239120026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

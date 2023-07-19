@@ -43,9 +43,9 @@ public class IPFFaldonesMessageBuilder {
         return signal.toString();
     }
 
-    public String congresoYaNoEstaIndividualizado(List<CP> partidos){
+    public String congresoYaNoEstaIndividualizado(List<String> codigos){
         StringBuilder signal = new StringBuilder();
-        partidos.forEach(par-> signal.append(eventBuild("TICKER/" + par.getId().getPartido() + "/YaNoEsta","MAP_INT_PAR","1",1)));
+        codigos.forEach(par-> signal.append(eventBuild("TICKER/" + par + "/YaNoEsta","MAP_INT_PAR","1",1)));
         return signal.toString();
     }
     public String congresoActualizaPosiciones() {return eventBuild("TICKER/CambiaOrden","MAP_INT_PAR","1",1);}
