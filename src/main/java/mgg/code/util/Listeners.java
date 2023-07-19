@@ -26,11 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-//todo(Lista de cambios de partidos y cambio numero de partidos)
-//TODO(Señal cambia numero partidos si cambia el número de partidos o si cambian los partidos que hay)
-//TODO(Cambia resultado es la única condición a comprobar si su longitud o los partidos son distintos cambia)
-//TODO(Cambio resultado solo se produce si cambio numoero de partidos no se da
-//TODO(TIRAR ESCUCHADOR AL CAMBIAR BASE DE DATOS)
+//TODO(YaNoEsta lista)
 // Seimpre tras una de las señales se manda una señal que se llama actualiza (CongresoActualiza))
 
 public class Listeners {
@@ -106,7 +102,6 @@ public class Listeners {
         return !distint;
 
     }
-
 
 
     private boolean orderChanged(List<CP> newPartidos) {
@@ -191,68 +186,10 @@ public class Listeners {
         return false;
     }
 
-    public void listenSenado() {
-        //if (!isSuscribedSenado.get()) {
-        //    System.out.println("Escuchando senado");
-        //    isSuscribedSenado.set(true);
-        //    ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
-        //    exec.scheduleAtFixedRate(() -> {
-        //        System.out.println("BUscando cambios en senado...");
-        //        try {
-        //            if (!ConfigView.cambioBD) {
-        //                if (circunscripcionSenado.isEmpty()) {
-        //                    circunscripcionSenado = circunscripcionController.getAllCircunscripcionesSenado();
-        //                } else {
-        //                    HibernateControllerSenado.getInstance().getManager().clear();
-        //                    List<Circunscripcion> circunscripcionesNew = circunscripcionController.getAllCircunscripcionesSenado();
-        //                    if (Home.tipoElecciones == 3 && !circunscripcionesNew.equals(circunscripcionSenado)) {
-        //                        if (Home.bs != null) {
-        //                            System.out.println("Cambio detectado en senado");
-        //                            var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
-        //                            var cps = cpController.findByIdCircunscripcionSenado("9900000");
-//
-        //                            circunscripcionSenado = circunscripcionesNew;
-//
-        //                            var changesCod = changes.stream().map(Circunscripcion::getCodigo).toList();
-        //                            //TODO(ACOTAR SOLO ESPAÑA)
-        //                            cpController.findByIdCircunscripcionOficial("9900000");
-        //                            var cpChanged = cps.stream().filter(
-        //                                    cp -> changesCod.contains(cp.getId().getCircunscripcion())).toList();
-//
-        //                            //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
-        //                            BrainStormDTO dto = bscon.getBrainStormDTOSenado("9900000", Home.avance);
-        //                            Home.getInstance().showDataTable(dto);
-        //                            bscon.getBrainStormDTOSenadoInCsv(dto);
-        //                            ipf.senadoActualizaEscrutado();
-        //                            if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
-        //                                ipf.congresoActualizaNumPartidos();
-        //                            }
-        //                            //TODO(detectar si hay algún partido distinto)
-        //                            else if (orderChanged(cpChanged)) {
-        //                                ipf.senadoActualizaPosiciones();
-        //                            } else if (escanosOficialChanged(cpChanged)) {
-        //                                ipf.senadoActualizaDatos();
-        //                            }
-        //                        } else {
-        //                            System.out.println("BS ES NULO");
-        //                        }
-        //                    }
-        //                }
-        //            } else {
-        //                System.out.println("Esperando cambio de base de datos");
-        //            }
-        //        } catch (Exception e) {
-        //            e.printStackTrace();
-        //        }
-        //    }, 0, 7, TimeUnit.SECONDS);
-        //}
-    }
-
 
     private BrainStormDTO oldData;
 
     public void listenCongreso() {
-
         if (!isSuscribed.get()) {
             System.out.println("Escuchando congreso");
             isSuscribed.set(true);
@@ -295,6 +232,7 @@ public class Listeners {
                                         } else if (escanosOficialChanged(cpChanged)) {
                                             var partidosChanged = partidosChanged(cpChanged);
                                             ipf.congresoActualizaDatosIndividualizado(partidosChanged);
+                                            //ipf.congresoYaNoEstaDatosIndividualizado()
                                             ipf.congresoActualizaDatos();
                                         }
                                         ipf.congresoActualiza();
@@ -314,6 +252,19 @@ public class Listeners {
                 }
             }, 0, 7, TimeUnit.SECONDS);
         }
+    }
+
+    private List<String> CPNoEsta(List<CP> newPartidos) {
+        var filtered = newPartidos.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).toList();
+        List<String> result = new ArrayList<>();
+        List<String> oldCode = oldData.getCpDTO().stream().map(CpDTO::getCodigoPartido).toList();
+        List<String> newCode = filtered.stream().map(x -> x.getId().getPartido()).toList();
+        for (String code : oldCode) {
+            if (!newCode.contains(code)) {
+                result.add(code);
+            }
+        }
+        return result;
     }
 
     private List<Circunscripcion> getChanges(List<Circunscripcion> oldList, List<Circunscripcion> newList) {

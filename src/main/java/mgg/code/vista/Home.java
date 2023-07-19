@@ -85,7 +85,6 @@ public class Home extends JFrame {
 
         listeners = Listeners.getInstance();
         listeners.listenCongreso();
-        listeners.listenSenado();
     }
 
     public void showDataTable(BrainStormDTO bs) {
