@@ -240,19 +240,18 @@ public class Listeners {
                                         if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
                                             ipf.congresoActualizaNumPartidos();
                                             ipf.congresoYaNoEstaDatosIndividualizado(CPNoEsta(cpChanged));
-                                        } else if (orderChanged(cpChanged)) {
-                                            ipf.congresoActualizaPosiciones();
-                                        } else if (escanosOficialChanged(cpChanged)) {
-                                            var partidosChanged = partidosChanged(cpChanged);
-                                            ipf.congresoActualizaDatosIndividualizado(partidosChanged);
-                                            //ipf.congresoYaNoEstaDatosIndividualizado()
-                                            ipf.congresoActualizaDatos();
-
+                                        } else {
+                                            if (orderChanged(cpChanged)) {
+                                                ipf.congresoActualizaPosiciones();
+                                            }
+                                            if (escanosOficialChanged(cpChanged)) {
+                                                var partidosChanged = partidosChanged(cpChanged);
+                                                ipf.congresoActualizaDatosIndividualizado(partidosChanged);
+                                                ipf.congresoActualizaDatos();
+                                            }
                                         }
                                         ipf.congresoActualiza();
                                     }
-
-                                    //oldData = Home.bs;
                                 } else {
                                     System.out.println("BS ES NULO");
                                 }
