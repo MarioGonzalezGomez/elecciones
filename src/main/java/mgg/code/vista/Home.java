@@ -761,11 +761,13 @@ public class Home extends JFrame {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
-                    ipf.esDirecto(true, tipoElecciones);
                     if (oficiales) {
+                        ipf.esDirecto(true, tipoElecciones, codPartido);
                         ipf.despliego(codPartido);
                     } else {
+                        ipf.esDirecto(true, tipoElecciones, "");
                         ipf.despliegoSondeo(position + 1);
+
                     }
                 }
             }
@@ -843,7 +845,7 @@ public class Home extends JFrame {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
-                    ipf.esDirecto(false, tipoElecciones);
+                    ipf.esDirecto(false, tipoElecciones,codPartido);
                     ipf.despliego(codPartido);
                 }
             } else {
@@ -854,7 +856,7 @@ public class Home extends JFrame {
             if (desplegado) {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
-                    ipf.esDirecto(false, tipoElecciones);
+                    ipf.esDirecto(false, tipoElecciones,"");
                     ipf.despliegoSondeo(position + 1);
                 }
             } else {

@@ -154,8 +154,8 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String esDirecto(boolean esDirecto, int tipoElecciones) {
-        String mensaje = faldonesBuilder.esDirecto(esDirecto, tipoElecciones);
+    public String esDirecto(boolean esDirecto, int tipoElecciones, String codPartido) {
+        String mensaje = faldonesBuilder.esDirecto(esDirecto, tipoElecciones, codPartido);
         c.enviarMensaje(mensaje);
         return mensaje;
     }

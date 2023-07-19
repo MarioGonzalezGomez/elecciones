@@ -65,7 +65,7 @@ public class IPFFaldonesMessageBuilder {
     public String congresoMillonesEntra() {return eventRunBuild("TICKER/MILLONES/ENTRA");}
     public String congresoMillonesSale() {return eventRunBuild("TICKER/MILLONES/SALE");}
 
-    public String esDirecto(boolean directo, int tipoElecciones){
+    public String esDirecto(boolean directo, int tipoElecciones, String codPartido){
         String valor;
         String objeto="TICKER";
         if(directo){
@@ -74,9 +74,11 @@ public class IPFFaldonesMessageBuilder {
             valor="0";
         }
         if(tipoElecciones==2){
-            objeto = objeto+"_SONDEO";
+            objeto = objeto+"_SONDEO/P1";
+        }else{
+            objeto = objeto+"/"+codPartido;
         }
-        return eventBuild(objeto+"/P1/VideoVivo","MAP_INT_PAR",valor,1);
+        return eventBuild(objeto+"/VideoVivo","MAP_INT_PAR",valor,1);
     }
 
     //DESPLIEGO_4_SONDEO
