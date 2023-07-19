@@ -74,7 +74,7 @@ public class IPFFaldonesMessageBuilder {
             valor="0";
         }
         if(tipoElecciones==2){
-            objeto = objeto+"_SONDEO/P1";
+            objeto = objeto+"_SONDEO/P"+codPartido;
         }else{
             objeto = objeto+"/"+codPartido;
         }
