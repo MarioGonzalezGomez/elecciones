@@ -77,8 +77,8 @@ public class IPFSender {
         return mensaje;
     }
 
-    public String congresoActualizaDatosIndividualizado(List<CP> cps) {
-        String mensaje = faldonesBuilder.congresoActualizaDatosIndividualizado(cps);
+    public String congresoActualizaDatosIndividualizado(List<CP> codigos) {
+        String mensaje = faldonesBuilder.congresoActualizaDatosIndividualizado(codigos);
         c.enviarMensaje(mensaje);
         return mensaje;
     }

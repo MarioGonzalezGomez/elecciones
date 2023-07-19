@@ -12,6 +12,8 @@ import mgg.code.model.Circunscripcion;
 import mgg.code.model.Partido;
 import mgg.code.model.dto.BrainStormDTO;
 import mgg.code.model.dto.CpDTO;
+import mgg.code.util.comparators.CPOficial;
+import mgg.code.util.comparators.CPSondeo;
 import mgg.code.util.ipf.ConexionIPF;
 import mgg.code.util.ipf.IPFSender;
 import mgg.code.vista.ConfigView;
@@ -108,7 +110,16 @@ public class Listeners {
         if (Home.bs == null) {
             System.out.println("BS ES NULO");
         }
-        var filtered = newPartidos.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).toList();
+
+
+        var filtered = new ArrayList<>(newPartidos.stream().filter(x -> x.getId().getCircunscripcion().equals("9900000")).toList());
+
+        if (Home.tipoElecciones == 1) {
+            filtered.sort(new CPOficial().reversed());
+        } else if (Home.tipoElecciones == 2) {
+            filtered.sort(new CPSondeo().reversed());
+        }
+
         if (filtered.size() == oldData.getCpDTO().size()) {
             for (int i = 0; i < filtered.size(); i++) {
                 if (!filtered.get(i).getId().getPartido().equals(oldData.getCpDTO().get(i).getCodigoPartido()))
@@ -222,6 +233,7 @@ public class Listeners {
                                         //Si cambiamos esto por los códigos de la lista, valdría para cualquier territorio
                                         BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000", Home.avance);
                                         Home.getInstance().showDataTable(dto);
+                                        Home.bs = dto;
                                         bscon.getBrainStormDTOOficialCongresoInCsv(dto);
                                         //primecon.findAllInExcel(primecon.findAll());
                                         ipf.congresoActualizaEscrutado();
@@ -235,6 +247,7 @@ public class Listeners {
                                             ipf.congresoActualizaDatosIndividualizado(partidosChanged);
                                             //ipf.congresoYaNoEstaDatosIndividualizado()
                                             ipf.congresoActualizaDatos();
+
                                         }
                                         ipf.congresoActualiza();
                                     }
