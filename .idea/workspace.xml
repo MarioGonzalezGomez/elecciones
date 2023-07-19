@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Quitar cambio entre votos e historico">
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Nuevos metodos prime">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFFaldonesMessageBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFFaldonesMessageBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -438,6 +437,38 @@
     <MESSAGE value="Nuevos metodos prime" />
     <MESSAGE value="Quitar cambio entre votos e historico" />
     <option name="LAST_COMMIT_MESSAGE" value="Quitar cambio entre votos e historico" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java</url>
+          <line>242</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java</url>
+          <line>244</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="codOld" />
+        <watch expression="filtered" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elecciones$Main.ic" NAME="Main Coverage Results" MODIFIED="1689239120026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
