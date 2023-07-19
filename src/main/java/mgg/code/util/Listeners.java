@@ -77,7 +77,7 @@ public class Listeners {
 
         var filteredRes = res.stream().filter(x -> x.getEscanos_hasta() > 0).toList();
         for (CP cp : filteredRes) {
-            for (CpDTO dto : Home.bs.getCpDTO()) {
+            for (CpDTO dto : oldData.getCpDTO()) {
                 if (dto.getCodigoPartido().equals(cp.getId().getPartido())) {
                     if ((dto.getEscanos_desde() != cp.getEscanos_desde()) ||
                             (dto.getEscanos_hasta() != cp.getEscanos_hasta()) ||
