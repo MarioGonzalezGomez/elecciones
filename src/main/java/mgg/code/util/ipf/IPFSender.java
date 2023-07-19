@@ -83,6 +83,12 @@ public class IPFSender {
         return mensaje;
     }
 
+
+    public String congresoYaNoEstaDatosIndividualizado(List<CP> cps) {
+        String mensaje = faldonesBuilder.congresoYaNoEstaIndividualizado(cps);
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
     public String congresoActualizaPosiciones() {
         String mensaje = faldonesBuilder.congresoActualizaPosiciones();
         c.enviarMensaje(mensaje);
