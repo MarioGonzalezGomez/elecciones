@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Nuevos metodos prime">
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="arreglado orden">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/ipf/IPFSender.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -384,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689698508859</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="arreglado orden">
+      <created>1689758642188</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1689758642188</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -411,7 +416,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Funcional a falta de Videos" />
     <MESSAGE value="Despliegas y repliegas OK" />
     <MESSAGE value="Pom actualizado" />
     <MESSAGE value="Borrado sysos innecesario y correccion en carga de circunscripciones" />
@@ -436,7 +440,8 @@
     <MESSAGE value="PrimeDto en excel" />
     <MESSAGE value="Nuevos metodos prime" />
     <MESSAGE value="Quitar cambio entre votos e historico" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quitar cambio entre votos e historico" />
+    <MESSAGE value="arreglado orden" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglado orden" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
