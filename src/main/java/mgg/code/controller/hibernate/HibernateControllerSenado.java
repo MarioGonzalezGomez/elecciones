@@ -28,7 +28,9 @@ public class HibernateControllerSenado {
             hc.close();
         }
 
-        hc.open();
+        if (hc != null) {
+            hc.open();
+        }
 
         hc.setEmf(Persistence.createEntityManagerFactory("congreso", getProperties(reservaUrl, reservaUser, reservaPass)));
         System.out.println("Base de datos de senado cambiada a reserva");
@@ -44,7 +46,9 @@ public class HibernateControllerSenado {
         }
 
         //hc = new HibernateControllerSenado();
-        hc.open();
+        if (hc != null) {
+            hc.open();
+        }
 
         hc.setEmf(Persistence.createEntityManagerFactory("congreso", getProperties(reservaUrl, reservaUser, reservaPass)));
         System.out.println("Base de datos de senado cambiada a principal");
@@ -61,7 +65,9 @@ public class HibernateControllerSenado {
         }
 
        // hc = new HibernateControllerSenado();
-        hc.open();
+        if (hc != null) {
+            hc.open();
+        }
 
         hc.setEmf(Persistence.createEntityManagerFactory("congreso", getProperties(reservaUrl, reservaUser, reservaPass)));
         System.out.println("Base de datos de senado cambiada a local");

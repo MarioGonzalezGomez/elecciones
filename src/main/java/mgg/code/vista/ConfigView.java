@@ -10,6 +10,7 @@ import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.util.DB;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -66,58 +67,42 @@ public class ConfigView extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 18)); // NOI18N
         jLabel2.setText("BASE DE DATOS");
 
         jRadioButton1.setText("PRINCIPAL");
 
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
+        jRadioButton1.addActionListener(evt -> jRadioButton1ActionPerformed(evt));
 
         jRadioButton2.setText("RESERVA");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
+        jRadioButton2.addActionListener(evt -> jRadioButton2ActionPerformed(evt));
 
         jRadioButton3.setText("LOCAL");
 
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
+        jRadioButton3.addActionListener(evt -> jRadioButton3ActionPerformed(evt));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 15)); // NOI18N
         jLabel3.setText("IP IPF1:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 15)); // NOI18N
         jLabel4.setText("PUERTO:");
 
-        bdFaldones.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        bdFaldones.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 15)); // NOI18N
         bdFaldones.setText("BD FALDONES:");
 
-        bdCartones.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        bdCartones.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 15)); // NOI18N
         bdCartones.setText("BD CARTONES:");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 15)); // NOI18N
         jLabel7.setText("IP SERVIDOR RESERVA:");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 15)); // NOI18N
         jLabel8.setText("IP SERVIDOR PRINCIPAL:");
 
         jButton1.setBackground(new java.awt.Color(153, 255, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 18)); // NOI18N
         jButton1.setText("GUARDAR CONFIGURACIÓN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.addActionListener(evt -> jButton1ActionPerformed(evt));
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -360,26 +345,19 @@ public class ConfigView extends JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | UnsupportedLookAndFeelException | IllegalAccessException |
+                 InstantiationException ex) {
             Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new ConfigView(null).setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new ConfigView(null).setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

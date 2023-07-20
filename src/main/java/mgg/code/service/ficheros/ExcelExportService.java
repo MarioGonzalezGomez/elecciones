@@ -14,8 +14,6 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Comparator;
@@ -71,13 +69,13 @@ public class ExcelExportService {
         font.setFontHeight(16);
         style.setFont(font);
         switch (tipoDato) {
-            case 1:
+            case 1 -> {
                 createCell(row, 0, "CODIGO", style);
                 createCell(row, 1, "SIGLAS", style);
                 createCell(row, 2, "CODIGO PADRE", style);
                 createCell(row, 3, "LITERAL", style);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 createCell(row, 0, "CODIGO", style);
                 createCell(row, 1, "COMUNIDAD AUTONOMA", style);
                 createCell(row, 2, "PROVINCIA", style);
@@ -95,8 +93,8 @@ public class ExcelExportService {
                 createCell(row, 14, "AVANCE 2 HISTORICO", style);
                 createCell(row, 15, "AVANCE 3 HISTORICO", style);
                 createCell(row, 16, "PARTICIPACION HISTORICO", style);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 createCell(row, 0, "CIRCUNSCRIPCION", style);
                 createCell(row, 1, "PARTIDO", style);
                 createCell(row, 2, "ESCANIOS DESDE", style);
@@ -109,8 +107,8 @@ public class ExcelExportService {
                 createCell(row, 9, "ESCANIOS DESDE SONDEO", style);
                 createCell(row, 10, "ESCANIOS HASTA SONDEO", style);
                 createCell(row, 11, "PORCENTAJE VOTO SONDEO", style);
-                break;
-            case 4:
+            }
+            case 4 -> {
                 createCell(row, 0, "COD CIRCUNSCRIPCION", style);
                 createCell(row, 1, "AUTONOMIA", style);
                 createCell(row, 2, "PROVINCIA", style);
@@ -130,8 +128,8 @@ public class ExcelExportService {
                 createCell(row, 16, "SIN USO", style);
                 createCell(row, 17, "PARTIDOS CON ESCANIO", style);
                 createCell(row, 18, "TIPO ELECCIONES", style);
-                break;
-            case 5:
+            }
+            case 5 -> {
                 createCell(row, 0, "CODIGO", style);
                 createCell(row, 1, "CODIGO PADRE", style);
                 createCell(row, 2, "ESCANIOS DESDE", style);
@@ -143,9 +141,9 @@ public class ExcelExportService {
                 createCell(row, 8, "SIGLAS", style);
                 createCell(row, 9, "LITERAL", style);
                 createCell(row, 10, "VOTANTES HISTORICOS", style);
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
 
     }
@@ -158,55 +156,54 @@ public class ExcelExportService {
         rowCount = 1;
 
         switch (tipoDato) {
-            case 1:
+            case 1 -> {
                 List<Partido> partidos = (List<Partido>) listado;
                 //Ejemplo de paginacion
                 // if (partidos.size() <= 50) {
                 partidos.forEach(x -> createPartido(x, style));
-                //  } else if (partidos.size() <= 100) {
-                //      List<Partido> parte1 = partidos.subList(0, 50);
-                //      parte1.forEach(x -> createPartido(x, style));
-                //      writeHeader(nombrePagina, 1, 2);
-                //      rowCount = 1;
-                //      List<Partido> parte2 = partidos.subList(50, partidos.size() - 1);
-                //      parte2.forEach(x -> createPartido(x, style));
-                //  } else {
-                //      List<Partido> parte1 = partidos.subList(0, 50);
-                //      parte1.forEach(x -> createPartido(x, style));
-                //      writeHeader(nombrePagina, 1, 2);
-                //      rowCount = 1;
-                //      List<Partido> parte2 = partidos.subList(50, 100);
-                //      parte2.forEach(x -> createPartido(x, style));
-                //      writeHeader(nombrePagina, 1, 3);
-                //      rowCount = 1;
-                //      List<Partido> parte3 = partidos.subList(100, partidos.size() - 1);
-                //      parte3.forEach(x -> createPartido(x, style));
-                //  }
-                break;
-            case 2:
+            }
+            //  } else if (partidos.size() <= 100) {
+            //      List<Partido> parte1 = partidos.subList(0, 50);
+            //      parte1.forEach(x -> createPartido(x, style));
+            //      writeHeader(nombrePagina, 1, 2);
+            //      rowCount = 1;
+            //      List<Partido> parte2 = partidos.subList(50, partidos.size() - 1);
+            //      parte2.forEach(x -> createPartido(x, style));
+            //  } else {
+            //      List<Partido> parte1 = partidos.subList(0, 50);
+            //      parte1.forEach(x -> createPartido(x, style));
+            //      writeHeader(nombrePagina, 1, 2);
+            //      rowCount = 1;
+            //      List<Partido> parte2 = partidos.subList(50, 100);
+            //      parte2.forEach(x -> createPartido(x, style));
+            //      writeHeader(nombrePagina, 1, 3);
+            //      rowCount = 1;
+            //      List<Partido> parte3 = partidos.subList(100, partidos.size() - 1);
+            //      parte3.forEach(x -> createPartido(x, style));
+            //  }
+            case 2 -> {
                 List<Circunscripcion> circunscripciones = (List<Circunscripcion>) listado;
                 circunscripciones.forEach(x -> createCircunscripcion(x, style));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 List<CP> cps = (List<CP>) listado;
                 cps.forEach(x -> createCP(x, style));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 List<BrainStormDTO> BrainStormDTOS = (List<BrainStormDTO>) listado;
                 createBrainStormDTO(BrainStormDTOS.get(0), style);
-                break;
-            case 5:
+            }
+            case 5 -> {
                 List<SedesDTO> sedesDTOS = (List<SedesDTO>) listado;
                 createSedesDTO(sedesDTOS.get(0), style);
-                break;
-            case 6:
+            }
+            case 6 -> {
                 List<PrimeDTO> primeDTOS = (List<PrimeDTO>) listado;
                 int numMax = primeDTOS.stream().max(Comparator.comparingInt(a -> a.getCps().size())).orElse(null).getCps().size();
                 primeDTOS.forEach(x -> createPrimeDTO(x, numMax, style));
-
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
     }
 
