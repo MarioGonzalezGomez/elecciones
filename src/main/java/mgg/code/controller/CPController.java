@@ -60,6 +60,10 @@ public class CPController {
         return service.getByIdCircunscripcionOficial(codigo);
     }
 
+    public List<CP> findByIdCircunscripcionOficialEnBruto(String codigo) {
+        return service.getByIdCircunscripcionOficialEnBruto(codigo);
+    }
+
     public List<CP> findByIdCircunscripcionSenado(String codigo) {
         return service.getByIdCircunscripcionSenado(codigo);
     }

@@ -972,8 +972,6 @@ public class Home extends JFrame {
                             }
                             resCongresoSonIn = true;
                         }
-                        //SEDES
-                        case 1 -> ipf.sedesEntra();
 
                         //VOTANTES
                         case 2 -> System.out.println("VOTANTES");
@@ -998,9 +996,6 @@ public class Home extends JFrame {
                             }
                             resSenadoIn = true;
                         }
-                        //SEDES
-                        case 1 -> ipf.sedesEntra();
-
                         //VOTANTES
                         case 2 -> System.out.println("VOTANTES");
 
