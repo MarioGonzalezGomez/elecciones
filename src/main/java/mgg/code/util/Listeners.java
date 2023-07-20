@@ -6,10 +6,8 @@ import mgg.code.controller.CPController;
 import mgg.code.controller.CircunscripcionController;
 import mgg.code.controller.PrimeDTOController;
 import mgg.code.controller.hibernate.HibernateControllerCongreso;
-import mgg.code.controller.hibernate.HibernateControllerSenado;
 import mgg.code.model.CP;
 import mgg.code.model.Circunscripcion;
-import mgg.code.model.Partido;
 import mgg.code.model.dto.BrainStormDTO;
 import mgg.code.model.dto.CpDTO;
 import mgg.code.util.comparators.CPOficial;
@@ -28,7 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-//TODO(YaNoEsta lista)
+//TODO(
 // Seimpre tras una de las señales se manda una señal que se llama actualiza (CongresoActualiza))
 
 public class Listeners {

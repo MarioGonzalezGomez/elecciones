@@ -10,7 +10,6 @@ import mgg.code.model.dto.CpDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @NoArgsConstructor
 public class BrainStormDTOMapper {
