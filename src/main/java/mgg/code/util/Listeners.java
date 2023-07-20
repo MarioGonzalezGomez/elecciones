@@ -205,7 +205,7 @@ public class Listeners {
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
             exec.scheduleAtFixedRate(() -> {
                 try {
-                    System.out.println("BUscando cambios en congreso...");
+                    System.out.println("Buscando cambios en congreso...");
                     if (Home.bs != null)
                         oldData = Home.bs;
 
