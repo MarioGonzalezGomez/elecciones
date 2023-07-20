@@ -832,7 +832,7 @@ public class Home extends JFrame {
                 ipf.congresoVotosSale();
             }
         }
-        if (votosIn && tipoElecciones == 2 && !desplegado ) {
+        if (votosIn && tipoElecciones == 2 && !desplegado) {
             ipf.congresoSondeoVotosSale();
         }
         votosIn = false;
@@ -847,7 +847,7 @@ public class Home extends JFrame {
                     ipf.esDirecto(false, tipoElecciones, codPartido);
                     ipf.despliego(codPartido);
                 }
-            } else if(historicosIn){
+            } else if (historicosIn) {
                 ipf.congresoHistoricosSale();
             }
         }
@@ -858,7 +858,7 @@ public class Home extends JFrame {
                     ipf.esDirecto(false, tipoElecciones, String.valueOf(position + 1));
                     ipf.despliegoSondeo(position + 1);
                 }
-            } else if(historicosIn){
+            } else if (historicosIn) {
                 ipf.congresoSondeoHistoricosSale();
             }
 
@@ -925,8 +925,8 @@ public class Home extends JFrame {
             btnHistoricosOut.setText("HISTORICOS OUT");
             rellenarCCAA();
             showDataTable(bs);
-            historicosIn=false;
-            votosIn=false;
+            historicosIn = false;
+            votosIn = false;
         } else {
             switch (tipoElecciones) {
                 //OFICIALES CONGRESO
@@ -945,19 +945,12 @@ public class Home extends JFrame {
                             }
                             resCongresoOfiIn = true;
                         }
-                        case 1 -> {
-                            if (resCongresoSonIn || resSenadoIn || resCongresoOfiIn) {
-                                ipf.cuatroPrimeros();
-                            }
-                        }
                         //SEDES
-                        case 2 -> {
-                            ipf.sedesEntra();
-                        }
+                        case 1 -> ipf.sedesEntra();
+
                         //VOTANTES
-                        case 3 -> {
-                            System.out.println("VOTANTES");
-                        }
+                        case 2 -> System.out.println("VOTANTES");
+
                         default -> System.out.print("");
                     }
                 }
@@ -979,19 +972,12 @@ public class Home extends JFrame {
                             }
                             resCongresoSonIn = true;
                         }
-                        case 1 -> {
-                            if (resCongresoSonIn || resSenadoIn || resCongresoOfiIn) {
-                                ipf.cuatroPrimeros();
-                            }
-                        }
                         //SEDES
-                        case 2 -> {
-                            ipf.sedesEntra();
-                        }
+                        case 1 -> ipf.sedesEntra();
+
                         //VOTANTES
-                        case 3 -> {
-                            System.out.println("VOTANTES");
-                        }
+                        case 2 -> System.out.println("VOTANTES");
+
                         default -> System.out.print("");
                     }
                 }
@@ -1012,19 +998,12 @@ public class Home extends JFrame {
                             }
                             resSenadoIn = true;
                         }
-                        case 1 -> {
-                            if (resCongresoSonIn || resSenadoIn || resCongresoOfiIn) {
-                                ipf.cuatroPrimeros();
-                            }
-                        }
                         //SEDES
-                        case 2 -> {
-                            ipf.sedesEntra();
-                        }
+                        case 1 -> ipf.sedesEntra();
+
                         //VOTANTES
-                        case 3 -> {
-                            System.out.println("VOTANTES");
-                        }
+                        case 2 -> System.out.println("VOTANTES");
+
                         default -> System.out.print("");
                     }
                 }
@@ -1049,22 +1028,12 @@ public class Home extends JFrame {
                             btnDesplegarDirecto.setText("VOTOS IN");
                         }
                     }
-                    //DESPLIEGA
-                    case 1 -> {
-                        if (oficiales) {
-                            ipf.recuperoTodos();
-                        } else {
-                            ipf.recuperoTodosSondeo();
-                        }
-                    }
                     //SEDES
-                    case 2 -> {
-                        ipf.sedesSale();
-                    }
+                    case 1 -> ipf.sedesSale();
+
                     //VOTANTES
-                    case 3 -> {
-                        System.out.println("Sale votantes");
-                    }
+                    case 2 -> System.out.println("Sale votantes");
+
                     default -> System.out.print("");
                 }
             }
@@ -1083,22 +1052,12 @@ public class Home extends JFrame {
                             btnDesplegarDirecto.setText("VOTOS IN");
                         }
                     }
-                    //DESPLIEGA
-                    case 1 -> {
-                        if (oficiales) {
-                            ipf.recuperoTodos();
-                        } else {
-                            ipf.recuperoTodosSondeo();
-                        }
-                    }
                     //SEDES
-                    case 2 -> {
-                        ipf.sedesSale();
-                    }
+                    case 1 -> ipf.sedesSale();
+
                     //VOTANTES
-                    case 3 -> {
-                        System.out.println("Sale votantes");
-                    }
+                    case 2 -> System.out.println("Sale votantes");
+
                     default -> System.out.print("");
                 }
             }
@@ -1117,22 +1076,12 @@ public class Home extends JFrame {
                             btnDesplegarDirecto.setText("VOTOS IN");
                         }
                     }
-                    //DESPLIEGA
-                    case 1 -> {
-                        if (oficiales) {
-                            ipf.recuperoTodos();
-                        } else {
-                            ipf.recuperoTodosSondeo();
-                        }
-                    }
                     //SEDES
-                    case 2 -> {
-                        ipf.sedesSale();
-                    }
+                    case 1 -> ipf.sedesSale();
+
                     //VOTANTES
-                    case 3 -> {
-                        System.out.println("Sale votantes");
-                    }
+                    case 2 -> System.out.println("Sale votantes");
+
                     default -> System.out.print("");
                 }
             }
