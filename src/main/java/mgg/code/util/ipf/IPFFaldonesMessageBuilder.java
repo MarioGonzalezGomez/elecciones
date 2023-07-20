@@ -108,6 +108,13 @@ public class IPFFaldonesMessageBuilder {
     }
 
 
+    //SEDES
+    public String sedesEntra() {
+        return eventRunBuild("SEDES/ENTRA");
+    }
+    public String sedesSale() {return eventRunBuild("SEDES/SALE");}
+
+
 
     //RESET
     public String resetIPF() {

@@ -765,7 +765,7 @@ public class Home extends JFrame {
                         ipf.esDirecto(true, tipoElecciones, codPartido);
                         ipf.despliego(codPartido);
                     } else {
-                        ipf.esDirecto(true, tipoElecciones, String.valueOf(position));
+                        ipf.esDirecto(true, tipoElecciones, String.valueOf(position + 1));
                         ipf.despliegoSondeo(position + 1);
 
                     }
@@ -784,11 +784,10 @@ public class Home extends JFrame {
                         ipf.congresoSondeoVotosEntra();
                     }
                     votosIn = true;
-
-                } else {
-                    if (tipoElecciones == 1) {
-                        ipf.congresoMillonesEntra();
-                    }
+                }
+            } else {
+                if (tipoElecciones == 1) {
+                    ipf.congresoMillonesEntra();
                 }
             }
         }
@@ -833,7 +832,7 @@ public class Home extends JFrame {
                 ipf.congresoVotosSale();
             }
         }
-        if (tipoElecciones == 2 && !desplegado) {
+        if (votosIn && tipoElecciones == 2 && !desplegado ) {
             ipf.congresoSondeoVotosSale();
         }
         votosIn = false;
@@ -845,10 +844,10 @@ public class Home extends JFrame {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
                     String codPartido = bs.getCpDTO().get(position).getCodigoPartido();
-                    ipf.esDirecto(false, tipoElecciones,codPartido);
+                    ipf.esDirecto(false, tipoElecciones, codPartido);
                     ipf.despliego(codPartido);
                 }
-            } else {
+            } else if(historicosIn){
                 ipf.congresoHistoricosSale();
             }
         }
@@ -856,10 +855,10 @@ public class Home extends JFrame {
             if (desplegado) {
                 int position = tablaDatos.getSelectedRow();
                 if (position != -1) {
-                    ipf.esDirecto(false, tipoElecciones,String.valueOf(position));
+                    ipf.esDirecto(false, tipoElecciones, String.valueOf(position + 1));
                     ipf.despliegoSondeo(position + 1);
                 }
-            } else {
+            } else if(historicosIn){
                 ipf.congresoSondeoHistoricosSale();
             }
 
@@ -926,6 +925,8 @@ public class Home extends JFrame {
             btnHistoricosOut.setText("HISTORICOS OUT");
             rellenarCCAA();
             showDataTable(bs);
+            historicosIn=false;
+            votosIn=false;
         } else {
             switch (tipoElecciones) {
                 //OFICIALES CONGRESO
@@ -951,7 +952,7 @@ public class Home extends JFrame {
                         }
                         //SEDES
                         case 2 -> {
-                            System.out.println("SEDES");
+                            ipf.sedesEntra();
                         }
                         //VOTANTES
                         case 3 -> {
@@ -985,7 +986,7 @@ public class Home extends JFrame {
                         }
                         //SEDES
                         case 2 -> {
-                            System.out.println("SEDES");
+                            ipf.sedesEntra();
                         }
                         //VOTANTES
                         case 3 -> {
@@ -1018,7 +1019,7 @@ public class Home extends JFrame {
                         }
                         //SEDES
                         case 2 -> {
-                            System.out.println("SEDES");
+                            ipf.sedesEntra();
                         }
                         //VOTANTES
                         case 3 -> {
@@ -1058,7 +1059,7 @@ public class Home extends JFrame {
                     }
                     //SEDES
                     case 2 -> {
-                        System.out.println("Sale sedes");
+                        ipf.sedesSale();
                     }
                     //VOTANTES
                     case 3 -> {
@@ -1092,7 +1093,7 @@ public class Home extends JFrame {
                     }
                     //SEDES
                     case 2 -> {
-                        System.out.println("Sale sedes");
+                        ipf.sedesSale();
                     }
                     //VOTANTES
                     case 3 -> {
@@ -1126,7 +1127,7 @@ public class Home extends JFrame {
                     }
                     //SEDES
                     case 2 -> {
-                        System.out.println("Sale sedes");
+                        ipf.sedesSale();
                     }
                     //VOTANTES
                     case 3 -> {

@@ -261,6 +261,19 @@ public class IPFSender {
         return mensaje;
     }
 
+    //SEDES
+    public String sedesEntra() {
+        String mensaje = faldonesBuilder.sedesEntra();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
+    public String sedesSale() {
+        String mensaje = faldonesBuilder.sedesSale();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     //RESET
     public String reset() {
         String mensaje = faldonesBuilder.resetIPF();
