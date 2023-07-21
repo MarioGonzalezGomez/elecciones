@@ -140,17 +140,20 @@ public class IPFSender {
 
     //DESPLIEGA_4
     public String cuatroPrimeros() {
-        String mensaje = faldonesBuilder.cuatroPrimeros();
+        String mensaje;
+        if(votosIn){
+            mensaje = faldonesBuilder.congresoVotosSale();
+            c.enviarMensaje(mensaje);
+            votosIn = false;
+
+        }
+        mensaje = faldonesBuilder.cuatroPrimeros();
         c.enviarMensaje(mensaje);
         return mensaje;
     }
 
     public String despliego(String codPartido) {
         String mensaje;
-        if(votosIn){
-            mensaje = faldonesBuilder.congresoVotosSale();
-            c.enviarMensaje(mensaje);
-        }
         mensaje = faldonesBuilder.despliego(codPartido);
         c.enviarMensaje(mensaje);
         return mensaje;
