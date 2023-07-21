@@ -216,14 +216,21 @@ public class Listeners {
 
                     if (!ConfigView.cambioBD) {
                         if (circunscripcionList.isEmpty()) {
+                            System.out.println(1);
                             circunscripcionList = circunscripcionController.getAllCircunscripciones();
                         } else {
                             HibernateControllerCongreso.getInstance().getManager().clear();
+                            System.out.println(2);
+
                             List<Circunscripcion> circunscripcionesNew = circunscripcionController.getAllCircunscripciones();
                             if (Home.tipoElecciones != 3 && !circunscripcionesNew.equals(circunscripcionList)) {
                                 blink();
                                 if (oldData != null) {
+                                    System.out.println(3);
+
                                     var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
+                                    System.out.println(4);
+
                                     var cps = cpController.getAllCPs();
                                     System.out.println("Cambio detectado en congreso");
                                     getChanges(circunscripcionList, circunscripcionesNew);
@@ -236,17 +243,22 @@ public class Listeners {
                                         BrainStormDTO dto = bscon.getBrainStormDTOOficial("9900000", Home.avance);
                                         Home.getInstance().showDataTable(dto);
                                         Home.bs = dto;
+                                        System.out.println(5);
+
                                         bscon.getBrainStormDTOOficialCongresoInCsv(dto);
                                         //primecon.findAllInExcel(primecon.findAll());
                                         ipf.congresoActualizaEscrutado();
                                         if (numeroPartidosChange(cpChanged) || partidosDistintos(cpChanged)) {
+                                            System.out.println(6);
                                             ipf.congresoActualizaNumPartidos();
                                             ipf.congresoYaNoEstaDatosIndividualizado(CPNoEsta(cpChanged));
                                         } else {
                                             if (orderChanged(cpChanged)) {
+                                                System.out.println(7);
                                                 ipf.congresoActualizaPosiciones();
                                             }
                                             if (escanosOficialChanged(cpChanged)) {
+                                                System.out.println(8);
                                                 var partidosChanged = partidosChanged(cpChanged);
                                                 ipf.congresoActualizaDatosIndividualizado(partidosChanged);
                                                 ipf.congresoActualizaDatos();

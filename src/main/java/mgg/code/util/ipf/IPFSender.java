@@ -8,6 +8,7 @@ public class IPFSender {
     private static IPFSender ipf;
     private ConexionIPF c;
     private IPFFaldonesMessageBuilder faldonesBuilder;
+    private boolean votosIn = false;
 
     private IPFSender() {
         c = ConexionIPF.getConexion();
@@ -114,12 +115,14 @@ public class IPFSender {
     public String congresoVotosEntra() {
         String mensaje = faldonesBuilder.congresoVotosEntra();
         c.enviarMensaje(mensaje);
+        votosIn = true;
         return mensaje;
     }
 
     public String congresoVotosSale() {
         String mensaje = faldonesBuilder.congresoVotosSale();
         c.enviarMensaje(mensaje);
+        votosIn = false;
         return mensaje;
     }
 
@@ -143,7 +146,12 @@ public class IPFSender {
     }
 
     public String despliego(String codPartido) {
-        String mensaje = faldonesBuilder.despliego(codPartido);
+        String mensaje;
+        if(votosIn){
+            mensaje = faldonesBuilder.congresoVotosSale();
+            c.enviarMensaje(mensaje);
+        }
+        mensaje = faldonesBuilder.despliego(codPartido);
         c.enviarMensaje(mensaje);
         return mensaje;
     }
