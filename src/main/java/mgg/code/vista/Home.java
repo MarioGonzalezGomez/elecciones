@@ -384,8 +384,8 @@ public class Home extends JFrame {
         tablaGraficos.setModel(new DefaultTableModel(
                 new Object[][]{
                         {"Ticker"},
-                        {"Sedes"},
-                        {"Votantes"}
+                        {"Sedes"}
+                      //  {"Votantes"}
                 },
                 new String[]{"GRÁFICOS"}
         ) {
