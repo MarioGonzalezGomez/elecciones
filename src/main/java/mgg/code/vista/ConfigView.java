@@ -220,7 +220,6 @@ public class ConfigView extends JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // graficosController.conectPrincipal();
         conexionBD = "BD PRINCIPAL";
-        System.out.println("AAAAA");
         cambioBD = true;
 
         HibernateControllerSenado.cambioPrincipal();

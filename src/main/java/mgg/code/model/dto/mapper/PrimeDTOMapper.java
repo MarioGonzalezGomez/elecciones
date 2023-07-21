@@ -73,7 +73,7 @@ public class PrimeDTOMapper {
         ArrayList<String[]> partidos = lfc.leerFicheroColores();
         Map<String, String> mapaPartidos = new HashMap<>();
         for (String[] partido : partidos) {
-            mapaPartidos.put(partido[0], partido[1]);
+            mapaPartidos.put(partido[0], partido[4]);
         }
         return mapaPartidos;
     }
