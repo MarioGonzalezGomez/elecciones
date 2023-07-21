@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Podemos es la ETA">
+    <list default="true" id="e421db1c-5444-4dbb-958a-f8608d58b860" name="Changes" comment="Perro Xanche es un jeta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/util/Listeners.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mgg/code/vista/Home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,13 +88,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685620203966</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Commit Inicial con Crud basico">
-      <created>1685623076443</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1685623076443</updated>
     </task>
     <task id="LOCAL-00002" summary="Csv implementado en Partido, Cir y CP.">
       <created>1685703326011</created>
@@ -433,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689861585247</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Perro Xanche es un jeta">
+      <created>1689867594218</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1689867594218</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -460,7 +459,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Cambio manual BD" />
     <MESSAGE value="Nuevas señales IPF" />
     <MESSAGE value="Sondeo y Senado" />
     <MESSAGE value="Cambio en interfaz" />
@@ -485,7 +483,8 @@
     <MESSAGE value="Sedes OK" />
     <MESSAGE value="Sedes Entra/Sale" />
     <MESSAGE value="Podemos es la ETA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Podemos es la ETA" />
+    <MESSAGE value="Perro Xanche es un jeta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Perro Xanche es un jeta" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
