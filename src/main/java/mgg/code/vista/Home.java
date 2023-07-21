@@ -514,9 +514,8 @@ public class Home extends JFrame {
         btnConfig.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/imagenes/iconconfig.png")))); // NOI18N
         btnConfig.addActionListener(this::btnConfigActionPerformed);
 
-        btnActualizar.setText("ACTUALIZAR");
         btnActualizar.addActionListener(this::btnActualizarActionPerformed);
-
+        btnActualizar.setBackground(Color.GRAY);
         lblConexion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblConexion.setHorizontalAlignment(SwingConstants.CENTER);
         lblConexion.setText("...");
@@ -698,6 +697,8 @@ public class Home extends JFrame {
                     btnReplegar.setText("DESPLIEGA 4");
                     btnDesplegarVideo.setText("HISTORICOS IN");
                     btnDesplegarDirecto.setText("VOTOS IN");
+                    btnVotosOut.setText("VOTOS OUT");
+
                 } else if (tablaGraficos.getSelectedRow() != -1) {
                     desplegado = false;
                     btnDesplegarVideo.setVisible(false);
@@ -832,7 +833,7 @@ public class Home extends JFrame {
                 ipf.congresoVotosSale();
             }
         }
-        if (votosIn && tipoElecciones == 2 && !desplegado) {
+        if (votosIn && tipoElecciones == 2 && !desplegado ) {
             ipf.congresoSondeoVotosSale();
         }
         votosIn = false;
@@ -847,7 +848,7 @@ public class Home extends JFrame {
                     ipf.esDirecto(false, tipoElecciones, codPartido);
                     ipf.despliego(codPartido);
                 }
-            } else if (historicosIn) {
+            } else if(historicosIn){
                 ipf.congresoHistoricosSale();
             }
         }
@@ -858,7 +859,7 @@ public class Home extends JFrame {
                     ipf.esDirecto(false, tipoElecciones, String.valueOf(position + 1));
                     ipf.despliegoSondeo(position + 1);
                 }
-            } else if (historicosIn) {
+            } else if(historicosIn){
                 ipf.congresoSondeoHistoricosSale();
             }
 
@@ -925,8 +926,8 @@ public class Home extends JFrame {
             btnHistoricosOut.setText("HISTORICOS OUT");
             rellenarCCAA();
             showDataTable(bs);
-            historicosIn = false;
-            votosIn = false;
+            historicosIn=false;
+            votosIn=false;
         } else {
             switch (tipoElecciones) {
                 //OFICIALES CONGRESO
@@ -945,12 +946,19 @@ public class Home extends JFrame {
                             }
                             resCongresoOfiIn = true;
                         }
+                        case 1 -> {
+                            if (resCongresoSonIn || resSenadoIn || resCongresoOfiIn) {
+                                ipf.cuatroPrimeros();
+                            }
+                        }
                         //SEDES
-                        case 1 -> ipf.sedesEntra();
-
+                        case 2 -> {
+                            ipf.sedesEntra();
+                        }
                         //VOTANTES
-                        case 2 -> System.out.println("VOTANTES");
-
+                        case 3 -> {
+                            System.out.println("VOTANTES");
+                        }
                         default -> System.out.print("");
                     }
                 }
@@ -974,8 +982,9 @@ public class Home extends JFrame {
                         }
 
                         //VOTANTES
-                        case 2 -> System.out.println("VOTANTES");
-
+                        case 3 -> {
+                            System.out.println("VOTANTES");
+                        }
                         default -> System.out.print("");
                     }
                 }
@@ -997,8 +1006,9 @@ public class Home extends JFrame {
                             resSenadoIn = true;
                         }
                         //VOTANTES
-                        case 2 -> System.out.println("VOTANTES");
-
+                        case 3 -> {
+                            System.out.println("VOTANTES");
+                        }
                         default -> System.out.print("");
                     }
                 }
@@ -1021,14 +1031,26 @@ public class Home extends JFrame {
                             btnReplegar.setText("DESPLIEGA 4");
                             btnDesplegarVideo.setText("HISTORICOS IN");
                             btnDesplegarDirecto.setText("VOTOS IN");
+                            btnVotosOut.setText("VOTOS OUT");
+
+                        }
+                    }
+                    //DESPLIEGA
+                    case 1 -> {
+                        if (oficiales) {
+                            ipf.recuperoTodos();
+                        } else {
+                            ipf.recuperoTodosSondeo();
                         }
                     }
                     //SEDES
-                    case 1 -> ipf.sedesSale();
-
+                    case 2 -> {
+                        ipf.sedesSale();
+                    }
                     //VOTANTES
-                    case 2 -> System.out.println("Sale votantes");
-
+                    case 3 -> {
+                        System.out.println("Sale votantes");
+                    }
                     default -> System.out.print("");
                 }
             }
@@ -1045,14 +1067,26 @@ public class Home extends JFrame {
                             btnReplegar.setText("DESPLIEGA 4");
                             btnDesplegarVideo.setText("HISTORICOS IN");
                             btnDesplegarDirecto.setText("VOTOS IN");
+                            btnVotosOut.setText("VOTOS OUT");
+
+                        }
+                    }
+                    //DESPLIEGA
+                    case 1 -> {
+                        if (oficiales) {
+                            ipf.recuperoTodos();
+                        } else {
+                            ipf.recuperoTodosSondeo();
                         }
                     }
                     //SEDES
-                    case 1 -> ipf.sedesSale();
-
+                    case 2 -> {
+                        ipf.sedesSale();
+                    }
                     //VOTANTES
-                    case 2 -> System.out.println("Sale votantes");
-
+                    case 3 -> {
+                        System.out.println("Sale votantes");
+                    }
                     default -> System.out.print("");
                 }
             }
@@ -1068,15 +1102,29 @@ public class Home extends JFrame {
                             btnEntra.setText("ENTRA");
                             btnReplegar.setText("DESPLIEGA 4");
                             btnDesplegarVideo.setText("HISTORICOS IN");
+                            btnVotosOut.setText("HISTORICOS OUT");
+
                             btnDesplegarDirecto.setText("VOTOS IN");
+                            btnVotosOut.setText("VOTOS OUT");
+
+                        }
+                    }
+                    //DESPLIEGA
+                    case 1 -> {
+                        if (oficiales) {
+                            ipf.recuperoTodos();
+                        } else {
+                            ipf.recuperoTodosSondeo();
                         }
                     }
                     //SEDES
-                    case 1 -> ipf.sedesSale();
-
+                    case 2 -> {
+                        ipf.sedesSale();
+                    }
                     //VOTANTES
-                    case 2 -> System.out.println("Sale votantes");
-
+                    case 3 -> {
+                        System.out.println("Sale votantes");
+                    }
                     default -> System.out.print("");
                 }
             }
@@ -1256,7 +1304,7 @@ public class Home extends JFrame {
 
 
     private JTable tablaGraficos;
-    private JButton btnActualizar;
+    public static JButton btnActualizar;
     private JButton btnAvance1;
     private JButton btnAvance2;
     private JButton btnAvance3;
@@ -1288,7 +1336,7 @@ public class Home extends JFrame {
     private JScrollPane jScrollPane5;
     private JLabel lblEscTotales;
     private JLabel lblEscanosTotales;
-    private JLabel lblEscrutado;
+    public static JLabel lblEscrutado;
     private JLabel lblPartHistorica;
     private JLabel lblParticipacion;
     private JTable tablaComunidades;

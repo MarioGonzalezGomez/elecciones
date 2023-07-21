@@ -16,7 +16,9 @@ import mgg.code.util.ipf.ConexionIPF;
 import mgg.code.util.ipf.IPFSender;
 import mgg.code.vista.ConfigView;
 import mgg.code.vista.Home;
+import org.apache.xmlbeans.impl.common.Mutex;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -195,6 +197,7 @@ public class Listeners {
         return false;
     }
 
+    Mutex lock = new Mutex();
 
     private BrainStormDTO oldData;
 
@@ -203,8 +206,10 @@ public class Listeners {
             System.out.println("Escuchando congreso");
             isSuscribed.set(true);
             ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+
             exec.scheduleAtFixedRate(() -> {
                 try {
+                    lock.acquire();
                     System.out.println("Buscando cambios en congreso...");
                     if (Home.bs != null)
                         oldData = Home.bs;
@@ -214,10 +219,9 @@ public class Listeners {
                             circunscripcionList = circunscripcionController.getAllCircunscripciones();
                         } else {
                             HibernateControllerCongreso.getInstance().getManager().clear();
-
                             List<Circunscripcion> circunscripcionesNew = circunscripcionController.getAllCircunscripciones();
-                            ;
                             if (Home.tipoElecciones != 3 && !circunscripcionesNew.equals(circunscripcionList)) {
+                                blink();
                                 if (oldData != null) {
                                     var changes = getChanges(circunscripcionSenado, circunscripcionesNew);
                                     var cps = cpController.getAllCPs();
@@ -258,11 +262,37 @@ public class Listeners {
                     } else {
                         System.out.println("Esperando cambio de base de datos");
                     }
+
                 } catch (Exception e) {
+                    System.out.println("Excepcion en listener");
                     e.printStackTrace();
+                }finally {
+                    lock.release();
                 }
             }, 0, 7, TimeUnit.SECONDS);
         }
+    }
+
+    private void blink() {
+        Thread thread = new Thread(() -> {
+            try {
+                Home.lblEscrutado.setForeground(Color.GREEN);
+
+                Thread.sleep(200);
+                Home.lblEscrutado.setForeground(Color.BLACK);
+
+                Thread.sleep(200);
+                Home.lblEscrutado.setForeground(Color.GREEN);
+
+                Thread.sleep(200);
+                Home.lblEscrutado.setForeground(Color.BLACK);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+        thread.start();
+
     }
 
     private List<String> CPNoEsta(List<CP> newPartidos) {
