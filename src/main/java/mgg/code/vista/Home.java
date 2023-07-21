@@ -62,6 +62,8 @@ public class Home extends JFrame {
     private boolean historicosIn = false;
     private boolean desplegado = false;
 
+    private boolean sedesIn;
+
     public static String avance = "1";
 
     private static final String CONFIG_FILE_PATH = "C:\\Elecciones2023\\config.properties";
@@ -385,7 +387,7 @@ public class Home extends JFrame {
                 new Object[][]{
                         {"Ticker"},
                         {"Sedes"}
-                      //  {"Votantes"}
+                        //  {"Votantes"}
                 },
                 new String[]{"GRÁFICOS"}
         ) {
@@ -935,6 +937,10 @@ public class Home extends JFrame {
                     switch (tablaGraficos.getSelectedRow()) {
                         //TICKER
                         case 0 -> {
+                            if(sedesIn){
+                                ipf.sedesSale();
+                                sedesIn=false;
+                            }
                             if (resCongresoSonIn) {
                                 ipf.deSondeoACongreso();
                                 resCongresoSonIn = false;
@@ -947,7 +953,22 @@ public class Home extends JFrame {
                             resCongresoOfiIn = true;
                         }
                         //SEDES
-                        case 1 -> ipf.sedesEntra();
+                        case 1 -> {
+                            if (resCongresoSonIn) {
+                                ipf.congresoSondeoSale();
+                                resCongresoSonIn = false;
+                            }
+                            if (resSenadoIn) {
+                                ipf.senadoSale();
+                                resSenadoIn = false;
+                            }
+                            if (resCongresoOfiIn) {
+                                ipf.congresoSale();
+                                resCongresoOfiIn = false;
+                            }
+                            ipf.sedesEntra();
+                            sedesIn = true;
+                        }
 
                         default -> System.out.print("");
                     }
@@ -957,6 +978,10 @@ public class Home extends JFrame {
                     switch (tablaGraficos.getSelectedRow()) {
                         //RESULTADOS
                         case 0 -> {
+                            if(sedesIn){
+                                ipf.sedesSale();
+                                sedesIn=false;
+                            }
                             if (resCongresoOfiIn) {
                                 ipf.congresoSale();
                                 resCongresoOfiIn = false;
@@ -972,7 +997,22 @@ public class Home extends JFrame {
                         }
 
                         //SEDES
-                        case 1 -> ipf.sedesEntra();
+                        case 1 -> {
+                            if (resCongresoSonIn) {
+                                ipf.congresoSondeoSale();
+                                resCongresoSonIn = false;
+                            }
+                            if (resSenadoIn) {
+                                ipf.senadoSale();
+                                resSenadoIn = false;
+                            }
+                            if (resCongresoOfiIn) {
+                                ipf.congresoSale();
+                                resCongresoOfiIn = false;
+                            }
+                            ipf.sedesEntra();
+                            sedesIn = true;
+                        }
 
                         default -> System.out.print("");
                     }
@@ -982,6 +1022,10 @@ public class Home extends JFrame {
                     switch (tablaGraficos.getSelectedRow()) {
                         //RESULTADOS
                         case 0 -> {
+                            if(sedesIn){
+                                ipf.sedesSale();
+                                sedesIn=false;
+                            }
                             if (resCongresoOfiIn) {
                                 ipf.deCongresoASenado();
                                 resCongresoOfiIn = false;
@@ -995,7 +1039,22 @@ public class Home extends JFrame {
                             resSenadoIn = true;
                         }
                         //SEDES
-                        case 1 -> ipf.sedesEntra();
+                        case 1 -> {
+                            if (resCongresoSonIn) {
+                                ipf.congresoSondeoSale();
+                                resCongresoSonIn = false;
+                            }
+                            if (resSenadoIn) {
+                                ipf.senadoSale();
+                                resSenadoIn = false;
+                            }
+                            if (resCongresoOfiIn) {
+                                ipf.congresoSale();
+                                resCongresoOfiIn = false;
+                            }
+                            ipf.sedesEntra();
+                            sedesIn = true;
+                        }
 
                         default -> System.out.print("");
                     }
@@ -1155,6 +1214,7 @@ public class Home extends JFrame {
         desplegado = false;
         votosIn = false;
         historicosIn = false;
+        sedesIn = false;
     }
 
     private void btnConfigActionPerformed(ActionEvent evt) {
