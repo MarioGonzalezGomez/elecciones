@@ -279,6 +279,12 @@ public class IPFSender {
         return mensaje;
     }
 
+    public String sedesEntraDelay() {
+        String mensaje = faldonesBuilder.sedesEntraDelay();
+        c.enviarMensaje(mensaje);
+        return mensaje;
+    }
+
     public String sedesSale() {
         String mensaje = faldonesBuilder.sedesSale();
         c.enviarMensaje(mensaje);

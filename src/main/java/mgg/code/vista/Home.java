@@ -937,9 +937,9 @@ public class Home extends JFrame {
                     switch (tablaGraficos.getSelectedRow()) {
                         //TICKER
                         case 0 -> {
-                            if(sedesIn){
+                            if (sedesIn) {
                                 ipf.sedesSale();
-                                sedesIn=false;
+                                sedesIn = false;
                             }
                             if (resCongresoSonIn) {
                                 ipf.deSondeoACongreso();
@@ -966,7 +966,12 @@ public class Home extends JFrame {
                                 ipf.congresoSale();
                                 resCongresoOfiIn = false;
                             }
-                            ipf.sedesEntra();
+                            if (sedesIn) {
+                                ipf.sedesSale();
+                                ipf.sedesEntraDelay();
+                            } else {
+                                ipf.sedesEntra();
+                            }
                             sedesIn = true;
                         }
 
@@ -978,9 +983,9 @@ public class Home extends JFrame {
                     switch (tablaGraficos.getSelectedRow()) {
                         //RESULTADOS
                         case 0 -> {
-                            if(sedesIn){
+                            if (sedesIn) {
                                 ipf.sedesSale();
-                                sedesIn=false;
+                                sedesIn = false;
                             }
                             if (resCongresoOfiIn) {
                                 ipf.congresoSale();
@@ -1010,7 +1015,12 @@ public class Home extends JFrame {
                                 ipf.congresoSale();
                                 resCongresoOfiIn = false;
                             }
-                            ipf.sedesEntra();
+                            if (sedesIn) {
+                                ipf.sedesSale();
+                                ipf.sedesEntraDelay();
+                            } else {
+                                ipf.sedesEntra();
+                            }
                             sedesIn = true;
                         }
 
@@ -1022,9 +1032,9 @@ public class Home extends JFrame {
                     switch (tablaGraficos.getSelectedRow()) {
                         //RESULTADOS
                         case 0 -> {
-                            if(sedesIn){
+                            if (sedesIn) {
                                 ipf.sedesSale();
-                                sedesIn=false;
+                                sedesIn = false;
                             }
                             if (resCongresoOfiIn) {
                                 ipf.deCongresoASenado();
@@ -1035,6 +1045,9 @@ public class Home extends JFrame {
                                 ipf.senadoEntra();
                             } else {
                                 ipf.senadoEntra();
+                            }
+                            if (sedesIn) {
+                                ipf.sedesSale();
                             }
                             resSenadoIn = true;
                         }
@@ -1052,7 +1065,12 @@ public class Home extends JFrame {
                                 ipf.congresoSale();
                                 resCongresoOfiIn = false;
                             }
-                            ipf.sedesEntra();
+                            if (sedesIn) {
+                                ipf.sedesSale();
+                                ipf.sedesEntraDelay();
+                            } else {
+                                ipf.sedesEntra();
+                            }
                             sedesIn = true;
                         }
 
@@ -1141,32 +1159,35 @@ public class Home extends JFrame {
 
     private void btnDatosSenadoActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDatosSenadoActionPerformed
         vaciarTablas();
-        tablaGraficos.clearSelection();
         tipoElecciones = 3;
         oficiales = true;
         resaltarBoton(btnDatosSenado);
         selectedDb = "SM";
+        bs = bscon.getBrainStormDTOSenado("9900000", avance);
+        showDataTable(bs);
         //rellenarCCAA();
     }
 
     private void btnCongresoSondeoActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCongresoSondeoActionPerformed
         vaciarTablas();
-        tablaGraficos.clearSelection();
         tipoElecciones = 2;
         oficiales = false;
         resaltarBoton(btnCongresoSondeo);
         selectedDb = "DA";
         rellenarCCAA();
+        bs = bscon.getBrainStormDTOSondeo("9900000", avance);
+        showDataTable(bs);
     }
 
     private void btnDatosCongresoActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDatosCongresoActionPerformed
         vaciarTablas();
-        tablaGraficos.clearSelection();
         tipoElecciones = 1;
         oficiales = true;
         resaltarBoton(btnDatosCongreso);
         selectedDb = "DM";
         rellenarCCAA();
+        bs = bscon.getBrainStormDTOOficial("9900000", avance);
+        showDataTable(bs);
     }
 
     private void vaciarTablas() {
@@ -1176,14 +1197,14 @@ public class Home extends JFrame {
     }
 
     private void rellenarCCAA() {
-        vaciarTablas();
-        DefaultTableModel tableModel = (DefaultTableModel) tablaComunidades.getModel();
-        List<String> ccaa = autonomias.stream().map(Circunscripcion::getNombreCircunscripcion).toList();
-        ccaa = ccaa.subList(0, ccaa.size() - 1);
-        for (String s : ccaa) {
-            tableModel.addRow(new Object[]{s});
-        }
-        tablaComunidades.setModel(tableModel);
+        //  vaciarTablas();
+        //  DefaultTableModel tableModel = (DefaultTableModel) tablaComunidades.getModel();
+        //  List<String> ccaa = autonomias.stream().map(Circunscripcion::getNombreCircunscripcion).toList();
+        //  ccaa = ccaa.subList(0, ccaa.size() - 1);
+        //  for (String s : ccaa) {
+        //      tableModel.addRow(new Object[]{s});
+        //  }
+        //  tablaComunidades.setModel(tableModel);
     }
 
     private void tablaGraficosHierarchyChanged(HierarchyEvent evt) {

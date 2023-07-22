@@ -112,6 +112,7 @@ public class IPFFaldonesMessageBuilder {
     public String sedesEntra() {
         return eventRunBuild("SEDES/ENTRA");
     }
+    public String sedesEntraDelay() {return eventBuild("SEDES/ENTRA","EVENT_RUN","0,0.5",2);}
     public String sedesSale() {return eventRunBuild("SEDES/SALE");}
 
 
